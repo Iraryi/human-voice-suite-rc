@@ -1,0 +1,2884 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "judetelan/ai-humanizer",
+    "sourceCommit": "76bf08f13bee88044f448fd1b80604e33bb662b6",
+    "extractedAt": "2026-09-15T21:18:11.732Z",
+    "sources": [
+      "scripts/registry/rules.mjs",
+      "scripts/lexicons.mjs",
+      "scripts/engines/lexical.mjs",
+      "scripts/engines/stylometry.mjs"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "em-dash-overuse",
+        "signature": "rhythm.dash_overuse",
+        "signatureMapped": true,
+        "title": "Em-dash overuse",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Em-dashes at several times the human rate. As of 2026, primarily a Claude tell; GPT-5 actively suppresses them. Vary with commas, periods, colons, parentheses.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: count/rate over em-dashes and typographic double-hyphens. No lexicon array upstream.",
+        "rewriteGuidance": "As of 2026, primarily a Claude tell; GPT-5 actively suppresses them. Vary with commas, periods, colons, parentheses.",
+        "severity": 4,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:21",
+        "quote": "Em-dashes at several times the human rate. As of 2026, primarily a Claude tell; GPT-5 actively suppresses them. Vary with commas, periods, colons, parentheses.",
+        "notes": [
+          "Upstream severity \"warning\", weight 6 (6 effective).",
+          "Upstream category \"cadence\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "banned-vocab",
+        "signature": "lexical.ai_vocabulary",
+        "signatureMapped": true,
+        "title": "AI-spike vocabulary",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Words that spike in AI prose (delve, leverage, robust, seamless). Swap for plainer, more specific words.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): BANNED_VOCAB. 98 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Swap for plainer, more specific words.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "delve",
+            "kind": "literal",
+            "match": "delve"
+          },
+          {
+            "text": "delves",
+            "kind": "literal",
+            "match": "delves"
+          },
+          {
+            "text": "delving",
+            "kind": "literal",
+            "match": "delving"
+          },
+          {
+            "text": "tapestry",
+            "kind": "literal",
+            "match": "tapestry"
+          },
+          {
+            "text": "realm",
+            "kind": "literal",
+            "match": "realm"
+          },
+          {
+            "text": "realms",
+            "kind": "literal",
+            "match": "realms"
+          },
+          {
+            "text": "underscore",
+            "kind": "literal",
+            "match": "underscore"
+          },
+          {
+            "text": "underscores",
+            "kind": "literal",
+            "match": "underscores"
+          },
+          {
+            "text": "underscoring",
+            "kind": "literal",
+            "match": "underscoring"
+          },
+          {
+            "text": "pivotal",
+            "kind": "literal",
+            "match": "pivotal"
+          },
+          {
+            "text": "testament",
+            "kind": "literal",
+            "match": "testament"
+          },
+          {
+            "text": "vibrant",
+            "kind": "literal",
+            "match": "vibrant"
+          },
+          {
+            "text": "bustling",
+            "kind": "literal",
+            "match": "bustling"
+          },
+          {
+            "text": "foster",
+            "kind": "literal",
+            "match": "foster"
+          },
+          {
+            "text": "fostering",
+            "kind": "literal",
+            "match": "fostering"
+          },
+          {
+            "text": "leverage",
+            "kind": "literal",
+            "match": "leverage"
+          },
+          {
+            "text": "leveraging",
+            "kind": "literal",
+            "match": "leveraging"
+          },
+          {
+            "text": "robust",
+            "kind": "literal",
+            "match": "robust"
+          },
+          {
+            "text": "seamless",
+            "kind": "literal",
+            "match": "seamless"
+          },
+          {
+            "text": "seamlessly",
+            "kind": "literal",
+            "match": "seamlessly"
+          },
+          {
+            "text": "holistic",
+            "kind": "literal",
+            "match": "holistic"
+          },
+          {
+            "text": "multifaceted",
+            "kind": "literal",
+            "match": "multifaceted"
+          },
+          {
+            "text": "nuanced",
+            "kind": "literal",
+            "match": "nuanced"
+          },
+          {
+            "text": "intricate",
+            "kind": "literal",
+            "match": "intricate"
+          },
+          {
+            "text": "meticulous",
+            "kind": "literal",
+            "match": "meticulous"
+          },
+          {
+            "text": "meticulously",
+            "kind": "literal",
+            "match": "meticulously"
+          },
+          {
+            "text": "elevate",
+            "kind": "literal",
+            "match": "elevate"
+          },
+          {
+            "text": "elevates",
+            "kind": "literal",
+            "match": "elevates"
+          },
+          {
+            "text": "elevating",
+            "kind": "literal",
+            "match": "elevating"
+          },
+          {
+            "text": "unleash",
+            "kind": "literal",
+            "match": "unleash"
+          },
+          {
+            "text": "embark",
+            "kind": "literal",
+            "match": "embark"
+          },
+          {
+            "text": "myriad",
+            "kind": "literal",
+            "match": "myriad"
+          },
+          {
+            "text": "plethora",
+            "kind": "literal",
+            "match": "plethora"
+          },
+          {
+            "text": "paramount",
+            "kind": "literal",
+            "match": "paramount"
+          },
+          {
+            "text": "crucial",
+            "kind": "literal",
+            "match": "crucial"
+          },
+          {
+            "text": "cutting-edge",
+            "kind": "literal",
+            "match": "cutting-edge"
+          },
+          {
+            "text": "in the realm of",
+            "kind": "literal",
+            "match": "in the realm of"
+          },
+          {
+            "text": "rich tapestry",
+            "kind": "literal",
+            "match": "rich tapestry"
+          },
+          {
+            "text": "ever-evolving",
+            "kind": "literal",
+            "match": "ever-evolving"
+          },
+          {
+            "text": "ever-changing",
+            "kind": "literal",
+            "match": "ever-changing"
+          },
+          {
+            "text": "landscape of",
+            "kind": "literal",
+            "match": "landscape of"
+          },
+          {
+            "text": "at the forefront",
+            "kind": "literal",
+            "match": "at the forefront"
+          },
+          {
+            "text": "beacon of",
+            "kind": "literal",
+            "match": "beacon of"
+          },
+          {
+            "text": "treasure trove",
+            "kind": "literal",
+            "match": "treasure trove"
+          },
+          {
+            "text": "bolster",
+            "kind": "literal",
+            "match": "bolster"
+          },
+          {
+            "text": "bolstered",
+            "kind": "literal",
+            "match": "bolstered"
+          },
+          {
+            "text": "bolstering",
+            "kind": "literal",
+            "match": "bolstering"
+          },
+          {
+            "text": "garner",
+            "kind": "literal",
+            "match": "garner"
+          },
+          {
+            "text": "garnered",
+            "kind": "literal",
+            "match": "garnered"
+          },
+          {
+            "text": "interplay",
+            "kind": "literal",
+            "match": "interplay"
+          },
+          {
+            "text": "encompass",
+            "kind": "literal",
+            "match": "encompass"
+          },
+          {
+            "text": "encompassing",
+            "kind": "literal",
+            "match": "encompassing"
+          },
+          {
+            "text": "commence",
+            "kind": "literal",
+            "match": "commence"
+          },
+          {
+            "text": "aforementioned",
+            "kind": "literal",
+            "match": "aforementioned"
+          },
+          {
+            "text": "spearhead",
+            "kind": "literal",
+            "match": "spearhead"
+          },
+          {
+            "text": "spearheading",
+            "kind": "literal",
+            "match": "spearheading"
+          },
+          {
+            "text": "harness",
+            "kind": "literal",
+            "match": "harness"
+          },
+          {
+            "text": "harnessing",
+            "kind": "literal",
+            "match": "harnessing"
+          },
+          {
+            "text": "showcase",
+            "kind": "literal",
+            "match": "showcase"
+          },
+          {
+            "text": "showcasing",
+            "kind": "literal",
+            "match": "showcasing"
+          },
+          {
+            "text": "elucidate",
+            "kind": "literal",
+            "match": "elucidate"
+          },
+          {
+            "text": "illuminate",
+            "kind": "literal",
+            "match": "illuminate"
+          },
+          {
+            "text": "catalyze",
+            "kind": "literal",
+            "match": "catalyze"
+          },
+          {
+            "text": "catalyst",
+            "kind": "literal",
+            "match": "catalyst"
+          },
+          {
+            "text": "cornerstone",
+            "kind": "literal",
+            "match": "cornerstone"
+          },
+          {
+            "text": "poised",
+            "kind": "literal",
+            "match": "poised"
+          },
+          {
+            "text": "reimagine",
+            "kind": "literal",
+            "match": "reimagine"
+          },
+          {
+            "text": "reimagining",
+            "kind": "literal",
+            "match": "reimagining"
+          },
+          {
+            "text": "invaluable",
+            "kind": "literal",
+            "match": "invaluable"
+          },
+          {
+            "text": "groundbreaking",
+            "kind": "literal",
+            "match": "groundbreaking"
+          },
+          {
+            "text": "transformative",
+            "kind": "literal",
+            "match": "transformative"
+          },
+          {
+            "text": "unprecedented",
+            "kind": "literal",
+            "match": "unprecedented"
+          },
+          {
+            "text": "breathtaking",
+            "kind": "literal",
+            "match": "breathtaking"
+          },
+          {
+            "text": "renowned",
+            "kind": "literal",
+            "match": "renowned"
+          },
+          {
+            "text": "nestled",
+            "kind": "literal",
+            "match": "nestled"
+          },
+          {
+            "text": "boasts",
+            "kind": "literal",
+            "match": "boasts"
+          },
+          {
+            "text": "unparalleled",
+            "kind": "literal",
+            "match": "unparalleled"
+          },
+          {
+            "text": "state-of-the-art",
+            "kind": "literal",
+            "match": "state-of-the-art"
+          },
+          {
+            "text": "synergy",
+            "kind": "literal",
+            "match": "synergy"
+          },
+          {
+            "text": "synergies",
+            "kind": "literal",
+            "match": "synergies"
+          },
+          {
+            "text": "utilize",
+            "kind": "literal",
+            "match": "utilize"
+          },
+          {
+            "text": "utilizing",
+            "kind": "literal",
+            "match": "utilizing"
+          },
+          {
+            "text": "facilitate",
+            "kind": "literal",
+            "match": "facilitate"
+          },
+          {
+            "text": "paradigm",
+            "kind": "literal",
+            "match": "paradigm"
+          },
+          {
+            "text": "indelible",
+            "kind": "literal",
+            "match": "indelible"
+          },
+          {
+            "text": "delve into",
+            "kind": "literal",
+            "match": "delve into"
+          },
+          {
+            "text": "enduring",
+            "kind": "literal",
+            "match": "enduring"
+          },
+          {
+            "text": "stunning",
+            "kind": "literal",
+            "match": "stunning"
+          },
+          {
+            "text": "must-visit",
+            "kind": "literal",
+            "match": "must-visit"
+          },
+          {
+            "text": "steeped in",
+            "kind": "literal",
+            "match": "steeped in"
+          },
+          {
+            "text": "actionable",
+            "kind": "literal",
+            "match": "actionable"
+          },
+          {
+            "text": "impactful",
+            "kind": "literal",
+            "match": "impactful"
+          },
+          {
+            "text": "unpack",
+            "kind": "literal",
+            "match": "unpack"
+          },
+          {
+            "text": "unpacking",
+            "kind": "literal",
+            "match": "unpacking"
+          },
+          {
+            "text": "enhancing",
+            "kind": "literal",
+            "match": "enhancing"
+          },
+          {
+            "text": "emphasizing",
+            "kind": "literal",
+            "match": "emphasizing"
+          },
+          {
+            "text": "highlighting",
+            "kind": "literal",
+            "match": "highlighting"
+          },
+          {
+            "text": "boasts a rich heritage",
+            "kind": "literal",
+            "match": "boasts a rich heritage"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:26",
+        "quote": "Words that spike in AI prose (delve, leverage, robust, seamless). Swap for plainer, more specific words.",
+        "notes": [
+          "Upstream severity \"warning\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "ai-openers",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "Throat-clearing openers",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Connective/RLHF scaffolding (Moreover, Furthermore, In today's world, It's worth noting). Cut or assert directly.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): AI_OPENERS. 53 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Cut or assert directly.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "certainly",
+            "kind": "literal",
+            "match": "certainly"
+          },
+          {
+            "text": "of course",
+            "kind": "literal",
+            "match": "of course"
+          },
+          {
+            "text": "absolutely",
+            "kind": "literal",
+            "match": "absolutely"
+          },
+          {
+            "text": "great question",
+            "kind": "literal",
+            "match": "great question"
+          },
+          {
+            "text": "in today's",
+            "kind": "literal",
+            "match": "in today's"
+          },
+          {
+            "text": "in the world of",
+            "kind": "literal",
+            "match": "in the world of"
+          },
+          {
+            "text": "in the realm of",
+            "kind": "literal",
+            "match": "in the realm of"
+          },
+          {
+            "text": "in an era",
+            "kind": "literal",
+            "match": "in an era"
+          },
+          {
+            "text": "it's worth noting",
+            "kind": "literal",
+            "match": "it's worth noting"
+          },
+          {
+            "text": "it is worth noting",
+            "kind": "literal",
+            "match": "it is worth noting"
+          },
+          {
+            "text": "it's important to note",
+            "kind": "literal",
+            "match": "it's important to note"
+          },
+          {
+            "text": "it is important to note",
+            "kind": "literal",
+            "match": "it is important to note"
+          },
+          {
+            "text": "importantly",
+            "kind": "literal",
+            "match": "importantly"
+          },
+          {
+            "text": "notably",
+            "kind": "literal",
+            "match": "notably"
+          },
+          {
+            "text": "needless to say",
+            "kind": "literal",
+            "match": "needless to say"
+          },
+          {
+            "text": "at the end of the day",
+            "kind": "literal",
+            "match": "at the end of the day"
+          },
+          {
+            "text": "when it comes to",
+            "kind": "literal",
+            "match": "when it comes to"
+          },
+          {
+            "text": "in conclusion",
+            "kind": "literal",
+            "match": "in conclusion"
+          },
+          {
+            "text": "to sum up",
+            "kind": "literal",
+            "match": "to sum up"
+          },
+          {
+            "text": "in summary",
+            "kind": "literal",
+            "match": "in summary"
+          },
+          {
+            "text": "moreover",
+            "kind": "literal",
+            "match": "moreover"
+          },
+          {
+            "text": "furthermore",
+            "kind": "literal",
+            "match": "furthermore"
+          },
+          {
+            "text": "additionally",
+            "kind": "literal",
+            "match": "additionally"
+          },
+          {
+            "text": "ultimately",
+            "kind": "literal",
+            "match": "ultimately"
+          },
+          {
+            "text": "that being said",
+            "kind": "literal",
+            "match": "that being said"
+          },
+          {
+            "text": "rest assured",
+            "kind": "literal",
+            "match": "rest assured"
+          },
+          {
+            "text": "indeed",
+            "kind": "literal",
+            "match": "indeed"
+          },
+          {
+            "text": "interestingly",
+            "kind": "literal",
+            "match": "interestingly"
+          },
+          {
+            "text": "remarkably",
+            "kind": "literal",
+            "match": "remarkably"
+          },
+          {
+            "text": "essentially",
+            "kind": "literal",
+            "match": "essentially"
+          },
+          {
+            "text": "fundamentally",
+            "kind": "literal",
+            "match": "fundamentally"
+          },
+          {
+            "text": "inherently",
+            "kind": "literal",
+            "match": "inherently"
+          },
+          {
+            "text": "conversely",
+            "kind": "literal",
+            "match": "conversely"
+          },
+          {
+            "text": "that said",
+            "kind": "literal",
+            "match": "that said"
+          },
+          {
+            "text": "in essence",
+            "kind": "literal",
+            "match": "in essence"
+          },
+          {
+            "text": "simply put",
+            "kind": "literal",
+            "match": "simply put"
+          },
+          {
+            "text": "to put it simply",
+            "kind": "literal",
+            "match": "to put it simply"
+          },
+          {
+            "text": "in other words",
+            "kind": "literal",
+            "match": "in other words"
+          },
+          {
+            "text": "it turns out",
+            "kind": "literal",
+            "match": "it turns out"
+          },
+          {
+            "text": "the truth is",
+            "kind": "literal",
+            "match": "the truth is"
+          },
+          {
+            "text": "let's be honest",
+            "kind": "literal",
+            "match": "let's be honest"
+          },
+          {
+            "text": "can we talk about",
+            "kind": "literal",
+            "match": "can we talk about"
+          },
+          {
+            "text": "the real question is",
+            "kind": "literal",
+            "match": "the real question is"
+          },
+          {
+            "text": "in a world where",
+            "kind": "literal",
+            "match": "in a world where"
+          },
+          {
+            "text": "here's what i find interesting",
+            "kind": "literal",
+            "match": "here's what i find interesting"
+          },
+          {
+            "text": "here's the problem though",
+            "kind": "literal",
+            "match": "here's the problem though"
+          },
+          {
+            "text": "what nobody tells you",
+            "kind": "literal",
+            "match": "what nobody tells you"
+          },
+          {
+            "text": "the part everyone misses",
+            "kind": "literal",
+            "match": "the part everyone misses"
+          },
+          {
+            "text": "at its core",
+            "kind": "literal",
+            "match": "at its core"
+          },
+          {
+            "text": "in reality",
+            "kind": "literal",
+            "match": "in reality"
+          },
+          {
+            "text": "here's what you need to know",
+            "kind": "literal",
+            "match": "here's what you need to know"
+          },
+          {
+            "text": "let's break this down",
+            "kind": "literal",
+            "match": "let's break this down"
+          },
+          {
+            "text": "let's dive in",
+            "kind": "literal",
+            "match": "let's dive in"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:31",
+        "quote": "Connective/RLHF scaffolding (Moreover, Furthermore, In today's world, It's worth noting). Cut or assert directly.",
+        "notes": [
+          "Upstream severity \"warning\", weight 5 (5 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "marketing-buzzword",
+        "signature": "lexical.sales_language",
+        "signatureMapped": true,
+        "title": "Marketing buzzword",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Generic SaaS phrases (world-class, cutting-edge, streamline your). Say the literal verb + noun.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): BUZZWORDS. 46 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Say the literal verb + noun.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "streamline your",
+            "kind": "literal",
+            "match": "streamline your"
+          },
+          {
+            "text": "empower your",
+            "kind": "literal",
+            "match": "empower your"
+          },
+          {
+            "text": "supercharge your",
+            "kind": "literal",
+            "match": "supercharge your"
+          },
+          {
+            "text": "unleash your",
+            "kind": "literal",
+            "match": "unleash your"
+          },
+          {
+            "text": "unleash the power",
+            "kind": "literal",
+            "match": "unleash the power"
+          },
+          {
+            "text": "leverage the power",
+            "kind": "literal",
+            "match": "leverage the power"
+          },
+          {
+            "text": "harness the power",
+            "kind": "literal",
+            "match": "harness the power"
+          },
+          {
+            "text": "built for the modern",
+            "kind": "literal",
+            "match": "built for the modern"
+          },
+          {
+            "text": "trusted by leading",
+            "kind": "literal",
+            "match": "trusted by leading"
+          },
+          {
+            "text": "trusted by the world",
+            "kind": "literal",
+            "match": "trusted by the world"
+          },
+          {
+            "text": "best-in-class",
+            "kind": "literal",
+            "match": "best-in-class"
+          },
+          {
+            "text": "industry-leading",
+            "kind": "literal",
+            "match": "industry-leading"
+          },
+          {
+            "text": "world-class",
+            "kind": "literal",
+            "match": "world-class"
+          },
+          {
+            "text": "enterprise-grade",
+            "kind": "literal",
+            "match": "enterprise-grade"
+          },
+          {
+            "text": "next-generation",
+            "kind": "literal",
+            "match": "next-generation"
+          },
+          {
+            "text": "next generation",
+            "kind": "literal",
+            "match": "next generation"
+          },
+          {
+            "text": "cutting-edge",
+            "kind": "literal",
+            "match": "cutting-edge"
+          },
+          {
+            "text": "transform your business",
+            "kind": "literal",
+            "match": "transform your business"
+          },
+          {
+            "text": "revolutionize",
+            "kind": "literal",
+            "match": "revolutionize"
+          },
+          {
+            "text": "game-changer",
+            "kind": "literal",
+            "match": "game-changer"
+          },
+          {
+            "text": "game changing",
+            "kind": "literal",
+            "match": "game changing"
+          },
+          {
+            "text": "game-changing",
+            "kind": "literal",
+            "match": "game-changing"
+          },
+          {
+            "text": "mission-critical",
+            "kind": "literal",
+            "match": "mission-critical"
+          },
+          {
+            "text": "best of breed",
+            "kind": "literal",
+            "match": "best of breed"
+          },
+          {
+            "text": "future-proof",
+            "kind": "literal",
+            "match": "future-proof"
+          },
+          {
+            "text": "future proof",
+            "kind": "literal",
+            "match": "future proof"
+          },
+          {
+            "text": "seamless experience",
+            "kind": "literal",
+            "match": "seamless experience"
+          },
+          {
+            "text": "seamlessly integrate",
+            "kind": "literal",
+            "match": "seamlessly integrate"
+          },
+          {
+            "text": "drive engagement",
+            "kind": "literal",
+            "match": "drive engagement"
+          },
+          {
+            "text": "drive growth",
+            "kind": "literal",
+            "match": "drive growth"
+          },
+          {
+            "text": "drive results",
+            "kind": "literal",
+            "match": "drive results"
+          },
+          {
+            "text": "take it to the next level",
+            "kind": "literal",
+            "match": "take it to the next level"
+          },
+          {
+            "text": "one-stop shop",
+            "kind": "literal",
+            "match": "one-stop shop"
+          },
+          {
+            "text": "tailored solutions",
+            "kind": "literal",
+            "match": "tailored solutions"
+          },
+          {
+            "text": "bespoke solutions",
+            "kind": "literal",
+            "match": "bespoke solutions"
+          },
+          {
+            "text": "move the needle",
+            "kind": "literal",
+            "match": "move the needle"
+          },
+          {
+            "text": "unlock the power of",
+            "kind": "literal",
+            "match": "unlock the power of"
+          },
+          {
+            "text": "unlock the potential",
+            "kind": "literal",
+            "match": "unlock the potential"
+          },
+          {
+            "text": "unleash the potential",
+            "kind": "literal",
+            "match": "unleash the potential"
+          },
+          {
+            "text": "bridge the gap",
+            "kind": "literal",
+            "match": "bridge the gap"
+          },
+          {
+            "text": "at its core",
+            "kind": "literal",
+            "match": "at its core"
+          },
+          {
+            "text": "at the heart of",
+            "kind": "literal",
+            "match": "at the heart of"
+          },
+          {
+            "text": "the rise of",
+            "kind": "literal",
+            "match": "the rise of"
+          },
+          {
+            "text": "a deep dive into",
+            "kind": "literal",
+            "match": "a deep dive into"
+          },
+          {
+            "text": "deep dive",
+            "kind": "literal",
+            "match": "deep dive"
+          },
+          {
+            "text": "in a nutshell",
+            "kind": "literal",
+            "match": "in a nutshell"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:36",
+        "quote": "Generic SaaS phrases (world-class, cutting-edge, streamline your). Say the literal verb + noun.",
+        "notes": [
+          "Upstream severity \"warning\", weight { default: 4, marketing: 8 } (8 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "hedging",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "Hedge density",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Soft hedges (generally speaking, arguably, in most cases). Assert directly or state real uncertainty.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): HEDGES. 12 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Assert directly or state real uncertainty.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "generally speaking",
+            "kind": "literal",
+            "match": "generally speaking"
+          },
+          {
+            "text": "broadly speaking",
+            "kind": "literal",
+            "match": "broadly speaking"
+          },
+          {
+            "text": "in many ways",
+            "kind": "literal",
+            "match": "in many ways"
+          },
+          {
+            "text": "to some extent",
+            "kind": "literal",
+            "match": "to some extent"
+          },
+          {
+            "text": "arguably",
+            "kind": "literal",
+            "match": "arguably"
+          },
+          {
+            "text": "it could be argued",
+            "kind": "literal",
+            "match": "it could be argued"
+          },
+          {
+            "text": "one could argue",
+            "kind": "literal",
+            "match": "one could argue"
+          },
+          {
+            "text": "it depends",
+            "kind": "literal",
+            "match": "it depends"
+          },
+          {
+            "text": "more often than not",
+            "kind": "literal",
+            "match": "more often than not"
+          },
+          {
+            "text": "for the most part",
+            "kind": "literal",
+            "match": "for the most part"
+          },
+          {
+            "text": "in most cases",
+            "kind": "literal",
+            "match": "in most cases"
+          },
+          {
+            "text": "as a general rule",
+            "kind": "literal",
+            "match": "as a general rule"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:42",
+        "quote": "Soft hedges (generally speaking, arguably, in most cases). Assert directly or state real uncertainty.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "aphoristic-cadence",
+        "signature": "structural.negation_contrast",
+        "signatureMapped": true,
+        "title": "Aphoristic cadence",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Manufactured-contrast rhythm (\"Not an X. A Y.\" / \"No fluff. Just results.\"). Signature AI cadence.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over \"not X but Y\" and short-rebuttal constructions. No lexicon array upstream.",
+        "rewriteGuidance": "A Y.\" / \"No fluff. Just results.\"). Signature AI cadence.",
+        "severity": 4,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:47",
+        "quote": "Manufactured-contrast rhythm (\"Not an X. A Y.\" / \"No fluff. Just results.\"). Signature AI cadence.",
+        "notes": [
+          "Upstream severity \"warning\", weight 5 (5 effective).",
+          "Upstream category \"cadence\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "rule-of-three",
+        "signature": "rhythm.forced_triad",
+        "signatureMapped": true,
+        "title": "Reflexive rule-of-three",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Repeated \"X, Y, and Z\" triads. Break the pattern with pairs or single nouns.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over triadic \"X, Y, and Z\" lists. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Break the pattern with pairs or single nouns.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:52",
+        "quote": "Repeated \"X, Y, and Z\" triads. Break the pattern with pairs or single nouns.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"cadence\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "numbered-section-markers",
+        "signature": "formatting.numbered_section_markers",
+        "signatureMapped": true,
+        "title": "Numbered section markers",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Sequential 01/02/03 markers used as scaffolding. Number only when order carries meaning.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: sequential 01/02/03 marker detection. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Number only when order carries meaning.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:57",
+        "quote": "Sequential 01/02/03 markers used as scaffolding. Number only when order carries meaning.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "exclamation-spam",
+        "signature": "formatting.exclamation_spam",
+        "signatureMapped": true,
+        "title": "Exclamation spam",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "High exclamation rate. Let the words carry the emphasis.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: exclamation count per 200 words. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Let the words carry the emphasis.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:62",
+        "quote": "High exclamation rate. Let the words carry the emphasis.",
+        "notes": [
+          "Upstream severity \"info\", weight 2 (2 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty.",
+          "Signature formatting.emoji_decoration is a known collision: the canonical vocabulary has no punctuation-rate signature, and inventing one is out of scope."
+        ]
+      },
+      {
+        "upstreamRuleId": "emoji-decoration",
+        "signature": "formatting.emoji_decoration",
+        "signatureMapped": true,
+        "title": "Emoji decoration",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Decorative emoji bullets and section badges read as AI formatting.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: emoji code-point ranges in raw text. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Decorative emoji bullets and section badges read as AI formatting.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:67",
+        "quote": "Decorative emoji bullets and section badges read as AI formatting.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "wordy-connectives",
+        "signature": "lexical.wordy_connectives",
+        "signatureMapped": true,
+        "title": "Wordy connectives",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Padding phrases (\"due to the fact that\", \"in order to\", \"in terms of\"). Collapse to one word.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): WORDY_CONNECTIVES. 14 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Collapse to one word.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "due to the fact that",
+            "kind": "literal",
+            "match": "due to the fact that"
+          },
+          {
+            "text": "the fact that",
+            "kind": "literal",
+            "match": "the fact that"
+          },
+          {
+            "text": "in order to",
+            "kind": "literal",
+            "match": "in order to"
+          },
+          {
+            "text": "for the purpose of",
+            "kind": "literal",
+            "match": "for the purpose of"
+          },
+          {
+            "text": "in the event that",
+            "kind": "literal",
+            "match": "in the event that"
+          },
+          {
+            "text": "has the ability to",
+            "kind": "literal",
+            "match": "has the ability to"
+          },
+          {
+            "text": "in light of the fact that",
+            "kind": "literal",
+            "match": "in light of the fact that"
+          },
+          {
+            "text": "at this point in time",
+            "kind": "literal",
+            "match": "at this point in time"
+          },
+          {
+            "text": "in terms of",
+            "kind": "literal",
+            "match": "in terms of"
+          },
+          {
+            "text": "with regard to",
+            "kind": "literal",
+            "match": "with regard to"
+          },
+          {
+            "text": "in the process of",
+            "kind": "literal",
+            "match": "in the process of"
+          },
+          {
+            "text": "a wide range of",
+            "kind": "literal",
+            "match": "a wide range of"
+          },
+          {
+            "text": "a variety of",
+            "kind": "literal",
+            "match": "a variety of"
+          },
+          {
+            "text": "it is important to",
+            "kind": "literal",
+            "match": "it is important to"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:72",
+        "quote": "Padding phrases (\"due to the fact that\", \"in order to\", \"in terms of\"). Collapse to one word.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "weasel-attribution",
+        "signature": "lexical.vague_attribution",
+        "signatureMapped": true,
+        "title": "Vague attribution",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Unsourced authority (\"studies show\", \"experts say\", \"it is believed that\"). Name the source or cut it.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): WEASEL_ATTRIBUTION. 18 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Name the source or cut it.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "experts say",
+            "kind": "literal",
+            "match": "experts say"
+          },
+          {
+            "text": "experts believe",
+            "kind": "literal",
+            "match": "experts believe"
+          },
+          {
+            "text": "experts argue",
+            "kind": "literal",
+            "match": "experts argue"
+          },
+          {
+            "text": "experts suggest",
+            "kind": "literal",
+            "match": "experts suggest"
+          },
+          {
+            "text": "studies show",
+            "kind": "literal",
+            "match": "studies show"
+          },
+          {
+            "text": "research suggests",
+            "kind": "literal",
+            "match": "research suggests"
+          },
+          {
+            "text": "research shows",
+            "kind": "literal",
+            "match": "research shows"
+          },
+          {
+            "text": "observers noted",
+            "kind": "literal",
+            "match": "observers noted"
+          },
+          {
+            "text": "observers have noted",
+            "kind": "literal",
+            "match": "observers have noted"
+          },
+          {
+            "text": "industry reports",
+            "kind": "literal",
+            "match": "industry reports"
+          },
+          {
+            "text": "some critics argue",
+            "kind": "literal",
+            "match": "some critics argue"
+          },
+          {
+            "text": "widely regarded",
+            "kind": "literal",
+            "match": "widely regarded"
+          },
+          {
+            "text": "widely considered",
+            "kind": "literal",
+            "match": "widely considered"
+          },
+          {
+            "text": "widely seen as",
+            "kind": "literal",
+            "match": "widely seen as"
+          },
+          {
+            "text": "it is believed that",
+            "kind": "literal",
+            "match": "it is believed that"
+          },
+          {
+            "text": "it is said that",
+            "kind": "literal",
+            "match": "it is said that"
+          },
+          {
+            "text": "many believe",
+            "kind": "literal",
+            "match": "many believe"
+          },
+          {
+            "text": "some say",
+            "kind": "literal",
+            "match": "some say"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:77",
+        "quote": "Unsourced authority (\"studies show\", \"experts say\", \"it is believed that\"). Name the source or cut it.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "copula-avoidance",
+        "signature": "lexical.copula_avoidance",
+        "signatureMapped": true,
+        "title": "Inflated copula",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Inflated verbs where \"is/has\" would do (\"serves as\", \"stands as\", \"represents a\"). Use the plain copula.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): COPULA_AVOID. 12 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Use the plain copula.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "serves as",
+            "kind": "literal",
+            "match": "serves as"
+          },
+          {
+            "text": "served as",
+            "kind": "literal",
+            "match": "served as"
+          },
+          {
+            "text": "stands as",
+            "kind": "literal",
+            "match": "stands as"
+          },
+          {
+            "text": "functions as",
+            "kind": "literal",
+            "match": "functions as"
+          },
+          {
+            "text": "acts as a testament",
+            "kind": "literal",
+            "match": "acts as a testament"
+          },
+          {
+            "text": "represents a",
+            "kind": "literal",
+            "match": "represents a"
+          },
+          {
+            "text": "embodies the",
+            "kind": "literal",
+            "match": "embodies the"
+          },
+          {
+            "text": "exemplifies the",
+            "kind": "literal",
+            "match": "exemplifies the"
+          },
+          {
+            "text": "features a",
+            "kind": "literal",
+            "match": "features a"
+          },
+          {
+            "text": "features an",
+            "kind": "literal",
+            "match": "features an"
+          },
+          {
+            "text": "boasted",
+            "kind": "literal",
+            "match": "boasted"
+          },
+          {
+            "text": "boasting",
+            "kind": "literal",
+            "match": "boasting"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:82",
+        "quote": "Inflated verbs where \"is/has\" would do (\"serves as\", \"stands as\", \"represents a\"). Use the plain copula.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 2 (2 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "chatbot-closer",
+        "signature": "assistant.chatbot_residue",
+        "signatureMapped": true,
+        "title": "Assistant closer",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Sycophantic assistant register (\"I hope this helps\", \"feel free to\", \"you're absolutely right\"). Strip it.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): CHATBOT_CLOSERS. 20 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Strip it.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "i hope this helps",
+            "kind": "literal",
+            "match": "i hope this helps"
+          },
+          {
+            "text": "i hope this finds you well",
+            "kind": "literal",
+            "match": "i hope this finds you well"
+          },
+          {
+            "text": "i hope this email finds you well",
+            "kind": "literal",
+            "match": "i hope this email finds you well"
+          },
+          {
+            "text": "please don't hesitate to reach out",
+            "kind": "literal",
+            "match": "please don't hesitate to reach out"
+          },
+          {
+            "text": "don't hesitate to",
+            "kind": "literal",
+            "match": "don't hesitate to"
+          },
+          {
+            "text": "feel free to",
+            "kind": "literal",
+            "match": "feel free to"
+          },
+          {
+            "text": "happy to help",
+            "kind": "literal",
+            "match": "happy to help"
+          },
+          {
+            "text": "is there anything else",
+            "kind": "literal",
+            "match": "is there anything else"
+          },
+          {
+            "text": "let me know if you'd like",
+            "kind": "literal",
+            "match": "let me know if you'd like"
+          },
+          {
+            "text": "would you like me to",
+            "kind": "literal",
+            "match": "would you like me to"
+          },
+          {
+            "text": "you're absolutely right",
+            "kind": "literal",
+            "match": "you're absolutely right"
+          },
+          {
+            "text": "that's an excellent point",
+            "kind": "literal",
+            "match": "that's an excellent point"
+          },
+          {
+            "text": "excellent point",
+            "kind": "literal",
+            "match": "excellent point"
+          },
+          {
+            "text": "what a thoughtful question",
+            "kind": "literal",
+            "match": "what a thoughtful question"
+          },
+          {
+            "text": "i'd be happy to",
+            "kind": "literal",
+            "match": "i'd be happy to"
+          },
+          {
+            "text": "here is an overview",
+            "kind": "literal",
+            "match": "here is an overview"
+          },
+          {
+            "text": "here is a summary",
+            "kind": "literal",
+            "match": "here is a summary"
+          },
+          {
+            "text": "here is a breakdown",
+            "kind": "literal",
+            "match": "here is a breakdown"
+          },
+          {
+            "text": "happy to jump on a call",
+            "kind": "literal",
+            "match": "happy to jump on a call"
+          },
+          {
+            "text": "looking forward to connecting",
+            "kind": "literal",
+            "match": "looking forward to connecting"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:87",
+        "quote": "Sycophantic assistant register (\"I hope this helps\", \"feel free to\", \"you're absolutely right\"). Strip it.",
+        "notes": [
+          "Upstream severity \"warning\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "rlhf-artifacts",
+        "signature": "assistant.rlhf_artifacts",
+        "signatureMapped": true,
+        "title": "RLHF instruction-tuning voice",
+        "category": "assistant",
+        "languages": [
+          "en"
+        ],
+        "description": "Balanced tradeoffs, structured enumeration, pedagogical scaffolding, and hedged disagreement that RLHF training produces. The primary signal detectors fire on.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): RLHF_ARTIFACTS. 14 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "The primary signal detectors fire on.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "on one hand",
+            "kind": "literal",
+            "match": "on one hand"
+          },
+          {
+            "text": "on the other hand",
+            "kind": "literal",
+            "match": "on the other hand"
+          },
+          {
+            "text": "that's a great question",
+            "kind": "literal",
+            "match": "that's a great question"
+          },
+          {
+            "text": "while i understand",
+            "kind": "literal",
+            "match": "while i understand"
+          },
+          {
+            "text": "i would suggest",
+            "kind": "literal",
+            "match": "i would suggest"
+          },
+          {
+            "text": "it's important to consider",
+            "kind": "literal",
+            "match": "it's important to consider"
+          },
+          {
+            "text": "there are several",
+            "kind": "literal",
+            "match": "there are several"
+          },
+          {
+            "text": "there are a few",
+            "kind": "literal",
+            "match": "there are a few"
+          },
+          {
+            "text": "let me clarify",
+            "kind": "literal",
+            "match": "let me clarify"
+          },
+          {
+            "text": "to clarify",
+            "kind": "literal",
+            "match": "to clarify"
+          },
+          {
+            "text": "as of my training",
+            "kind": "literal",
+            "match": "as of my training"
+          },
+          {
+            "text": "based on what i know",
+            "kind": "literal",
+            "match": "based on what i know"
+          },
+          {
+            "text": "i should mention",
+            "kind": "literal",
+            "match": "i should mention"
+          },
+          {
+            "text": "i should point out",
+            "kind": "literal",
+            "match": "i should point out"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:92",
+        "quote": "Balanced tradeoffs, structured enumeration, pedagogical scaffolding, and hedged disagreement that RLHF training produces. The primary signal detectors fire on.",
+        "notes": [
+          "Upstream severity \"warning\", weight 5 (5 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "reasoning-chain-leak",
+        "signature": "assistant.reasoning_chain_leak",
+        "signatureMapped": true,
+        "title": "Reasoning chain leak",
+        "category": "assistant",
+        "languages": [
+          "en"
+        ],
+        "description": "Chain-of-thought artifacts leaked into prose (\"Let me think...\", \"Step 1:\"). Strip the scaffolding; present the conclusion.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): REASONING_CHAIN. 14 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Strip the scaffolding; present the conclusion.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "let me think",
+            "kind": "literal",
+            "match": "let me think"
+          },
+          {
+            "text": "let's reason through",
+            "kind": "literal",
+            "match": "let's reason through"
+          },
+          {
+            "text": "let's work through",
+            "kind": "literal",
+            "match": "let's work through"
+          },
+          {
+            "text": "step 1:",
+            "kind": "literal",
+            "match": "step 1:"
+          },
+          {
+            "text": "step 2:",
+            "kind": "literal",
+            "match": "step 2:"
+          },
+          {
+            "text": "step 3:",
+            "kind": "literal",
+            "match": "step 3:"
+          },
+          {
+            "text": "step 4:",
+            "kind": "literal",
+            "match": "step 4:"
+          },
+          {
+            "text": "first, let's",
+            "kind": "literal",
+            "match": "first, let's"
+          },
+          {
+            "text": "next, let's",
+            "kind": "literal",
+            "match": "next, let's"
+          },
+          {
+            "text": "finally, let's",
+            "kind": "literal",
+            "match": "finally, let's"
+          },
+          {
+            "text": "breaking this down",
+            "kind": "literal",
+            "match": "breaking this down"
+          },
+          {
+            "text": "if we break this down",
+            "kind": "literal",
+            "match": "if we break this down"
+          },
+          {
+            "text": "let's consider",
+            "kind": "literal",
+            "match": "let's consider"
+          },
+          {
+            "text": "let's examine",
+            "kind": "literal",
+            "match": "let's examine"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:97",
+        "quote": "Chain-of-thought artifacts leaked into prose (\"Let me think...\", \"Step 1:\"). Strip the scaffolding; present the conclusion.",
+        "notes": [
+          "Upstream severity \"warning\", weight 5 (5 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "acknowledgment-loop",
+        "signature": "assistant.acknowledgment_loop",
+        "signatureMapped": true,
+        "title": "Acknowledgment loop",
+        "category": "assistant",
+        "languages": [
+          "en"
+        ],
+        "description": "Parroting the question back (\"You're asking about...\"). Answer directly without restating what was asked.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): ACKNOWLEDGMENT_LOOP. 8 literal phrase(s), de-duplicated across arrays.",
+        "rewriteGuidance": "Answer directly without restating what was asked.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "you're asking about",
+            "kind": "literal",
+            "match": "you're asking about"
+          },
+          {
+            "text": "you're wondering",
+            "kind": "literal",
+            "match": "you're wondering"
+          },
+          {
+            "text": "you want to know",
+            "kind": "literal",
+            "match": "you want to know"
+          },
+          {
+            "text": "you mentioned that",
+            "kind": "literal",
+            "match": "you mentioned that"
+          },
+          {
+            "text": "great observation",
+            "kind": "literal",
+            "match": "great observation"
+          },
+          {
+            "text": "that's an interesting question",
+            "kind": "literal",
+            "match": "that's an interesting question"
+          },
+          {
+            "text": "that's a thoughtful question",
+            "kind": "literal",
+            "match": "that's a thoughtful question"
+          },
+          {
+            "text": "i understand you're looking for",
+            "kind": "literal",
+            "match": "i understand you're looking for"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:102",
+        "quote": "Parroting the question back (\"You're asking about...\"). Answer directly without restating what was asked.",
+        "notes": [
+          "Upstream severity \"warning\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "conclusion-fluff",
+        "signature": "assistant.conclusion_fluff",
+        "signatureMapped": true,
+        "title": "Weightless conclusion",
+        "category": "assistant",
+        "languages": [
+          "en"
+        ],
+        "description": "Generic closers (\"the future looks bright\", \"the possibilities are endless\"). End on something specific.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): CONCLUSION_FLUFF. 15 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "End on something specific.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "the future looks bright",
+            "kind": "literal",
+            "match": "the future looks bright"
+          },
+          {
+            "text": "exciting times lie ahead",
+            "kind": "literal",
+            "match": "exciting times lie ahead"
+          },
+          {
+            "text": "journey toward excellence",
+            "kind": "literal",
+            "match": "journey toward excellence"
+          },
+          {
+            "text": "step in the right direction",
+            "kind": "literal",
+            "match": "step in the right direction"
+          },
+          {
+            "text": "only time will tell",
+            "kind": "literal",
+            "match": "only time will tell"
+          },
+          {
+            "text": "the possibilities are endless",
+            "kind": "literal",
+            "match": "the possibilities are endless"
+          },
+          {
+            "text": "poised for growth",
+            "kind": "literal",
+            "match": "poised for growth"
+          },
+          {
+            "text": "watch this space",
+            "kind": "literal",
+            "match": "watch this space"
+          },
+          {
+            "text": "shaping the future of",
+            "kind": "literal",
+            "match": "shaping the future of"
+          },
+          {
+            "text": "setting the stage for",
+            "kind": "literal",
+            "match": "setting the stage for"
+          },
+          {
+            "text": "serves as a reminder",
+            "kind": "literal",
+            "match": "serves as a reminder"
+          },
+          {
+            "text": "leaves an indelible mark",
+            "kind": "literal",
+            "match": "leaves an indelible mark"
+          },
+          {
+            "text": "a key turning point",
+            "kind": "literal",
+            "match": "a key turning point"
+          },
+          {
+            "text": "the bottom line is",
+            "kind": "literal",
+            "match": "the bottom line is"
+          },
+          {
+            "text": "here's the thing",
+            "kind": "literal",
+            "match": "here's the thing"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:107",
+        "quote": "Generic closers (\"the future looks bright\", \"the possibilities are endless\"). End on something specific.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "business-jargon",
+        "signature": "lexical.business_jargon",
+        "signatureMapped": true,
+        "title": "Business jargon",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "LinkedIn jargon (\"thought leadership\", \"move the needle\", \"low-hanging fruit\"). Say the plain thing.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): BUSINESS_JARGON. 20 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Say the plain thing.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "thought leader",
+            "kind": "literal",
+            "match": "thought leader"
+          },
+          {
+            "text": "thought leadership",
+            "kind": "literal",
+            "match": "thought leadership"
+          },
+          {
+            "text": "pain points",
+            "kind": "literal",
+            "match": "pain points"
+          },
+          {
+            "text": "value add",
+            "kind": "literal",
+            "match": "value add"
+          },
+          {
+            "text": "value proposition",
+            "kind": "literal",
+            "match": "value proposition"
+          },
+          {
+            "text": "moving forward",
+            "kind": "literal",
+            "match": "moving forward"
+          },
+          {
+            "text": "touch base",
+            "kind": "literal",
+            "match": "touch base"
+          },
+          {
+            "text": "circle back",
+            "kind": "literal",
+            "match": "circle back"
+          },
+          {
+            "text": "double down",
+            "kind": "literal",
+            "match": "double down"
+          },
+          {
+            "text": "double-click",
+            "kind": "literal",
+            "match": "double-click"
+          },
+          {
+            "text": "lean into",
+            "kind": "literal",
+            "match": "lean into"
+          },
+          {
+            "text": "on the same page",
+            "kind": "literal",
+            "match": "on the same page"
+          },
+          {
+            "text": "low-hanging fruit",
+            "kind": "literal",
+            "match": "low-hanging fruit"
+          },
+          {
+            "text": "north star",
+            "kind": "literal",
+            "match": "north star"
+          },
+          {
+            "text": "learnings",
+            "kind": "literal",
+            "match": "learnings"
+          },
+          {
+            "text": "paradigm shift",
+            "kind": "literal",
+            "match": "paradigm shift"
+          },
+          {
+            "text": "commitment to excellence",
+            "kind": "literal",
+            "match": "commitment to excellence"
+          },
+          {
+            "text": "synergy",
+            "kind": "literal",
+            "match": "synergy"
+          },
+          {
+            "text": "leverage synergies",
+            "kind": "literal",
+            "match": "leverage synergies"
+          },
+          {
+            "text": "take a step back",
+            "kind": "literal",
+            "match": "take a step back"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:112",
+        "quote": "LinkedIn jargon (\"thought leadership\", \"move the needle\", \"low-hanging fruit\"). Say the plain thing.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\"."
+        ]
+      },
+      {
+        "upstreamRuleId": "plays-a-role",
+        "signature": "lexical.copula_avoidance",
+        "signatureMapped": true,
+        "title": "\"Plays a … role\"",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The \"plays a crucial/vital/key role\" template. State what it actually does.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over the \"plays a … role\" template. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "State what it actually does.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:117",
+        "quote": "The \"plays a crucial/vital/key role\" template. State what it actually does.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "ing-trailers",
+        "signature": "lexical.ing_trailers",
+        "signatureMapped": true,
+        "title": "Participial trailers",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Trailing \", highlighting/underscoring/ensuring …\" clauses that fake analytical depth. Cut or make a real claim.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over trailing \", -ing\" clauses. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Cut or make a real claim.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:122",
+        "quote": "Trailing \", highlighting/underscoring/ensuring …\" clauses that fake analytical depth. Cut or make a real claim.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"cadence\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "llm-artifact-leak",
+        "signature": "assistant.llm_artifact_leak",
+        "signatureMapped": true,
+        "title": "LLM artifact leak",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Raw model artifacts shipped in text (oaicite, grok_card, DeepSeek brackets, Perplexity tags, :::writing markers, unfilled [placeholders]). Remove before publishing.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over model/tool artefact tokens. No lexicon array upstream.",
+        "rewriteGuidance": "Remove before publishing.",
+        "severity": 5,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:127",
+        "quote": "Raw model artifacts shipped in text (oaicite, grok_card, DeepSeek brackets, Perplexity tags, :::writing markers, unfilled [placeholders]). Remove before publishing.",
+        "notes": [
+          "Upstream severity \"warning\", weight 12 (12 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "smart-punctuation-leak",
+        "signature": "formatting.smart_punctuation_leak",
+        "signatureMapped": true,
+        "title": "Smart-punctuation / zero-width leak",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Curly quotes/ellipsis mixed with straight, or zero-width characters — a paste-from-model or humanizer-tool fingerprint.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: curly/straight punctuation mixing and zero-width characters. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Curly quotes/ellipsis mixed with straight, or zero-width characters — a paste-from-model or humanizer-tool fingerprint.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:132",
+        "quote": "Curly quotes/ellipsis mixed with straight, or zero-width characters — a paste-from-model or humanizer-tool fingerprint.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 2 (2 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "bold-label-list",
+        "signature": "formatting.bold_label_list",
+        "signatureMapped": true,
+        "title": "Bold-label colon list",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Repeated \"**Label:** description\" bullets are an AI formatting reflex. Use prose or plain lists.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). Detection: regex over \"**Label:**\" bullets. No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Use prose or plain lists.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:137",
+        "quote": "Repeated \"**Label:** description\" bullets are an AI formatting reflex. Use prose or plain lists.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"formatting\", engine \"lexical\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "excessive-structure",
+        "signature": "formatting.excessive_structure",
+        "signatureMapped": true,
+        "title": "Excessive structure",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Over-formatted responses with too many headers, bullets, and numbered lists relative to word count. AI reflex; reduce scaffolding.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "AI reflex; reduce scaffolding.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:143",
+        "quote": "Over-formatted responses with too many headers, bullets, and numbered lists relative to word count. AI reflex; reduce scaffolding.",
+        "notes": [
+          "Upstream severity \"info\", weight 3 (3 effective).",
+          "Upstream category \"formatting\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "uniform-rhythm",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "Uniform sentence rhythm",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Low sentence-length variance (low burstiness). Add a very short sentence and a long one.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream.",
+        "rewriteGuidance": "Add a very short sentence and a long one.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:207",
+        "quote": "Low sentence-length variance (low burstiness). Add a very short sentence and a long one.",
+        "notes": [
+          "Upstream severity \"info\", weight 5 (5 effective).",
+          "Upstream category \"stylometry\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "low-lexical-diversity",
+        "signature": "lexical.low_lexical_diversity",
+        "signatureMapped": true,
+        "title": "Low lexical diversity",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Repetitive vocabulary (low type-token ratio). Vary word choice; cut filler repetition.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream.",
+        "rewriteGuidance": "Vary word choice; cut filler repetition.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "scripts/registry/rules.mjs:212",
+        "quote": "Repetitive vocabulary (low type-token ratio). Vary word choice; cut filler repetition.",
+        "notes": [
+          "Upstream severity \"info\", weight 4 (4 effective).",
+          "Upstream category \"stylometry\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "comma-splice-rhythm",
+        "signature": "rhythm.comma_splice_rhythm",
+        "signatureMapped": true,
+        "title": "High comma density",
+        "category": "rhythm",
+        "languages": [
+          "en"
+        ],
+        "description": "Very high commas-per-sentence suggests over-qualified, list-like AI sentences. Split into shorter statements.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Split into shorter statements.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:217",
+        "quote": "Very high commas-per-sentence suggests over-qualified, list-like AI sentences. Split into shorter statements.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 3 (3 effective).",
+          "Upstream category \"stylometry\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "paragraph-uniformity",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "Uniform paragraph length",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Every paragraph nearly the same length is an AI structural tell. Vary paragraph size.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Vary paragraph size.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:222",
+        "quote": "Every paragraph nearly the same length is an AI structural tell. Vary paragraph size.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 3 (3 effective).",
+          "Upstream category \"stylometry\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "contraction-absence",
+        "signature": "lexical.copula_avoidance",
+        "signatureMapped": true,
+        "title": "No contractions",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Zero contractions across a long, conversational passage reads as machine-formal. Use natural contractions where the register allows.",
+        "detection": "Stylometry engine (scripts/engines/stylometry.mjs). No lexicon array upstream. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Use natural contractions where the register allows.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:227",
+        "quote": "Zero contractions across a long, conversational passage reads as machine-formal. Use natural contractions where the register allows.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 2 (2 effective).",
+          "Upstream category \"stylometry\", engine \"stylometry\".",
+          "No lexicon array upstream; the detector is a regex or a statistic, so watchPhrases is empty."
+        ]
+      },
+      {
+        "upstreamRuleId": "gpt-tics",
+        "signature": "lexical.provider_tic",
+        "signatureMapped": true,
+        "title": "GPT-style tics",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Recurring GPT phrasings (\"rich tapestry\", \"plays a crucial role\", \"Sure! Here's\"). Rephrase plainly.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): GPT_TICS. 17 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Here's\"). Rephrase plainly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "rich tapestry",
+            "kind": "literal",
+            "match": "rich tapestry"
+          },
+          {
+            "text": "navigating the complexities",
+            "kind": "literal",
+            "match": "navigating the complexities"
+          },
+          {
+            "text": "in the ever-evolving",
+            "kind": "literal",
+            "match": "in the ever-evolving"
+          },
+          {
+            "text": "it is worth noting that",
+            "kind": "literal",
+            "match": "it is worth noting that"
+          },
+          {
+            "text": "plays a crucial role",
+            "kind": "literal",
+            "match": "plays a crucial role"
+          },
+          {
+            "text": "plays a vital role",
+            "kind": "literal",
+            "match": "plays a vital role"
+          },
+          {
+            "text": "a testament to",
+            "kind": "literal",
+            "match": "a testament to"
+          },
+          {
+            "text": "underscores the importance",
+            "kind": "literal",
+            "match": "underscores the importance"
+          },
+          {
+            "text": "sure! here",
+            "kind": "literal",
+            "match": "sure! here"
+          },
+          {
+            "text": "here's a",
+            "kind": "literal",
+            "match": "here's a"
+          },
+          {
+            "text": "i hope this helps",
+            "kind": "literal",
+            "match": "i hope this helps"
+          },
+          {
+            "text": "certainly!",
+            "kind": "literal",
+            "match": "certainly!"
+          },
+          {
+            "text": "characterized by",
+            "kind": "literal",
+            "match": "characterized by"
+          },
+          {
+            "text": "it is important to remember",
+            "kind": "literal",
+            "match": "it is important to remember"
+          },
+          {
+            "text": "emphasizing",
+            "kind": "literal",
+            "match": "emphasizing"
+          },
+          {
+            "text": "enhance",
+            "kind": "literal",
+            "match": "enhance"
+          },
+          {
+            "text": "showcasing",
+            "kind": "literal",
+            "match": "showcasing"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:234",
+        "quote": "Recurring GPT phrasings (\"rich tapestry\", \"plays a crucial role\", \"Sure! Here's\"). Rephrase plainly.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "Provider-gated upstream on \"gpt\": off unless that provider is enabled. Imported weak alone for the same reason."
+        ]
+      },
+      {
+        "upstreamRuleId": "claude-tics",
+        "signature": "lexical.provider_tic",
+        "signatureMapped": true,
+        "title": "Claude-style tics",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Recurring Claude phrasings (\"I'll help you\", \"Let me\", \"Here's\", \"Great question\"). Strip assistant register.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): CLAUDE_TICS. 20 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Strip assistant register.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "i'll help you",
+            "kind": "literal",
+            "match": "i'll help you"
+          },
+          {
+            "text": "let me",
+            "kind": "literal",
+            "match": "let me"
+          },
+          {
+            "text": "here's",
+            "kind": "literal",
+            "match": "here's"
+          },
+          {
+            "text": "i'd be happy to",
+            "kind": "literal",
+            "match": "i'd be happy to"
+          },
+          {
+            "text": "great question",
+            "kind": "literal",
+            "match": "great question"
+          },
+          {
+            "text": "i appreciate",
+            "kind": "literal",
+            "match": "i appreciate"
+          },
+          {
+            "text": "to be clear",
+            "kind": "literal",
+            "match": "to be clear"
+          },
+          {
+            "text": "that said",
+            "kind": "literal",
+            "match": "that said"
+          },
+          {
+            "text": "it's worth noting that",
+            "kind": "literal",
+            "match": "it's worth noting that"
+          },
+          {
+            "text": "a few things",
+            "kind": "literal",
+            "match": "a few things"
+          },
+          {
+            "text": "let's break",
+            "kind": "literal",
+            "match": "let's break"
+          },
+          {
+            "text": "i want to make sure",
+            "kind": "literal",
+            "match": "i want to make sure"
+          },
+          {
+            "text": "you're absolutely right",
+            "kind": "literal",
+            "match": "you're absolutely right"
+          },
+          {
+            "text": "that's a great",
+            "kind": "literal",
+            "match": "that's a great"
+          },
+          {
+            "text": "i should note",
+            "kind": "literal",
+            "match": "i should note"
+          },
+          {
+            "text": "load-bearing",
+            "kind": "literal",
+            "match": "load-bearing"
+          },
+          {
+            "text": "worth stating plainly",
+            "kind": "literal",
+            "match": "worth stating plainly"
+          },
+          {
+            "text": "carry the argument",
+            "kind": "literal",
+            "match": "carry the argument"
+          },
+          {
+            "text": "one might argue",
+            "kind": "literal",
+            "match": "one might argue"
+          },
+          {
+            "text": "it could be suggested",
+            "kind": "literal",
+            "match": "it could be suggested"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:239",
+        "quote": "Recurring Claude phrasings (\"I'll help you\", \"Let me\", \"Here's\", \"Great question\"). Strip assistant register.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "Provider-gated upstream on \"claude\": off unless that provider is enabled. Imported weak alone for the same reason."
+        ]
+      },
+      {
+        "upstreamRuleId": "gemini-tics",
+        "signature": "lexical.provider_tic",
+        "signatureMapped": true,
+        "title": "Gemini-style tics",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Recurring Gemini phrasings (\"paving the way\", \"a symphony of\", \"the cascade of\"). Rephrase plainly.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): GEMINI_TICS. 9 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Rephrase plainly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "the way for",
+            "kind": "literal",
+            "match": "the way for"
+          },
+          {
+            "text": "the cascade of",
+            "kind": "literal",
+            "match": "the cascade of"
+          },
+          {
+            "text": "it is not a",
+            "kind": "literal",
+            "match": "it is not a"
+          },
+          {
+            "text": "it is not just a",
+            "kind": "literal",
+            "match": "it is not just a"
+          },
+          {
+            "text": "paving the way",
+            "kind": "literal",
+            "match": "paving the way"
+          },
+          {
+            "text": "a symphony of",
+            "kind": "literal",
+            "match": "a symphony of"
+          },
+          {
+            "text": "in the grand tapestry",
+            "kind": "literal",
+            "match": "in the grand tapestry"
+          },
+          {
+            "text": "plays a significant role",
+            "kind": "literal",
+            "match": "plays a significant role"
+          },
+          {
+            "text": "it is essential to",
+            "kind": "literal",
+            "match": "it is essential to"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:244",
+        "quote": "Recurring Gemini phrasings (\"paving the way\", \"a symphony of\", \"the cascade of\"). Rephrase plainly.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "Provider-gated upstream on \"gemini\": off unless that provider is enabled. Imported weak alone for the same reason."
+        ]
+      },
+      {
+        "upstreamRuleId": "grok-tics",
+        "signature": "lexical.provider_tic",
+        "signatureMapped": true,
+        "title": "Grok-style tics",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Recurring Grok phrasings (causal, empirical, correlate, underscore) and markup artifacts. Rephrase plainly.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): GROK_TICS. 6 literal phrase(s), de-duplicated across arrays. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Rephrase plainly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "causal",
+            "kind": "literal",
+            "match": "causal"
+          },
+          {
+            "text": "empirical",
+            "kind": "literal",
+            "match": "empirical"
+          },
+          {
+            "text": "correlate",
+            "kind": "literal",
+            "match": "correlate"
+          },
+          {
+            "text": "correlates",
+            "kind": "literal",
+            "match": "correlates"
+          },
+          {
+            "text": "grok_card",
+            "kind": "literal",
+            "match": "grok_card"
+          },
+          {
+            "text": "grok_render_citation_card_json",
+            "kind": "literal",
+            "match": "grok_render_citation_card_json"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:249",
+        "quote": "Recurring Grok phrasings (causal, empirical, correlate, underscore) and markup artifacts. Rephrase plainly.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "Provider-gated upstream on \"grok\": off unless that provider is enabled. Imported weak alone for the same reason."
+        ]
+      },
+      {
+        "upstreamRuleId": "deepseek-tics",
+        "signature": "lexical.provider_tic",
+        "signatureMapped": true,
+        "title": "DeepSeek-style tics",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "DeepSeek markup artifacts (lenticular brackets, dagger symbols). Remove before publishing.",
+        "detection": "Lexical engine (scripts/engines/lexical.mjs). 1 lexicon array(s): DEEPSEEK_TICS. 0 literal phrase(s), de-duplicated across arrays. 1 template(s), not matched literally. Weak alone: needs corroboration before acting.",
+        "rewriteGuidance": "Remove before publishing.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "⟨",
+            "kind": "template",
+            "match": "⟨"
+          },
+          {
+            "text": "⟩",
+            "kind": "reference",
+            "match": "⟩"
+          },
+          {
+            "text": "†",
+            "kind": "reference",
+            "match": "†"
+          },
+          {
+            "text": "‡",
+            "kind": "reference",
+            "match": "‡"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "scripts/registry/rules.mjs:254",
+        "quote": "DeepSeek markup artifacts (lenticular brackets, dagger symbols). Remove before publishing.",
+        "notes": [
+          "Upstream severity \"advisory\", weight 4 (4 effective).",
+          "Upstream category \"lexical\", engine \"lexical\".",
+          "Provider-gated upstream on \"deepseek\": off unless that provider is enabled. Imported weak alone for the same reason."
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

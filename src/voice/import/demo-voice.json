@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "author/plainspoken-demo",
+  "owner": "human-voice-suite",
+  "kind": "writing",
+  "languages": ["zh", "en"],
+  "sources": [
+    {
+      "upstream": "human-voice-suite",
+      "ruleId": "plainspoken-demo",
+      "locator": "src/voice/import/demo-voice.json",
+      "quote": "A demonstration voice",
+      "modified": false,
+      "note": "Written for this repository, MIT. It exists so that the profile, import and generation paths have something to run against on a fresh checkout: the imported author voices are generated locally from an upstream clone and are deliberately not distributed here. This profile imitates nobody."
+    }
+  ],
+  "writing": {
+    "sentenceLength": { "mean": 0, "median": 0, "stdDev": 0, "min": 0, "max": 0, "sampleCount": 0 },
+    "paragraphLength": { "mean": 0, "median": 0, "stdDev": 0, "min": 0, "max": 0, "sampleCount": 0 },
+    "burstiness": 0,
+    "punctuationRates": {},
+    "signatureVocabulary": [],
+    "avoidVocabulary": [],
+    "toneMarkers": [],
+    "rhetoricalDevices": []
+  },
+  "directives": [
+    "Voice rule: SENTENCE LENGTH is uneven on purpose. Mix a long sentence that carries the whole thought with a short one that lands it. Never three sentences of about the same length in a row; that is what makes a paragraph read as assembled rather than written.",
+    "Voice rule: RHYTHM comes from what is left out. Where a connector would explain the link between two sentences, let the order do it. If a reader needs the link spelled out, the sentences are in the wrong order.",
+    "Voice rule: SPOKEN DENSITY is moderate and load-bearing. One colloquial turn of phrase in a paragraph is voice; three is performance. Reach for the spoken form when the sentence is a judgement, and the written form when it is a fact.",
+    "Voice rule: ELLIPSIS is allowed, and completeness is not a virtue. A sentence may end before its consequence is stated. Listing every consequence is what a document does; a person stops when the point has landed.",
+    "Voice rule: IMAGERY is concrete and physical. Prefer the object that was actually in the room over the abstraction that summarises it. Abstract nouns are permitted only after a physical one has already done the work.",
+    "Voice rule: NARRATIVE DISTANCE stays close. Write from inside the situation rather than above it. No summary of what the reader has just read, and no sentence that tells them how to feel about it.",
+    "Voice rule: EMOTIONAL DISPLAY is uneven. A strong feeling appears as a change in what gets noticed and how long the sentence is, not as a word naming the feeling. Naming the feeling is the flattening move.",
+    "Voice rule: RHETORICAL HABIT is subtraction. Where two clauses could stand, cut one. Where a list has three items, two is usually enough and one is sometimes better. The pattern to avoid is the balanced triad that arrives to make the paragraph sound finished.",
+    "Voice rule: ENDINGS stop. No closing summary, no uplift, no question thrown back at the reader unless the piece has been a question from the start. The last sentence should be the one the piece was walking toward, and it should not announce itself as one."
+  ],
+  "notes": "Demonstration profile, written for this repository under MIT, describing craft dimensions rather than a person: sentence length, rhythm, spoken density, ellipsis, imagery, narrative distance, emotional display and rhetorical habit. Scope: opt-in, like every voice profile — the suite never applies a voice unless the user selects one. Statistical features are deliberately empty: this file carries no sample passage, so no distribution can be learned from it, and an invented one would make voiceScore mean more than it can."
+}

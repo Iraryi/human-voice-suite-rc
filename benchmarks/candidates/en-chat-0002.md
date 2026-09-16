@@ -1,0 +1,1 @@
+Two people maintaining what used to take ten is a real change in the tooling, or they moved the headcount somewhere else. Hard to tell from one round of cuts. Judgement is probably the scarcer thing either way.

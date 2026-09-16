@@ -1,0 +1,166 @@
+# Every gate this project has, run on every push.
+#
+# The point is not "tests pass" — that is the least interesting line here. Three of
+# these commands exist to catch a *generated artefact drifting from the code that
+# produces it*: PHRASE_OWNERSHIP.md, author-voices.generated.json and
+# BENCHMARK_RESULTS.md are committed files that are rewritten from source, and a
+# stale one is a lie that no test would otherwise notice. Until this workflow
+# existed, the discipline was real but voluntary.
+#
+# `upstream:check:offline` is here rather than the online check on purpose: CI has
+# no business cloning eight repositories to prove a commit pin, and the offline
+# variant still reports local state and refuses to imply success it did not verify.
+
+name: gates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly, Monday 04:17 UTC. See the `history-probe` job.
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor from package.json engines, and the version the project is
+        # developed on. A dependency-free package has no excuse for drifting off
+        # its stated floor.
+        node: ['22.x', '24.x']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # Build before test, and the order is load-bearing rather than stylistic.
+      # `tests/runtime-data-layout.test.ts` exercises the *packaged* layout: it copies `dist/`
+      # into a temporary root with no `src/` beside it and asserts that the runtime still
+      # resolves its data. Running it before `npm run build` leaves it with nothing to test,
+      # which is how this workflow spent its whole life red for a reason no local run could
+      # reproduce — a development checkout has a `dist/` from the last build lying around.
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      # The artefacts that are generated from source and committed. Each of these
+      # fails when the file on disk no longer matches what the code produces, which
+      # is the failure mode a normal test suite cannot see.
+      #
+      # `advice:annotate --check` is the fourth: the corpus records the advice permission
+      # each sample was measured with, read from the frozen solution-permission layer, and
+      # a corpus that has drifted from the layer that annotated it would change what the
+      # advice rule does without changing a line of code.
+      - name: Kept artefacts are current
+        run: |
+          npm run phrases:check
+          npm run voice:check
+          npm run bench:report -- --check
+          npm run advice:annotate -- --check
+
+      # The release audit: ten checks over the tracked tree for the things a test suite
+      # cannot see — local-only material, a machine's home directory in a committed path, a
+      # credential, a licence overclaim, a claim a later phase withdrew, a blended score.
+      # It is a text scan and says so; the boundary test and the provenance probes cover
+      # the parts of the same question it cannot.
+      - name: Release audit
+        run: npm run release:audit
+
+      # Not run here, and the reason is deliberate rather than an omission:
+      # `licenses:verify` and `upstream:check` compare against the eight upstream
+      # clones, which live in `.upstream-cache/` and are gitignored. CI has no
+      # business cloning eight repositories to re-derive a commit pin, and both
+      # commands would report "could not check" as failure — a red build that says
+      # nothing about the code. They belong to the local workflow:
+      #
+      #   npm run upstream:check && npm run licenses:verify
+      #
+      # `advice:permission` is local-only for a second reason: it measures against the
+      # LCCC-derived paired baseline, which is gitignored and never leaves the machine
+      # that fetched it. Its first section is a reproduction check that pins the
+      # measurement path to the published paired numbers, so it is a local gate, and CI
+      # cannot run it at all.
+      #
+      # Everything the clone-dependent tests assert is guarded by `skipIf`, so the
+      # suite below is honest on a fresh checkout: it skips and says so rather than
+      # passing quietly.
+
+      # The packaged layout, exercised without the checkout around it: an installed
+      # copy has no src/, and a resolver that looks for dist/src/ finds nothing and
+      # then reports a clean scan of everything. That bug shipped once.
+      - name: Packaged layout resolves its data
+        run: npx vitest run tests/runtime-data-layout.test.ts
+
+      - name: The plugin loads and registers its tools
+        run: npx vitest run tests/dsh-plugin.test.ts
+
+      # The repository boundary, as its own step rather than a line inside `npm test`. It
+      # is the check that decides whether this repository may be published at all, and a
+      # failure of it should be unmistakable rather than one red line among many.
+      #
+      # Two halves: the working tree (are the gitignored corpora untracked, does every
+      # sample carry a licence) and recent history (did a corpus ever get committed, in a
+      # commit a later one removed). The second half is the one a working-tree check cannot
+      # see, and it is the reason the probes are not only a test.
+      - name: The repository boundary holds
+        run: |
+          npx vitest run tests/repository-boundary.test.ts
+          npm run provenance:probe
+
+  # The full history scan, weekly rather than per push: it reads every file ever added in
+  # every revision, which is minutes rather than seconds. A corpus that entered the history
+  # and was later deleted shows up here and nowhere else.
+  history-probe:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Every revision, for corpus text
+        run: npm run provenance:probe -- --full
+
+  # Before a tag is published, the same check with the whole history behind it. Release
+  # tags are how a version leaves this repository, so the boundary is re-verified at the
+  # moment it matters rather than on the commit that happened to run last.
+  release-boundary:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+
+      - run: npm ci
+
+      - name: The boundary holds for what is being released
+        run: |
+          npx vitest run tests/repository-boundary.test.ts
+          npm run provenance:probe -- --full

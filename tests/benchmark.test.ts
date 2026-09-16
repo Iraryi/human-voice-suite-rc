@@ -1,0 +1,491 @@
+/**
+ * The benchmark harness.
+ *
+ * The harness is test infrastructure, and test infrastructure that is never
+ * tested is how a benchmark ends up measuring its own bugs. These tests cover
+ * the two things that would silently invalidate a run — the corpus loader
+ * accepting a sample it should reject, and the scoring reporting a number it did
+ * not measure — and then check the flagship claim against the real corpus.
+ */
+
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+import { afterAll, describe, expect, it } from 'vitest';
+
+import { FrontMatterError, parseFrontMatter, splitBody } from '../benchmarks/lib/frontmatter.js';
+import { CorpusError, loadCorpus, corpusHash, parseSample } from '../benchmarks/lib/corpus.js';
+import { CONFIGS, configById } from '../benchmarks/lib/configs.js';
+import { separation, summarise, tallyRules, testHypothesis, cellFor } from '../benchmarks/lib/stats.js';
+import { listRuns, loadRun, saveRun } from '../benchmarks/lib/store.js';
+import type { SampleResult } from '../benchmarks/lib/score.js';
+import { learnProfileExcluding } from '../benchmarks/lib/profile.js';
+import { createToolkit } from '../src/dsh/tools/runtime.js';
+import { runSample } from '../benchmarks/lib/score.js';
+
+const ROOT = join(__dirname, '..');
+const BENCH = join(ROOT, 'benchmarks');
+const temporary: string[] = [];
+
+function scratch(): string {
+  const dir = mkdtempSync(join(tmpdir(), 'hvs-bench-'));
+  temporary.push(dir);
+  return dir;
+}
+
+afterAll(() => {
+  for (const dir of temporary) rmSync(dir, { recursive: true, force: true });
+});
+
+const GOOD = `---
+id: zh-prose-0001
+category: chinese-prose
+language: zh
+mode: prose
+provenance: model-generated
+model: test
+source: original
+licence: original to this project, MIT
+notes: >
+  A folded note that
+  wraps across lines.
+---
+
+这是一段用来测试的正文。
+`;
+
+describe('front matter', () => {
+  it('parses plain scalars and a folded block', () => {
+    const { fields } = parseFrontMatter(GOOD);
+    expect(fields['id']).toBe('zh-prose-0001');
+    expect(fields['notes']).toBe('A folded note that wraps across lines.');
+  });
+
+  it('keeps a literal block verbatim', () => {
+    const { fields } = parseFrontMatter(
+      ['---', 'id: zh-chat-0001', 'user_turn: |', '  line one', '  line two', '---', ''].join('\n'),
+    );
+    expect(fields['user_turn']).toBe('line one\nline two');
+  });
+
+  it('captures a nested block as text rather than guessing at its shape', () => {
+    // The seed sample records what it is meant to expose under `expected:`.
+    // Nothing computes with it, but it must not stop the sample loading.
+    const { fields } = parseFrontMatter(
+      [
+        '---',
+        'id: zh-chat-0001',
+        'expected:',
+        '  antiAIScore: high',
+        '  expected_smells:',
+        '    - chat.over_agreement',
+        '---',
+      ].join('\n'),
+    );
+    expect(fields['expected']).toContain('expected_smells');
+  });
+
+  it('rejects unsupported YAML instead of misreading it', () => {
+    expect(() => parseFrontMatter('---\nlicence: [MIT, Apache]\n---\n')).toThrow(FrontMatterError);
+    expect(() => parseFrontMatter('---\nid: a\nid: b\n---\n')).toThrow(/duplicate key/);
+    expect(() => parseFrontMatter('id: no delimiter\n')).toThrow(/must start with/);
+    expect(() => parseFrontMatter('---\nid: a\n')).toThrow(/never closed/);
+  });
+
+  it('separates the body from the front matter', () => {
+    const { body } = splitBody(GOOD);
+    expect(body).toBe('这是一段用来测试的正文。');
+  });
+});
+
+describe('the corpus loader', () => {
+  function fixture(sample: string, category = 'chinese-prose'): string {
+    const root = scratch();
+    mkdirSync(join(root, 'corpora', category), { recursive: true });
+    writeFileSync(join(root, 'corpora', category, 'sample.md'), sample, 'utf8');
+    return root;
+  }
+
+  it('loads a well-formed sample', () => {
+    const corpus = loadCorpus(fixture(GOOD));
+    expect(corpus.samples).toHaveLength(1);
+    expect(corpus.byProvenance['model-generated']).toBe(1);
+  });
+
+  it('refuses a sample with no licence', () => {
+    const withoutLicence = GOOD.replace(/^licence:.*$/m, '');
+    expect(() => loadCorpus(fixture(withoutLicence))).toThrow(/licence/);
+  });
+
+  it('refuses a sample with no provenance', () => {
+    const withoutProvenance = GOOD.replace(/^provenance:.*$/m, '');
+    expect(() => loadCorpus(fixture(withoutProvenance))).toThrow(CorpusError);
+  });
+
+  it('refuses a generated sample that will not name its generator', () => {
+    const unnamed = GOOD.replace(/^model:.*$/m, '');
+    expect(() => loadCorpus(fixture(unnamed))).toThrow(/no model is named/);
+  });
+
+  it('refuses human-written provenance pointing at a model', () => {
+    const contradictory = GOOD.replace('provenance: model-generated', 'provenance: human-written')
+      .replace('source: original', 'source: generated by deepseek');
+
+    expect(() => loadCorpus(fixture(contradictory))).toThrow(/names a model/);
+  });
+
+  it('refuses a sample filed under the wrong category', () => {
+    const mismatched = GOOD.replace('category: chinese-prose', 'category: english-prose');
+    expect(() => loadCorpus(fixture(mismatched))).toThrow(/directory decides/);
+  });
+
+  it('refuses two samples sharing an id', () => {
+    const root = fixture(GOOD);
+    writeFileSync(join(root, 'corpora', 'chinese-prose', 'second.md'), GOOD, 'utf8');
+    expect(() => loadCorpus(root)).toThrow(/already used/);
+  });
+
+  it('discloses a chat sample with no user turn rather than rejecting or ignoring it', () => {
+    const chat = GOOD.replace('mode: prose', 'mode: chat').replace('chinese-prose', 'chinese-chat');
+    const corpus = loadCorpus(fixture(chat, 'chinese-chat'));
+    expect(corpus.partialBehavior).toEqual(['zh-prose-0001']);
+  });
+
+  it('records an unpopulated category with its stated reason', () => {
+    const root = fixture(GOOD);
+    mkdirSync(join(root, 'corpora', 'real-human-chat'), { recursive: true });
+    writeFileSync(
+      join(root, 'corpora', 'real-human-chat', 'NOT_POPULATED.md'),
+      '# Not populated\n\nNo licensed source of genuine human chat was available offline.\n',
+      'utf8',
+    );
+    const corpus = loadCorpus(root);
+    expect(corpus.unpopulated.map((entry) => entry.category)).toEqual(['real-human-chat']);
+    expect(corpus.unpopulated[0]?.reason).toMatch(/licensed source/);
+  });
+
+  it('hashes the sample, not the notes', () => {
+    const sample = parseSample(GOOD, 'corpora/chinese-prose/sample.md');
+    const reworded = { ...sample, notes: 'Completely different note.' };
+    const changed = { ...sample, body: `${sample.body} And another sentence.` };
+    expect(corpusHash([reworded])).toBe(corpusHash([sample]));
+    expect(corpusHash([changed])).not.toBe(corpusHash([sample]));
+  });
+
+  it('names the categories that are below the noise floor', () => {
+    const corpus = loadCorpus(fixture(GOOD));
+    expect(corpus.thin).toContain('chinese-prose');
+  });
+});
+
+describe('ablation configurations', () => {
+  it('covers every layer combination the README requires', () => {
+    expect(CONFIGS).toHaveLength(7);
+    expect(new Set(CONFIGS.map((config) => config.id)).size).toBe(7);
+  });
+
+  it('starts from nothing, so the other rows have a reference point', () => {
+    expect(configById('baseline')?.families).toEqual([]);
+  });
+
+  it('runs every family in the full configuration', () => {
+    expect(configById('full')?.families).toEqual([
+      'lexical',
+      'structural',
+      'rhythm',
+      'chinese',
+      'english',
+      'stylometry',
+      'assistant',
+    ]);
+  });
+
+  it('attaches the conversation wherever the behaviour family runs', () => {
+    for (const config of CONFIGS) {
+      if (config.families.includes('assistant')) expect(config.conversation, config.id).toBe(true);
+    }
+  });
+
+  it('states the question each row settles', () => {
+    for (const config of CONFIGS) {
+      expect(config.question.length, config.id).toBeGreaterThan(30);
+    }
+  });
+});
+
+describe('statistics', () => {
+  it('summarises an empty sample as empty rather than as zero', () => {
+    expect(summarise([]).n).toBe(0);
+  });
+
+  it('computes a median for odd and even counts', () => {
+    expect(summarise([1, 2, 3]).median).toBe(2);
+    expect(summarise([1, 2, 3, 4]).median).toBe(2.5);
+  });
+
+  it('scores a perfect separation as 1 and an indistinguishable one as 0.5', () => {
+    expect(separation([0.9, 1], [0.1, 0.2])).toBe(1);
+    expect(separation([0.5], [0.5])).toBe(0.5);
+    expect(separation([0.1], [0.9])).toBe(0);
+  });
+
+  it('refuses to report a separation with nothing to compare', () => {
+    expect(separation([], [0.5])).toBeUndefined();
+  });
+
+  function row(overrides: Partial<SampleResult>): SampleResult {
+    return {
+      sampleId: 'zh-prose-0001',
+      category: 'chinese-prose',
+      language: 'zh',
+      mode: 'prose',
+      provenance: 'human-written',
+      configId: 'full',
+      scores: {
+        antiAIScore: 1,
+        voiceScore: 1,
+        behaviorScore: 1,
+        preservationScore: 1,
+      },
+      unmeasured: [],
+      findings: [],
+      suppressedCount: 0,
+      detectorsRun: [],
+      preservationMeasured: false,
+      ...overrides,
+    };
+  }
+
+  it('counts unmeasured samples instead of averaging a 1 into them', () => {
+    const results = [
+      row({ sampleId: 'a', scores: { ...row({}).scores, voiceScore: 0.4 } }),
+      row({ sampleId: 'b', unmeasured: ['voiceScore'] }),
+    ];
+    const cell = cellFor(results, configById('full')!, 'chinese-prose');
+    expect(cell.voiceScore.n).toBe(1);
+    expect(cell.voiceScore.mean).toBeCloseTo(0.4, 6);
+    expect(cell.voiceScore.unmeasured).toBe(1);
+  });
+
+  it('tallies rules by the samples they fired on, not by firing count', () => {
+    const results = [
+      row({
+        sampleId: 'a',
+        findings: [
+          { ruleId: 'lexical.x', family: 'lexical', severity: 3, confidence: 0.5, message: '' },
+          { ruleId: 'lexical.x', family: 'lexical', severity: 3, confidence: 0.5, message: '' },
+        ],
+      }),
+    ];
+    const tallies = tallyRules(results, 'full');
+    expect(tallies).toHaveLength(1);
+    expect(tallies[0]?.firings).toBe(1);
+  });
+
+  it('tests the hypothesis in the direction the claim is stated', () => {
+    const results = [
+      row({
+        sampleId: 'ai',
+        configId: 'anti-ai',
+        category: 'ai-pretending-casual',
+        provenance: 'model-generated',
+        scores: { ...row({}).scores, antiAIScore: 0.95 },
+      }),
+      row({
+        sampleId: 'human',
+        configId: 'anti-ai',
+        category: 'english-prose',
+        provenance: 'human-written',
+        scores: { ...row({}).scores, antiAIScore: 0.4 },
+      }),
+    ];
+    const test = testHypothesis(results, configById('anti-ai')!, 'antiAIScore');
+    expect(test.holds).toBe(true);
+    expect(test.separation).toBe(1);
+    expect(test.subject.mean).toBeCloseTo(0.95, 6);
+    expect(test.control.mean).toBeCloseTo(0.4, 6);
+  });
+});
+
+describe('the run store', () => {
+  it('refuses a run whose corpus is unknown', () => {
+    const root = scratch();
+    mkdirSync(join(root, 'runs'), { recursive: true });
+    writeFileSync(join(root, 'runs', 'x.json'), JSON.stringify({ meta: {}, results: [] }), 'utf8');
+    expect(() => loadRun(root)).toThrow(/corpus hash/);
+  });
+
+  it('round-trips a run and picks the most recent by default', () => {
+    const root = scratch();
+    const meta = {
+      suiteVersion: '0.0.0',
+      corpusHash: 'sha256:abc',
+      corpusRoot: 'benchmarks/corpora',
+      byCategory: {},
+      byProvenance: {},
+      thin: [],
+      unpopulated: [],
+      partialBehavior: [],
+      configs: [],
+      startedAt: '2026-01-01T00:00:00.000Z',
+      finishedAt: '2026-01-01T00:00:01.000Z',
+      ruleCount: 1,
+      note: 'test',
+    };
+    const file = saveRun(root, meta, []);
+    expect(listRuns(root)).toEqual([file]);
+    expect(loadRun(root).meta.corpusHash).toBe('sha256:abc');
+  });
+});
+
+describe('learned profiles', () => {
+  it('excludes the sample being measured, so nobody is compared with themselves', () => {
+    const corpus = loadCorpus(BENCH);
+    const human = corpus.samples.find((sample) => sample.provenance === 'human-written');
+    if (!human) return;
+    const profile = learnProfileExcluding(corpus, human.language, human.id);
+    expect(profile).toBeDefined();
+    expect(profile?.sources.some((source) => source.ruleId === human.id)).toBe(false);
+  });
+
+  it('learns nothing when there is nothing human to learn from', () => {
+    const corpus = loadCorpus(BENCH);
+    expect(learnProfileExcluding(corpus, 'unknown', 'nothing')).toBeUndefined();
+  });
+});
+
+describe('the real corpus', () => {
+  const corpus = loadCorpus(BENCH);
+
+  it('loads every committed sample', () => {
+    expect(corpus.samples.length).toBeGreaterThan(10);
+    expect(corpus.hash).toMatch(/^sha256:[0-9a-f]{64}$/);
+  });
+
+  it('never claims human-written provenance for generated text', () => {
+    for (const sample of corpus.samples) {
+      if (sample.provenance !== 'human-written') continue;
+      expect(sample.source, sample.id).not.toMatch(/deepseek|gpt|claude/i);
+    }
+  });
+
+  it('keeps the brief\'s canonical example unchanged and present', () => {
+    const seed = corpus.samples.find((sample) => sample.id === 'zh-chat-0001');
+    expect(seed?.body).toContain('哈哈，确实挺离谱的');
+    expect(seed?.source).toMatch(/brief/i);
+  });
+
+  it(
+    'shows the flagship case: prose the lexical layer calls clean, behaviour it does not',
+    async () => {
+      const seed = corpus.samples.find((sample) => sample.id === 'zh-chat-0001');
+      expect(seed).toBeDefined();
+      if (!seed) return;
+
+      const toolkit = await createToolkit({ projectRoot: ROOT });
+      const lexical = await runSample(toolkit, seed, configById('anti-ai')!, {});
+      const behavior = await runSample(toolkit, seed, configById('behavior')!, {});
+
+      // The claim: the prose looks clean and the behaviour does not.
+      expect(lexical.scores.antiAIScore).toBeGreaterThan(0.8);
+      expect(behavior.scores.behaviorScore).toBeLessThan(1);
+      expect(behavior.findings.length).toBeGreaterThan(0)
+      expect(behavior.findings.every((finding) => finding.family === 'assistant')).toBe(true);
+    },
+    60000,
+  );
+
+  it(
+    'reports the behaviour layer as unmeasured when it did not run',
+    async () => {
+      const seed = corpus.samples[0];
+      expect(seed).toBeDefined();
+      if (!seed) return;
+      const toolkit = await createToolkit({ projectRoot: ROOT });
+      const lexical = await runSample(toolkit, seed, configById('anti-ai')!, {});
+      expect(lexical.unmeasured).toContain('behaviorScore');
+      expect(lexical.unmeasured).toContain('voiceScore');
+      expect(lexical.unmeasured).toContain('preservationScore');
+      expect(lexical.scores.behaviorScore).toBe(1);
+    },
+    60000,
+  );
+
+  it(
+    'still catches a repeated prose opening after the Phase 8 list-item fix',
+    async () => {
+      // A fix that silences a rule is not a fix. The rule now ignores list items
+      // and bold labels; this is the shape it exists for.
+      const toolkit = await createToolkit({ projectRoot: ROOT });
+      const prose = await toolkit.scan({
+        text: "It's not the tool. It's not the team. It's not the budget. It's the process nobody wrote down.",
+        language: 'en',
+        mode: 'prose',
+        families: ['rhythm'],
+      });
+      expect(prose.byRule['rhythm.repeated_openings']).toBe(1);
+
+      // And it does not fire on a bullet list, which is the false positive the
+      // benchmark found on four human-written samples.
+      const list = await toolkit.scan({
+        text: '- frontmatter 只依赖通用字段\n- 技能名使用小写连字符\n- 所有资源都通过相对路径组织\n',
+        language: 'zh',
+        mode: 'prose',
+        families: ['rhythm'],
+      });
+      expect(list.byRule['rhythm.repeated_openings']).toBeUndefined();
+    },
+    60000,
+  );
+
+  it(
+    'does not count a run of punctuation as repeated sentence openings',
+    async () => {
+      // Phase 11. `splitSentences` keeps the terminator on the sentence it closes,
+      // so a run of terminators — the way people actually type — became a run of
+      // "sentences" consisting only of ？ or 。. On 30,000 sessions of human dialogue
+      // that accounted for 1,123 firings: the largest false positive this project has
+      // found, and the only rule whose rate was higher on human writing than on
+      // generated text. The text here is synthetic; no corpus sample is used.
+      const toolkit = await createToolkit({ projectRoot: ROOT });
+      const chatty = await toolkit.scan({
+        text: '真的吗？？？？\n不会吧？？？？\n这也行？？？？',
+        language: 'zh',
+        mode: 'chat',
+        families: ['rhythm'],
+      });
+      expect(chatty.byRule['rhythm.repeated_openings']).toBeUndefined();
+
+      // The terminator still belongs to the sentence it closes, so a genuine
+      // repeated opening is still measured.
+      const genuine = await toolkit.scan({
+        text: '但是我不这么看。但是数据也不支持。但是结论还是一样。',
+        language: 'zh',
+        mode: 'prose',
+        families: ['rhythm'],
+      });
+      expect(genuine.byRule['rhythm.repeated_openings']).toBe(1);
+    },
+    60000,
+  );
+
+  it(
+    'does not let a voice-distance finding corroborate a prose tell',
+    async () => {
+      const toolkit = await createToolkit({ projectRoot: ROOT });
+      const voiceRules = new Set(
+        toolkit.registry
+          .list()
+          .filter((rule) => rule.tags?.includes('voice') === true)
+          .map((rule) => rule.id),
+      );
+      expect(voiceRules.size).toBeGreaterThan(0);
+      // The registry is what tells the suppression policy which rules cannot
+      // vouch for a gated tell.
+      const { nonCorroboratingRuleIds } = await import('../src/detector/suppression.js');
+      expect(nonCorroboratingRuleIds(toolkit.registry.list())).toEqual(voiceRules);
+    },
+    60000,
+  );
+});

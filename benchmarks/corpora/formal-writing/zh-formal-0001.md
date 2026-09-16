@@ -1,0 +1,51 @@
+---
+id: zh-formal-0001
+category: formal-writing
+language: zh
+mode: formal
+provenance: human-written
+source: .upstream-cache/humanizer-zh/SKILL.md lines 57-90, commit f75f1ac9735c4f10da1bba0148e0ea7228c5c3b3
+licence: MIT, Copyright (c) 2026 aizixun, preserved at licenses/MIT-humanizer-zh
+notes: >
+  Vendored verbatim from the humanizer-zh skill file. Normative written Chinese,
+  which is the register this category exists to protect. It is also the sharpest
+  meta-discussion trap in the corpus: the text names 赋能, 值得注意的是, 首先, 其次,
+  最后, 从某种意义上说 and 破折号 as things to avoid, inside quotation marks, as
+  examples. A detector that matches the strings rather than the usage will score
+  the rulebook as a violation of itself.
+---
+
+## Core Rules
+
+### 1. 优先改掉翻译腔
+
+- 把英文句法硬套中文的句子拆开重写。
+- 少用「对于……来说」「基于……」「围绕……展开」「使得……得以……」这类翻译味很重的连接。
+- 需要对比时，不默认使用 `不是……而是……`，改用更自然的转折、递进或重心移动。
+
+### 2. 去掉空泛的大词和套话
+
+- 少用没有机制解释的词，如「颠覆」「革命」「赋能」「重塑」「深刻改变」「开启新篇章」。
+- 避免「这标志着……」「这意味着……的时代已经到来」这类自动收束句。
+- 把抽象判断落回具体动作、约束、成本、分工或结果。
+
+### 3. 打散机械结构
+
+- 不强行把每段都写成三分句、排比句或工整对照句。
+- 不连续使用「首先」「其次」「最后」「与此同时」「值得注意的是」「从某种意义上说」。
+- 发现列表可以改成自然叙述时，优先改写成段落。
+
+### 4. 保持中文节奏
+
+- 允许长短句混用，不把每句都写成同样长度。
+- 让句子有明确主语和动作，少写无主句串联。
+- 避免段落结尾总是落在大而空的价值判断上。
+
+### 5. 管住文章级结构
+
+- 开头要尽快立题，不要第一段说 A，后面一路滑到 B。
+- 主体段落各自要有功能，常见功能是：交代背景、提出判断、展开论据、举例、转折、收束。
+- 如果某一段既不推进主线，也不提供必要信息，优先删、并、挪，不要硬留。
+- 结尾要回应前文真正提出的问题，不要临时拔高到更大的时代命题。
+- 深度改写时，可以重排段落顺序，但不要为了工整硬凑成三段论。
+- 总结结构时，少把段落关系写成一串 `先……再……最后……`，更要看它们是不是顺着同一个问题自然往下走。

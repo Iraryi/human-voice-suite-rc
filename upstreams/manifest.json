@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "cacheDir": ".upstream-cache",
+  "upstreams": [
+    {
+      "name": "dsh-humanizer",
+      "repository": "lynote-ai/dsh-humanizer",
+      "license": "BSD-3-Clause",
+      "version": "0.1.0",
+      "commit": "9314b95d0b1ba663331f47f0a8ea006b6dc5f509",
+      "role": [
+        "voice-fingerprint",
+        "executable-detector",
+        "dsh-plugin-reference",
+        "rewrite-contract-reference"
+      ],
+      "derived_from": [],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2026, lynote-ai",
+      "license_file": "licenses/BSD-3-Clause-dsh-humanizer",
+      "integration": "voice-profile",
+      "tracked": true,
+      "target_phase": 2,
+      "notes": "The only upstream already shaped as a DeepSeek Harness plugin. Its 25-field StyleFingerprint is the seed of the unified VoiceProfile. BSD-3-Clause is the only non-MIT licence in the set and carries a no-endorsement clause plus a disclaimer-reproduction duty that THIRD_PARTY_NOTICES.md must honour. Its rules are described upstream as modelled on stop-slop, blader/humanizer and Humanizer-zh, but that is conceptual: zero shared rule ids and roughly 20 percent shared pattern strings, so it is recorded as an independent rule set, not a derivation. Three defects to fix rather than inherit: regexes compiled without the m flag make 37 anchored patterns unreachable; a naively blended 0-100 aiScore that saturates and ignores length; and a store that silently discards the profile file on any schema-version mismatch."
+    },
+    {
+      "name": "blader-humanizer",
+      "repository": "blader/humanizer",
+      "license": "MIT",
+      "version": "3.0.0",
+      "commit": "9862685f575c65a8247f90369951df1b3416e3d6",
+      "role": ["rule-source", "english-prose", "common-ancestor", "suppression-policy"],
+      "derived_from": [],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2025 Siqi Chen",
+      "license_file": "licenses/MIT-blader",
+      "integration": "markdown-skill",
+      "tracked": true,
+      "target_phase": 2,
+      "external_ancestors": ["Wikipedia:Signs of AI writing"],
+      "notes": "The common ancestor of the whole Chinese lineage. 25 numbered patterns at v3.0.0, contiguous, grouped into five lettered sections. Version history matters: v2.1.0 had 24 patterns and v2.9.1 had 33, and the two Chinese derivatives were built against those older revisions, so pattern numbers are NOT comparable across the lineage without the baseline commit. Five patterns are marked 'weak alone' and must arrive as a suppression layer rather than as ordinary detectors. Pure Markdown: it has to be parsed into rules, never pasted into a prompt as a whole document."
+    },
+    {
+      "name": "ai-humanizer",
+      "repository": "judetelan/ai-humanizer",
+      "license": "MIT",
+      "version": "unversioned",
+      "commit": "76bf08f13bee88044f448fd1b80604e33bb662b6",
+      "role": ["executable-detector", "rule-source", "lexicon-source", "stylometry-engine"],
+      "derived_from": ["stop-slop"],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2026 judetelan",
+      "license_file": "licenses/MIT-ai-humanizer",
+      "integration": "executable-detector",
+      "tracked": true,
+      "target_phase": 2,
+      "external_ancestors": [
+        "Wikipedia:Signs of AI writing",
+        "impeccable (unidentifiable, broken URL)",
+        "harshaneel/humanize",
+        "unslop",
+        "brandonwise/humanizer",
+        "no-ai-slop",
+        "avoid-slop"
+      ],
+      "import_exclusions": [
+        {
+          "what": "The 11 rules marked 'Absorbed from stop-slop' in scripts/registry/rules.mjs",
+          "reason": "Verbatim stop-slop content without Hardik Pandya's MIT notice. Import from hardikpandya/stop-slop instead."
+        },
+        {
+          "what": "scripts/lexicons.mjs JARGON_SWAPS, the 11-row business jargon table",
+          "reason": "Reproduced row-for-row from stop-slop references/phrases.md without the required notice."
+        },
+        {
+          "what": "The Directness / Rhythm / Trust / Authenticity / Density scoring rubric",
+          "reason": "Copied from stop-slop's scoring table without the required notice."
+        },
+        {
+          "what": "The VAGUE_DECLARATIVE, EMPHASIS_CRUTCH, META_COMMENTARY, RHETORICAL_SETUP, ADVERB_FILLER and LAZY_EXTREMES phrase lists",
+          "reason": "Verbatim stop-slop phrase lists without the required notice."
+        },
+        {
+          "what": "Anything attributed to 'impeccable'",
+          "reason": "Cited behind a broken URL with no licence, so permission cannot be verified."
+        },
+        {
+          "what": "Patterns credited to Wikipedia 'Signs of AI writing'",
+          "reason": "That source is CC BY-SA and no share-alike attribution accompanies the reuse."
+        },
+        {
+          "what": "Content credited to harshaneel/humanize, unslop, brandonwise/humanizer, no-ai-slop and avoid-slop",
+          "reason": "No licence text, copyright line or per-item provenance is recorded for any of them."
+        }
+      ],
+      "notes": "The richest source of runnable detection logic: 46 rules, several hundred lexicon entries, a lexical engine and a stylometry engine, all dependency-free ESM that runs offline. Two cautions. First, only 35 of the 46 rules are its own work; 11 came verbatim from stop-slop with no notice retained, so they are barred from import and must be taken from stop-slop. Second, its own README says 40 rules, which is stale, so always count the registry rather than trusting the documentation. It has no voice capability at all."
+    },
+    {
+      "name": "humanizer-zh",
+      "repository": "ai-zixun/humanizer-zh",
+      "license": "MIT",
+      "version": "1.3.0",
+      "commit": "f75f1ac9735c4f10da1bba0148e0ea7228c5c3b3",
+      "role": [
+        "chinese-rules",
+        "voice-profiles",
+        "corpus",
+        "rewrite-templates"
+      ],
+      "derived_from": [],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2026 aizixun",
+      "license_file": "licenses/MIT-humanizer-zh",
+      "integration": "markdown-skill",
+      "tracked": true,
+      "target_phase": 2,
+      "external_ancestors": ["blader/humanizer (acknowledged inspiration only)"],
+      "notes": "Two independent assets, and they have different risk profiles. Its 13 Chinese rules are original: it declares blader/humanizer as inspiration in its acknowledgements, but there is no verbatim overlap and its taxonomy is its own, so its rules are NOT redundant with the English lineage. Its eight Chinese author voice profiles are entirely original and are the richest voice material in the corpus; they share an identical container schema across all eight files but free-form prose fields inside, so import needs a deterministic parser plus a normalisation pass. One profile instructs inventing plausible fake numbers when real data is unavailable, which contradicts the no-invention rule everywhere else in the corpus and must be neutralised before import. All eight instruct writing as a named living author, which is a publicity-rights question that a software licence does not settle."
+    },
+    {
+      "name": "humanize-text",
+      "repository": "lynote-ai/humanize-text",
+      "license": "MIT",
+      "version": "1.5.2",
+      "commit": "48f3c0ac0f51cb7c2af23cbf45ea865e1d71e04e",
+      "role": ["methodology", "statistical-detector", "vocabulary-map", "rhythm-rules"],
+      "derived_from": [],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2026 Lynote.ai",
+      "license_file": "licenses/MIT-humanize-text",
+      "integration": "methodology",
+      "tracked": true,
+      "target_phase": 2,
+      "external_ancestors": ["molly554/ai-humanize"],
+      "notes": "Its default execution path must never become ours: the supported pipeline is a four-stage remote chain needing a language-model key, a Niutrans key and an undocumented Google endpoint, with no retries or rate limiting. Take three things instead. Its zero-dependency statistical detector is the one part that runs offline and is genuinely reusable. Its four documented methodologies become named strategies kept off the default path. Its vocabulary map and rhythm rules are usable rule sources. Exclude everything its documentation claims but its code does not implement. Note the maintainers describe this pipeline as superseded, and its Binoculars detector is misnamed and is not actually Binoculars."
+    },
+    {
+      "name": "humanizer-zh-cn",
+      "repository": "holygeek00/humanizer-zh-cn",
+      "license": "MIT",
+      "version": "2.9.1-zh.2",
+      "commit": "401e372eeb1a91045d15ec21c2d13b9d0f7842ea",
+      "role": ["chinese-rules", "localization-map", "false-positive-suppression", "provenance-model"],
+      "derived_from": ["blader-humanizer"],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2025 Siqi Chen",
+      "license_file": "licenses/MIT-humanizer-zh-cn",
+      "integration": "markdown-skill",
+      "tracked": true,
+      "target_phase": 2,
+      "notes": "The best-behaved member of the lineage and the preferred Chinese rule source. A true fork pinned at blader's v2.9.1 baseline, so it carries 33 patterns where upstream now has 25. It retains Siqi Chen's copyright notice and enforces that retention in its own package validator, which makes it the only derivative whose attribution is machine-checked. Its upstream-to-Chinese mapping table is the only explicit derivation record in the corpus and should be imported as provenance data. Its sync workflow auto-commits to main, so it will legitimately break the next time it runs: upstream main has moved to v3.0.0 and the pattern count no longer matches. Do not run that workflow ourselves."
+    },
+    {
+      "name": "op7418-humanizer-zh",
+      "repository": "op7418/Humanizer-zh",
+      "license": "MIT",
+      "version": "unversioned",
+      "commit": "91f3d394db8419c20d67ebe22a96cf8fee0a404b",
+      "role": ["research-reference"],
+      "derived_from": ["blader-humanizer"],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2026 歸藏",
+      "license_file": "licenses/MIT-op7418-humanizer-zh",
+      "integration": "research-only",
+      "tracked": false,
+      "target_phase": 3,
+      "notes": "RESEARCH ONLY. A near-literal Chinese translation of blader/humanizer v2.1.0: all 24 pattern headings, watched lists, examples and the process section are reproduced, while the only copyright line is the translator's. Siqi Chen's notice appears nowhere in the repository and the upstream source is named in the file metadata, so this is an MIT notice-retention defect on its face. Nothing may be copied from it into a distributed artefact. Where its capability is wanted, take it from blader/humanizer, which holds title. Two items are additive but must be re-derived rather than copied: a five-dimension scoring rubric and a voice-and-personality section."
+    },
+    {
+      "name": "stop-slop",
+      "repository": "hardikpandya/stop-slop",
+      "license": "MIT",
+      "version": "unversioned",
+      "commit": "8da1f030185bdfe8471220585162991eaeb970e9",
+      "role": ["phrase-list", "structure-list", "clean-title-for-absorbed-content"],
+      "derived_from": [],
+      "last_sync": "2026-09-16",
+      "default_branch": "main",
+      "copyright_holder": "Copyright (c) 2025 Hardik Pandya",
+      "license_file": "licenses/MIT-stop-slop",
+      "integration": "research-only",
+      "tracked": false,
+      "target_phase": 3,
+      "external_ancestors": ["Wikipedia:Signs of AI writing"],
+      "notes": "RESEARCH ONLY as a package, with a small targeted extraction planned. It is a curated list of banned phrases and structures, which is exactly the machine-extractable shape the suite wants, but roughly nine tenths of it already reaches the suite indirectly because ai-humanizer absorbed it verbatim and dsh-humanizer and op7418 both credit it. Counting it separately would be the double-counting error the project exists to prevent. Its absolutist rules also conflict with blader's weak-alone suppression policy, so importing its prose wholesale would raise false positives. Its practical importance to this project is as the clean-title source for the content that must be re-imported out of ai-humanizer."
+    }
+  ]
+}

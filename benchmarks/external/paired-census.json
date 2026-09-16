@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-09-16T08:17:24.111Z",
+  "source": "LCCC-base (thu-coai/CDial-GPT, arXiv 2008.03946), held-out valid + test splits",
+  "provenance": "license/provenance status: unclear for dialogue data",
+  "exception": "local evaluation exception; not redistributable by this project",
+  "boundary": "Items contain third-party dialogue and stay in .external-corpora/. Only aggregate counts appear here. Any machine positive sample that a future commit depends on must be reconstructed without LCCC context.",
+  "splits": {
+    "valid": 20000,
+    "test": 10000
+  },
+  "sessions": 30000,
+  "natural": {
+    "items": 2007,
+    "census": {
+      "multi|long|long|emotion": 1,
+      "multi|long|long|question": 1,
+      "multi|long|long|statement": 7,
+      "multi|long|medium|emotion": 1,
+      "multi|long|medium|question": 2,
+      "multi|long|medium|statement": 18,
+      "multi|long|short|emotion": 1,
+      "multi|long|short|question": 1,
+      "multi|long|short|statement": 12,
+      "multi|medium|long|emotion": 1,
+      "multi|medium|long|question": 2,
+      "multi|medium|long|statement": 14,
+      "multi|medium|medium|emotion": 2,
+      "multi|medium|medium|question": 18,
+      "multi|medium|medium|statement": 122,
+      "multi|medium|short|emotion": 3,
+      "multi|medium|short|question": 21,
+      "multi|medium|short|statement": 159,
+      "multi|short|long|chitchat": 3,
+      "multi|short|long|emotion": 1,
+      "multi|short|long|question": 1,
+      "multi|short|long|statement": 5,
+      "multi|short|medium|chitchat": 62,
+      "multi|short|medium|emotion": 1,
+      "multi|short|medium|question": 20,
+      "multi|short|medium|statement": 62,
+      "multi|short|short|chitchat": 159,
+      "multi|short|short|emotion": 2,
+      "multi|short|short|question": 48,
+      "multi|short|short|statement": 125,
+      "single|long|long|emotion": 1,
+      "single|long|long|question": 1,
+      "single|long|long|statement": 9,
+      "single|long|medium|emotion": 1,
+      "single|long|medium|question": 3,
+      "single|long|medium|statement": 24,
+      "single|long|short|emotion": 1,
+      "single|long|short|question": 3,
+      "single|long|short|statement": 27,
+      "single|medium|long|emotion": 1,
+      "single|medium|long|question": 2,
+      "single|medium|long|statement": 13,
+      "single|medium|medium|emotion": 2,
+      "single|medium|medium|question": 20,
+      "single|medium|medium|statement": 134,
+      "single|medium|short|emotion": 2,
+      "single|medium|short|question": 46,
+      "single|medium|short|statement": 253,
+      "single|short|long|chitchat": 2,
+      "single|short|long|question": 2,
+      "single|short|long|statement": 4,
+      "single|short|medium|chitchat": 41,
+      "single|short|medium|emotion": 1,
+      "single|short|medium|question": 21,
+      "single|short|medium|statement": 58,
+      "single|short|short|chitchat": 204,
+      "single|short|short|emotion": 1,
+      "single|short|short|question": 67,
+      "single|short|short|statement": 188
+    }
+  },
+  "balanced": {
+    "items": 4090,
+    "cells": 59,
+    "census": {
+      "multi|long|long|emotion": 2,
+      "multi|long|long|question": 14,
+      "multi|long|long|statement": 98,
+      "multi|long|medium|emotion": 8,
+      "multi|long|medium|question": 28,
+      "multi|long|medium|statement": 120,
+      "multi|long|short|emotion": 3,
+      "multi|long|short|question": 14,
+      "multi|long|short|statement": 120,
+      "multi|medium|long|emotion": 7,
+      "multi|medium|long|question": 35,
+      "multi|medium|long|statement": 120,
+      "multi|medium|medium|emotion": 36,
+      "multi|medium|medium|question": 120,
+      "multi|medium|medium|statement": 120,
+      "multi|medium|short|emotion": 51,
+      "multi|medium|short|question": 120,
+      "multi|medium|short|statement": 120,
+      "multi|short|long|chitchat": 38,
+      "multi|short|long|emotion": 1,
+      "multi|short|long|question": 21,
+      "multi|short|long|statement": 80,
+      "multi|short|medium|chitchat": 120,
+      "multi|short|medium|emotion": 20,
+      "multi|short|medium|question": 120,
+      "multi|short|medium|statement": 120,
+      "multi|short|short|chitchat": 120,
+      "multi|short|short|emotion": 23,
+      "multi|short|short|question": 120,
+      "multi|short|short|statement": 120,
+      "single|long|long|emotion": 1,
+      "single|long|long|question": 22,
+      "single|long|long|statement": 120,
+      "single|long|medium|emotion": 9,
+      "single|long|medium|question": 51,
+      "single|long|medium|statement": 120,
+      "single|long|short|emotion": 9,
+      "single|long|short|question": 42,
+      "single|long|short|statement": 120,
+      "single|medium|long|emotion": 2,
+      "single|medium|long|question": 37,
+      "single|medium|long|statement": 120,
+      "single|medium|medium|emotion": 27,
+      "single|medium|medium|question": 120,
+      "single|medium|medium|statement": 120,
+      "single|medium|short|emotion": 35,
+      "single|medium|short|question": 120,
+      "single|medium|short|statement": 120,
+      "single|short|long|chitchat": 27,
+      "single|short|long|question": 23,
+      "single|short|long|statement": 64,
+      "single|short|medium|chitchat": 120,
+      "single|short|medium|emotion": 6,
+      "single|short|medium|question": 120,
+      "single|short|medium|statement": 120,
+      "single|short|short|chitchat": 120,
+      "single|short|short|emotion": 16,
+      "single|short|short|question": 120,
+      "single|short|short|statement": 120
+    }
+  },
+  "strata": {
+    "kind": [
+      "single",
+      "multi"
+    ],
+    "userLength": {
+      "cuts": [
+        20,
+        60
+      ],
+      "labels": [
+        "short",
+        "medium",
+        "long"
+      ]
+    },
+    "replyLength": {
+      "cuts": [
+        20,
+        60
+      ],
+      "labels": [
+        "short",
+        "medium",
+        "long"
+      ]
+    },
+    "contextLength": {
+      "cuts": [
+        60,
+        200
+      ],
+      "labels": [
+        "none",
+        "short",
+        "medium",
+        "long"
+      ]
+    },
+    "type": [
+      "question",
+      "emotion",
+      "chitchat",
+      "statement"
+    ]
+  }
+}

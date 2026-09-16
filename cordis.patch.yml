@@ -1,0 +1,17 @@
+# Human Voice Suite — DSH profile patch.
+#
+# Inserted by `dsh plugin --profile <name> add <spec>`: the CLI appends this
+# package to `dsh.profile.bundles` because the package declares `dsh.bundle.patch`,
+# and the loader applies this file as one layer over the profile tree.
+#
+# The plugin registers six capability tools and no upstream tool. It has no
+# dependencies: the definitions are constructed as plain objects with plain JSON
+# Schema rather than through `@deepseek-ai/dsh-tools`, so nothing has to be
+# fetched or kept in step with the running harness.
+- insert:
+    - id: human-voice-suite
+      name: human-voice-suite/plugin
+      config:
+        enabled: true
+        # projectRoot: unset, so the plugin resolves it from its own location.
+        # profileDir: unset, so learned profiles live in <projectRoot>/profiles.

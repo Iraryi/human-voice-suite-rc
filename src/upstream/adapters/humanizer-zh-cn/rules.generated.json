@@ -1,0 +1,1588 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "holygeek00/humanizer-zh-cn",
+    "sourceCommit": "401e372eeb1a91045d15ec21c2d13b9d0f7842ea",
+    "extractedAt": "2026-09-15T21:18:11.830Z",
+    "sources": [
+      "SKILL.md"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "1",
+        "signature": "structural.inflated_significance",
+        "signatureMapped": true,
+        "title": "空泛拔高意义",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "把普通事实强行放进宏大叙事。",
+        "detection": "Lexical. 6 literal watched phrase(s), 2 construction template(s).",
+        "rewriteGuidance": "把普通事实强行放进宏大叙事。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "标志着",
+            "kind": "literal",
+            "match": "标志着"
+          },
+          {
+            "text": "彰显了",
+            "kind": "literal",
+            "match": "彰显了"
+          },
+          {
+            "text": "体现了",
+            "kind": "literal",
+            "match": "体现了"
+          },
+          {
+            "text": "具有里程碑意义",
+            "kind": "literal",
+            "match": "具有里程碑意义"
+          },
+          {
+            "text": "注入新动能",
+            "kind": "literal",
+            "match": "注入新动能"
+          },
+          {
+            "text": "开启新篇章",
+            "kind": "literal",
+            "match": "开启新篇章"
+          },
+          {
+            "text": "为……奠定基础",
+            "kind": "template",
+            "match": "为……奠定基础"
+          },
+          {
+            "text": "推动……迈上新台阶",
+            "kind": "template",
+            "match": "推动……迈上新台阶"
+          }
+        ],
+        "examples": [
+          {
+            "before": "本次办公室搬迁标志着公司发展迈入全新阶段，为未来高质量发展奠定了坚实基础。",
+            "after": "公司搬了办公室。原文没有说明搬迁时间、原因或实际影响。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:48",
+        "quote": "把普通事实强行放进宏大叙事。",
+        "notes": [
+          "Upstream heading: 1. 空泛拔高意义"
+        ]
+      },
+      {
+        "upstreamRuleId": "2",
+        "signature": "lexical.borrowed_authority",
+        "signatureMapped": true,
+        "title": "用名气和媒体名单代替信息",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "只罗列媒体、奖项或名人，不说明报道了什么、为何相关。",
+        "detection": "Lexical. 4 literal watched phrase(s).",
+        "rewriteGuidance": "只罗列媒体、奖项或名人，不说明报道了什么、为何相关。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "多家权威媒体报道",
+            "kind": "literal",
+            "match": "多家权威媒体报道"
+          },
+          {
+            "text": "业内广泛关注",
+            "kind": "literal",
+            "match": "业内广泛关注"
+          },
+          {
+            "text": "获得众多大咖认可",
+            "kind": "literal",
+            "match": "获得众多大咖认可"
+          },
+          {
+            "text": "全网热议",
+            "kind": "literal",
+            "match": "全网热议"
+          }
+        ],
+        "examples": [
+          {
+            "before": "该项目受到央视、新华社及多家权威媒体的广泛关注。",
+            "after": "央视、新华社等媒体报道过该项目。原文没有说明报道内容。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:58",
+        "quote": "只罗列媒体、奖项或名人，不说明报道了什么、为何相关。",
+        "notes": [
+          "Upstream heading: 2. 用名气和媒体名单代替信息"
+        ]
+      },
+      {
+        "upstreamRuleId": "3",
+        "signature": "lexical.ing_trailers",
+        "signatureMapped": true,
+        "title": "句尾堆叠“从而/进而/助力”伪分析",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "在事实后追加没有证据的效果和意义。",
+        "detection": "Lexical. 7 literal watched phrase(s).",
+        "rewriteGuidance": "在事实后追加没有证据的效果和意义。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "从而",
+            "kind": "literal",
+            "match": "从而"
+          },
+          {
+            "text": "进而",
+            "kind": "literal",
+            "match": "进而"
+          },
+          {
+            "text": "进一步",
+            "kind": "literal",
+            "match": "进一步"
+          },
+          {
+            "text": "有效推动",
+            "kind": "literal",
+            "match": "有效推动"
+          },
+          {
+            "text": "助力实现",
+            "kind": "literal",
+            "match": "助力实现"
+          },
+          {
+            "text": "持续赋能",
+            "kind": "literal",
+            "match": "持续赋能"
+          },
+          {
+            "text": "以长串结果状语收尾",
+            "kind": "literal",
+            "match": "以长串结果状语收尾"
+          }
+        ],
+        "examples": [
+          {
+            "before": "平台新增一键导出功能，从而有效提升工作效率，进一步赋能团队协作。",
+            "after": "平台新增一键导出功能。原文没有提供效率或协作效果的数据。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:68",
+        "quote": "在事实后追加没有证据的效果和意义。",
+        "notes": [
+          "Upstream heading: 3. 句尾堆叠“从而/进而/助力”伪分析"
+        ]
+      },
+      {
+        "upstreamRuleId": "4",
+        "signature": "lexical.sales_language",
+        "signatureMapped": true,
+        "title": "宣传稿和广告腔",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "用形容词制造兴奋，却不给可验证的信息。",
+        "detection": "Lexical. 11 literal watched phrase(s).",
+        "rewriteGuidance": "用形容词制造兴奋，却不给可验证的信息。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "匠心打造",
+            "kind": "literal",
+            "match": "匠心打造"
+          },
+          {
+            "text": "重磅推出",
+            "kind": "literal",
+            "match": "重磅推出"
+          },
+          {
+            "text": "震撼来袭",
+            "kind": "literal",
+            "match": "震撼来袭"
+          },
+          {
+            "text": "沉浸式",
+            "kind": "literal",
+            "match": "沉浸式"
+          },
+          {
+            "text": "全方位",
+            "kind": "literal",
+            "match": "全方位"
+          },
+          {
+            "text": "极致",
+            "kind": "literal",
+            "match": "极致"
+          },
+          {
+            "text": "卓越",
+            "kind": "literal",
+            "match": "卓越"
+          },
+          {
+            "text": "引领",
+            "kind": "literal",
+            "match": "引领"
+          },
+          {
+            "text": "焕新升级",
+            "kind": "literal",
+            "match": "焕新升级"
+          },
+          {
+            "text": "宝藏",
+            "kind": "literal",
+            "match": "宝藏"
+          },
+          {
+            "text": "必打卡",
+            "kind": "literal",
+            "match": "必打卡"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这家宝藏民宿坐落于风景如画的古镇核心区，为游客带来极致沉浸式体验。",
+            "after": "民宿位于古镇中心区域。原文没有提供设施、距离或住客体验等具体信息。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:78",
+        "quote": "用形容词制造兴奋，却不给可验证的信息。",
+        "notes": [
+          "Upstream heading: 4. 宣传稿和广告腔"
+        ]
+      },
+      {
+        "upstreamRuleId": "5",
+        "signature": "lexical.vague_attribution",
+        "signatureMapped": true,
+        "title": "模糊归因和“据悉”",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "把判断交给没有姓名、机构或出处的权威。",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "把判断交给没有姓名、机构或出处的权威。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "有专家表示",
+            "kind": "literal",
+            "match": "有专家表示"
+          },
+          {
+            "text": "业内人士认为",
+            "kind": "literal",
+            "match": "业内人士认为"
+          },
+          {
+            "text": "研究表明",
+            "kind": "literal",
+            "match": "研究表明"
+          },
+          {
+            "text": "相关数据显示",
+            "kind": "literal",
+            "match": "相关数据显示"
+          },
+          {
+            "text": "据悉",
+            "kind": "literal",
+            "match": "据悉"
+          },
+          {
+            "text": "普遍认为",
+            "kind": "literal",
+            "match": "普遍认为"
+          }
+        ],
+        "examples": [
+          {
+            "before": "有专家表示，这项技术将对行业产生深远影响。",
+            "after": "删除该句；若原文给出专家姓名、原话和来源，再准确写明。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:88",
+        "quote": "把判断交给没有姓名、机构或出处的权威。",
+        "notes": [
+          "Upstream heading: 5. 模糊归因和“据悉”"
+        ]
+      },
+      {
+        "upstreamRuleId": "6",
+        "signature": "structural.stock_challenges_outlook",
+        "signatureMapped": true,
+        "title": "“挑战与展望”模板",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "结尾套用万能段落，回避真正的问题和计划。",
+        "detection": "Lexical. 5 literal watched phrase(s).",
+        "rewriteGuidance": "结尾套用万能段落，回避真正的问题和计划。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "尽管面临诸多挑战",
+            "kind": "literal",
+            "match": "尽管面临诸多挑战"
+          },
+          {
+            "text": "机遇与挑战并存",
+            "kind": "literal",
+            "match": "机遇与挑战并存"
+          },
+          {
+            "text": "未来仍需",
+            "kind": "literal",
+            "match": "未来仍需"
+          },
+          {
+            "text": "展望未来",
+            "kind": "literal",
+            "match": "展望未来"
+          },
+          {
+            "text": "砥砺前行",
+            "kind": "literal",
+            "match": "砥砺前行"
+          }
+        ],
+        "examples": [
+          {
+            "before": "尽管仍面临诸多挑战，但在各方共同努力下，项目未来可期。",
+            "after": "项目仍面临一些困难，但原文没有说明具体是什么。若无法补充，删除这段展望。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:98",
+        "quote": "结尾套用万能段落，回避真正的问题和计划。",
+        "notes": [
+          "Upstream heading: 6. “挑战与展望”模板"
+        ]
+      },
+      {
+        "upstreamRuleId": "7",
+        "signature": "structural.abstract_verb_swallows_action",
+        "signatureMapped": true,
+        "title": "抽象动词吞掉具体动作",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "单个词未必有问题；多个抽象词连续出现，会掩盖主体、动作、对象、结果和证据。",
+        "detection": "Lexical. 18 literal watched phrase(s).",
+        "rewriteGuidance": "单个词未必有问题；多个抽象词连续出现，会掩盖主体、动作、对象、结果和证据。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "深度",
+            "kind": "literal",
+            "match": "深度"
+          },
+          {
+            "text": "全面",
+            "kind": "literal",
+            "match": "全面"
+          },
+          {
+            "text": "持续",
+            "kind": "literal",
+            "match": "持续"
+          },
+          {
+            "text": "精准",
+            "kind": "literal",
+            "match": "精准"
+          },
+          {
+            "text": "高效",
+            "kind": "literal",
+            "match": "高效"
+          },
+          {
+            "text": "赋能",
+            "kind": "literal",
+            "match": "赋能"
+          },
+          {
+            "text": "助力",
+            "kind": "literal",
+            "match": "助力"
+          },
+          {
+            "text": "打造",
+            "kind": "literal",
+            "match": "打造"
+          },
+          {
+            "text": "构建",
+            "kind": "literal",
+            "match": "构建"
+          },
+          {
+            "text": "聚焦",
+            "kind": "literal",
+            "match": "聚焦"
+          },
+          {
+            "text": "围绕",
+            "kind": "literal",
+            "match": "围绕"
+          },
+          {
+            "text": "着力",
+            "kind": "literal",
+            "match": "着力"
+          },
+          {
+            "text": "维度",
+            "kind": "literal",
+            "match": "维度"
+          },
+          {
+            "text": "场景",
+            "kind": "literal",
+            "match": "场景"
+          },
+          {
+            "text": "生态",
+            "kind": "literal",
+            "match": "生态"
+          },
+          {
+            "text": "闭环",
+            "kind": "literal",
+            "match": "闭环"
+          },
+          {
+            "text": "抓手",
+            "kind": "literal",
+            "match": "抓手"
+          },
+          {
+            "text": "底层逻辑",
+            "kind": "literal",
+            "match": "底层逻辑"
+          }
+        ],
+        "examples": [
+          {
+            "before": "围绕用户核心需求，持续打造全场景服务生态，精准赋能业务增长。",
+            "after": "将根据用户需求改进服务。原文没有说明由谁改、改什么，也没有证据表明会带来增长。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:108",
+        "quote": "单个词未必有问题；多个抽象词连续出现，会掩盖主体、动作、对象、结果和证据。",
+        "notes": [
+          "Upstream heading: 7. 抽象动词吞掉具体动作"
+        ]
+      },
+      {
+        "upstreamRuleId": "8",
+        "signature": "lexical.copula_avoidance",
+        "signatureMapped": true,
+        "title": "回避简单判断句",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "本可用“是、做、有、负责”说明，却绕成定位宣言。",
+        "detection": "Lexical. 3 literal watched phrase(s), 3 construction template(s).",
+        "rewriteGuidance": "本可用“是、做、有、负责”说明，却绕成定位宣言。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "定位于",
+            "kind": "literal",
+            "match": "定位于"
+          },
+          {
+            "text": "致力于",
+            "kind": "literal",
+            "match": "致力于"
+          },
+          {
+            "text": "旨在",
+            "kind": "literal",
+            "match": "旨在"
+          },
+          {
+            "text": "作为……载体",
+            "kind": "template",
+            "match": "作为……载体"
+          },
+          {
+            "text": "扮演……角色",
+            "kind": "template",
+            "match": "扮演……角色"
+          },
+          {
+            "text": "成为……的重要抓手",
+            "kind": "template",
+            "match": "成为……的重要抓手"
+          }
+        ],
+        "examples": [
+          {
+            "before": "本平台定位于连接创作者与品牌的综合性服务载体。",
+            "after": "这个平台连接创作者和品牌。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:118",
+        "quote": "本可用“是、做、有、负责”说明，却绕成定位宣言。",
+        "notes": [
+          "Upstream heading: 8. 回避简单判断句"
+        ]
+      },
+      {
+        "upstreamRuleId": "9",
+        "signature": "structural.negation_contrast",
+        "signatureMapped": true,
+        "title": "“不仅……更……”和先否后肯滥用",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "机械制造递进和反转。",
+        "detection": "Lexical. 0 literal watched phrase(s), 4 construction template(s).",
+        "rewriteGuidance": "机械制造递进和反转。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "不仅是……更是……",
+            "kind": "template",
+            "match": "不仅是……更是……"
+          },
+          {
+            "text": "不只是……而是……",
+            "kind": "template",
+            "match": "不只是……而是……"
+          },
+          {
+            "text": "不是……而是……",
+            "kind": "template",
+            "match": "不是……而是……"
+          },
+          {
+            "text": "绝非……这么简单",
+            "kind": "template",
+            "match": "绝非……这么简单"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这不仅是一次产品升级，更是品牌理念的全面革新。",
+            "after": "这是一次产品升级，也反映了品牌理念的变化。原文没有提供更具体的改动。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:128",
+        "quote": "机械制造递进和反转。",
+        "notes": [
+          "Upstream heading: 9. “不仅……更……”和先否后肯滥用"
+        ]
+      },
+      {
+        "upstreamRuleId": "10",
+        "signature": "rhythm.forced_triad",
+        "signatureMapped": true,
+        "title": "强凑三点和排比",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "为了显得完整而把内容硬塞成三项。",
+        "detection": "Lexical. 3 literal watched phrase(s).",
+        "rewriteGuidance": "为了显得完整而把内容硬塞成三项。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "“第一、第二、第三”无论内容是否适合",
+            "kind": "literal",
+            "match": "“第一、第二、第三”无论内容是否适合"
+          },
+          {
+            "text": "三组同构短语",
+            "kind": "literal",
+            "match": "三组同构短语"
+          },
+          {
+            "text": "“更快、更准、更智能”",
+            "kind": "literal",
+            "match": "“更快、更准、更智能”"
+          }
+        ],
+        "examples": [
+          {
+            "before": "我们将以创新为引领、以品质为根本、以服务为保障。",
+            "after": "我们将重视创新、品质和服务。原文没有说明具体行动。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:138",
+        "quote": "为了显得完整而把内容硬塞成三项。",
+        "notes": [
+          "Upstream heading: 10. 强凑三点和排比"
+        ]
+      },
+      {
+        "upstreamRuleId": "11",
+        "signature": "lexical.synonym_rotation",
+        "signatureMapped": true,
+        "title": "同义词轮换",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "为避免重复，不断更换同一对象的称呼，反而让指代含混。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "为避免重复，不断更换同一对象的称呼，反而让指代含混。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "这位创始人提出方案。该企业掌舵人随后解释计划。这名创业者还回答了提问。",
+            "after": "这位创始人提出并解释了方案，随后回答提问。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:148",
+        "quote": "为避免重复，不断更换同一对象的称呼，反而让指代含混。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 11. 同义词轮换"
+        ]
+      },
+      {
+        "upstreamRuleId": "12",
+        "signature": "structural.false_range",
+        "signatureMapped": true,
+        "title": "虚假的“从……到……”范围",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "两端不在同一尺度上，只为制造包罗万象的感觉。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "两端不在同一尺度上，只为制造包罗万象的感觉。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "从一杯咖啡到一座城市，从个体情绪到时代浪潮，本书无所不谈。",
+            "after": "本书写咖啡馆、城市生活和个人情绪。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:156",
+        "quote": "两端不在同一尺度上，只为制造包罗万象的感觉。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 12. 虚假的“从……到……”范围"
+        ]
+      },
+      {
+        "upstreamRuleId": "13",
+        "signature": "lexical.passive_and_subjectless",
+        "signatureMapped": true,
+        "title": "无主句和责任主体消失",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "省略谁做了什么，尤其会让报告和说明书含糊。",
+        "detection": "Lexical. 5 literal watched phrase(s).",
+        "rewriteGuidance": "省略谁做了什么，尤其会让报告和说明书含糊。",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "已完成",
+            "kind": "literal",
+            "match": "已完成"
+          },
+          {
+            "text": "得到有效提升",
+            "kind": "literal",
+            "match": "得到有效提升"
+          },
+          {
+            "text": "问题被解决",
+            "kind": "literal",
+            "match": "问题被解决"
+          },
+          {
+            "text": "无需配置",
+            "kind": "literal",
+            "match": "无需配置"
+          },
+          {
+            "text": "自动保存",
+            "kind": "literal",
+            "match": "自动保存"
+          }
+        ],
+        "examples": [
+          {
+            "before": "相关问题已得到妥善解决，数据将自动保存。",
+            "after": "问题已经解决，系统会自动保存数据。原文没有说明由谁解决或多久保存一次。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:164",
+        "quote": "省略谁做了什么，尤其会让报告和说明书含糊。",
+        "notes": [
+          "Upstream heading: 13. 无主句和责任主体消失"
+        ]
+      },
+      {
+        "upstreamRuleId": "14",
+        "signature": "rhythm.dash_overuse",
+        "signatureMapped": true,
+        "title": "破折号、括号和补充说明过密",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "中文本可自然成句，却频繁用破折号制造戏剧停顿，或用括号塞入关键信息。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "中文本可自然成句，却频繁用破折号制造戏剧停顿，或用括号塞入关键信息。",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "这个功能看似简单，却解决了一个长期问题——用户终于不用反复刷新——至少大多数时候如此。",
+            "after": "这个功能减少了反复刷新，但没有完全解决问题。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:174",
+        "quote": "中文本可自然成句，却频繁用破折号制造戏剧停顿，或用括号塞入关键信息。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Has a scope caveat paragraph after the examples; see the upstream body.",
+          "Upstream heading: 14. 破折号、括号和补充说明过密"
+        ]
+      },
+      {
+        "upstreamRuleId": "15",
+        "signature": "formatting.bold_decoration",
+        "signatureMapped": true,
+        "title": "加粗和重点标记过多",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "每段都加粗关键词，读者反而看不出真正重点。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "每段都加粗关键词，读者反而看不出真正重点。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "我们需要关注效率、质量和用户体验。",
+            "after": "我们需要提高效率和质量，改善用户体验。原文没有说明优先级或衡量标准。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:184",
+        "quote": "每段都加粗关键词，读者反而看不出真正重点。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 15. 加粗和重点标记过多"
+        ]
+      },
+      {
+        "upstreamRuleId": "16",
+        "signature": "formatting.bold_label_list",
+        "signatureMapped": true,
+        "title": "“小标题：解释”式清单泛滥",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "改前：- 用户体验：用户体验得到显著提升。- 性能表现：系统性能得到全面优化。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "改前：- 用户体验：用户体验得到显著提升。 - 性能表现：系统性能得到全面优化。 - 安全保障：安全保障进一步加强。 改后：新版本改善了使用体验、性能和安全性。原文没有提供具体改动或数据。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "- 用户体验：用户体验得到显著提升。 - 性能表现：系统性能得到全面优化。 - 安全保障：安全保障进一步加强。",
+            "after": "新版本改善了使用体验、性能和安全性。原文没有提供具体改动或数据。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:192",
+        "quote": "改前：- 用户体验：用户体验得到显著提升。 - 性能表现：系统性能得到全面优化。 - 安全保障：安全保障进一步加强。 改后：新版本改善了使用体验、性能和安全性。原文没有提供具体改动或数据。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "No 问题 field and no trailing prose; guidance reconstructed from 改前/改后.",
+          "Upstream heading: 16. “小标题：解释”式清单泛滥"
+        ]
+      },
+      {
+        "upstreamRuleId": "17",
+        "signature": "formatting.decorative_headings",
+        "signatureMapped": true,
+        "title": "标题对仗和口号化",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "标题追求整齐和气势，却没有准确说明内容。",
+        "detection": "Lexical. 1 literal watched phrase(s).",
+        "rewriteGuidance": "标题追求整齐和气势，却没有准确说明内容。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "几乎所有标题都做成“洞察趋势：解码未来”“破局增长，共创未来”",
+            "kind": "literal",
+            "match": "几乎所有标题都做成“洞察趋势：解码未来”“破局增长，共创未来”"
+          }
+        ],
+        "examples": [
+          {
+            "before": "洞察变革浪潮：解码增长新范式",
+            "after": "增长方式发生了什么变化"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:201",
+        "quote": "标题追求整齐和气势，却没有准确说明内容。",
+        "notes": [
+          "Upstream heading: 17. 标题对仗和口号化"
+        ]
+      },
+      {
+        "upstreamRuleId": "18",
+        "signature": "formatting.emoji_decoration",
+        "signatureMapped": true,
+        "title": "表情符号装饰结构",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "用 🚀💡✅ 等图标代替正常层级，尤其不适合报告、邮件和说明文档。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "用 🚀💡✅ 等图标代替正常层级，尤其不适合报告、邮件和说明文档。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "🚀 项目进展 💡 核心洞察 ✅ 下一步行动",
+            "after": "项目进展、发现和下周安排"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:211",
+        "quote": "用 🚀💡✅ 等图标代替正常层级，尤其不适合报告、邮件和说明文档。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Has a scope caveat paragraph after the examples; see the upstream body.",
+          "Upstream heading: 18. 表情符号装饰结构"
+        ]
+      },
+      {
+        "upstreamRuleId": "19",
+        "signature": "chinese.punctuation_width",
+        "signatureMapped": true,
+        "title": "全角半角与引号混用",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "中文段落中混用英文逗号、直引号和不成对标点，或每个概念都套引号。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "中文段落中混用英文逗号、直引号和不成对标点，或每个概念都套引号。",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "我们提出了“用户第一”,并建立所谓的\"增长闭环\"。",
+            "after": "我们提出“用户第一”，并建立所谓的“增长闭环”。这些词没有说明实际改了什么。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:221",
+        "quote": "中文段落中混用英文逗号、直引号和不成对标点，或每个概念都套引号。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Has a scope caveat paragraph after the examples; see the upstream body.",
+          "Upstream heading: 19. 全角半角与引号混用"
+        ]
+      },
+      {
+        "upstreamRuleId": "20",
+        "signature": "assistant.chatbot_residue",
+        "signatureMapped": true,
+        "title": "聊天机器人残留",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "对话套话被一起粘贴进正文。",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "对话套话被一起粘贴进正文。",
+        "severity": 5,
+        "watchPhrases": [
+          {
+            "text": "当然可以",
+            "kind": "literal",
+            "match": "当然可以"
+          },
+          {
+            "text": "好的没问题",
+            "kind": "literal",
+            "match": "好的没问题"
+          },
+          {
+            "text": "以下是",
+            "kind": "literal",
+            "match": "以下是"
+          },
+          {
+            "text": "希望对你有帮助",
+            "kind": "literal",
+            "match": "希望对你有帮助"
+          },
+          {
+            "text": "如果需要我可以继续",
+            "kind": "literal",
+            "match": "如果需要我可以继续"
+          },
+          {
+            "text": "欢迎随时告诉我",
+            "kind": "literal",
+            "match": "欢迎随时告诉我"
+          }
+        ],
+        "examples": [
+          {
+            "before": "当然可以！以下是关于法国大革命的介绍：法国大革命始于 1789 年。希望对你有帮助。",
+            "after": "法国大革命始于 1789 年。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:231",
+        "quote": "对话套话被一起粘贴进正文。",
+        "notes": [
+          "Upstream heading: 20. 聊天机器人残留"
+        ]
+      },
+      {
+        "upstreamRuleId": "21",
+        "signature": "assistant.knowledge_limit_disclaimer",
+        "signatureMapped": true,
+        "title": "知识边界免责声明与猜测补洞",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "找不到资料时，用关于“找不到”的话填满一段，随后编出貌似合理的经历或动机。",
+        "detection": "Lexical. 7 literal watched phrase(s).",
+        "rewriteGuidance": "找不到资料时，用关于“找不到”的话填满一段，随后编出貌似合理的经历或动机。",
+        "severity": 5,
+        "watchPhrases": [
+          {
+            "text": "截至我的知识更新",
+            "kind": "literal",
+            "match": "截至我的知识更新"
+          },
+          {
+            "text": "根据现有公开信息",
+            "kind": "literal",
+            "match": "根据现有公开信息"
+          },
+          {
+            "text": "资料较为有限",
+            "kind": "literal",
+            "match": "资料较为有限"
+          },
+          {
+            "text": "可能",
+            "kind": "literal",
+            "match": "可能"
+          },
+          {
+            "text": "大概率",
+            "kind": "literal",
+            "match": "大概率"
+          },
+          {
+            "text": "不排除",
+            "kind": "literal",
+            "match": "不排除"
+          },
+          {
+            "text": "一直保持低调",
+            "kind": "literal",
+            "match": "一直保持低调"
+          }
+        ],
+        "examples": [
+          {
+            "before": "关于她的早年经历公开资料有限，这表明她一直保持低调，可能成长于普通家庭。",
+            "after": "现有材料没有记录她的早年经历。（若这点不重要，直接删掉。）"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:241",
+        "quote": "找不到资料时，用关于“找不到”的话填满一段，随后编出貌似合理的经历或动机。",
+        "notes": [
+          "Upstream heading: 21. 知识边界免责声明与猜测补洞"
+        ]
+      },
+      {
+        "upstreamRuleId": "22",
+        "signature": "assistant.sycophancy",
+        "signatureMapped": true,
+        "title": "讨好和附和",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "改前：你说成本会影响方案是否可行，这个问题提得非常好，你说得太对了！改后：你提到的成本问题会影响这个方案是否可行。",
+        "detection": "Lexical. 5 literal watched phrase(s).",
+        "rewriteGuidance": "改前：你说成本会影响方案是否可行，这个问题提得非常好，你说得太对了！ 改后：你提到的成本问题会影响这个方案是否可行。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "你说得太对了",
+            "kind": "literal",
+            "match": "你说得太对了"
+          },
+          {
+            "text": "这个问题非常棒",
+            "kind": "literal",
+            "match": "这个问题非常棒"
+          },
+          {
+            "text": "不得不佩服",
+            "kind": "literal",
+            "match": "不得不佩服"
+          },
+          {
+            "text": "毫无疑问",
+            "kind": "literal",
+            "match": "毫无疑问"
+          },
+          {
+            "text": "显然",
+            "kind": "literal",
+            "match": "显然"
+          }
+        ],
+        "examples": [
+          {
+            "before": "你说成本会影响方案是否可行，这个问题提得非常好，你说得太对了！",
+            "after": "你提到的成本问题会影响这个方案是否可行。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:251",
+        "quote": "改前：你说成本会影响方案是否可行，这个问题提得非常好，你说得太对了！ 改后：你提到的成本问题会影响这个方案是否可行。",
+        "notes": [
+          "No 问题 field and no trailing prose; guidance reconstructed from 改前/改后.",
+          "Upstream heading: 22. 讨好和附和"
+        ]
+      },
+      {
+        "upstreamRuleId": "23",
+        "signature": "lexical.filler_phrase",
+        "signatureMapped": true,
+        "title": "冗余套话",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "- “在当前这个时间节点”改为“现在”。- “基于……的基础上”改为“基于……”。",
+        "detection": "No watched list upstream. The 改法示例 substitutions define the rewrite.",
+        "rewriteGuidance": "- “在当前这个时间节点”改为“现在”。 - “基于……的基础上”改为“基于……”。 - “进行深入分析”改为“分析”。 - “有能力实现”改为“可以”。 - “值得注意的是，数据显示”改为“数据显示”。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:259",
+        "quote": "- “在当前这个时间节点”改为“现在”。 - “基于……的基础上”改为“基于……”。 - “进行深入分析”改为“分析”。 - “有能力实现”改为“可以”。 - “值得注意的是，数据显示”改为“数据显示”。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Guidance taken from the upstream 改法示例 substitutions.",
+          "Upstream heading: 23. 冗余套话"
+        ]
+      },
+      {
+        "upstreamRuleId": "24",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "过度限定",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "不要把真实的不确定性删掉。区分证据有限的谨慎和没有内容的叠词。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "不要把真实的不确定性删掉。区分证据有限的谨慎和没有内容的叠词。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "这项政策在某种程度上可能会对部分用户产生一定影响。",
+            "after": "这项政策可能影响部分用户。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:269",
+        "quote": "不要把真实的不确定性删掉。区分证据有限的谨慎和没有内容的叠词。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Guidance taken from the unlabelled paragraph after the examples.",
+          "Upstream heading: 24. 过度限定"
+        ]
+      },
+      {
+        "upstreamRuleId": "25",
+        "signature": "structural.universal_positive_ending",
+        "signatureMapped": true,
+        "title": "万能正能量结尾",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "改前：相信在大家共同努力下，公司必将乘风破浪，再创辉煌。改后：删除。",
+        "detection": "Lexical. 5 literal watched phrase(s).",
+        "rewriteGuidance": "改前：相信在大家共同努力下，公司必将乘风破浪，再创辉煌。 改后：删除。以最后一项事实、决定或待办收尾。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "未来可期",
+            "kind": "literal",
+            "match": "未来可期"
+          },
+          {
+            "text": "让我们拭目以待",
+            "kind": "literal",
+            "match": "让我们拭目以待"
+          },
+          {
+            "text": "相信在共同努力下",
+            "kind": "literal",
+            "match": "相信在共同努力下"
+          },
+          {
+            "text": "书写新的篇章",
+            "kind": "literal",
+            "match": "书写新的篇章"
+          },
+          {
+            "text": "行稳致远",
+            "kind": "literal",
+            "match": "行稳致远"
+          }
+        ],
+        "examples": [
+          {
+            "before": "相信在大家共同努力下，公司必将乘风破浪，再创辉煌。",
+            "after": "删除。以最后一项事实、决定或待办收尾。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:277",
+        "quote": "改前：相信在大家共同努力下，公司必将乘风破浪，再创辉煌。 改后：删除。以最后一项事实、决定或待办收尾。",
+        "notes": [
+          "No 问题 field and no trailing prose; guidance reconstructed from 改前/改后.",
+          "Upstream heading: 25. 万能正能量结尾"
+        ]
+      },
+      {
+        "upstreamRuleId": "26",
+        "signature": "chinese.idiom_stacking",
+        "signatureMapped": true,
+        "title": "四字词和成语连用",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "成串使用“凝心聚力、守正创新、踔厉奋发、笃行不怠”，制造气势但没有信息。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "成串使用“凝心聚力、守正创新、踔厉奋发、笃行不怠”，制造气势但没有信息。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "团队将凝心聚力、锐意进取、攻坚克难，推动项目落地见效。",
+            "after": "团队将推进项目。原文没有说明具体任务、负责人或时间。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:285",
+        "quote": "成串使用“凝心聚力、守正创新、踔厉奋发、笃行不怠”，制造气势但没有信息。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 26. 四字词和成语连用"
+        ]
+      },
+      {
+        "upstreamRuleId": "27",
+        "signature": "lexical.aphorism_dressing",
+        "signatureMapped": true,
+        "title": "权威口吻和“本质论”",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "先摆出看穿一切的姿态，再重复普通观点。",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "先摆出看穿一切的姿态，再重复普通观点。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "归根结底",
+            "kind": "literal",
+            "match": "归根结底"
+          },
+          {
+            "text": "从本质上看",
+            "kind": "literal",
+            "match": "从本质上看"
+          },
+          {
+            "text": "真正重要的是",
+            "kind": "literal",
+            "match": "真正重要的是"
+          },
+          {
+            "text": "核心在于",
+            "kind": "literal",
+            "match": "核心在于"
+          },
+          {
+            "text": "底层逻辑是",
+            "kind": "literal",
+            "match": "底层逻辑是"
+          },
+          {
+            "text": "毋庸置疑",
+            "kind": "literal",
+            "match": "毋庸置疑"
+          }
+        ],
+        "examples": [
+          {
+            "before": "归根结底，增长的底层逻辑在于真正理解用户。",
+            "after": "增长取决于是否理解用户需求。原文没有说明具体需求或证据。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:293",
+        "quote": "先摆出看穿一切的姿态，再重复普通观点。",
+        "notes": [
+          "Upstream heading: 27. 权威口吻和“本质论”"
+        ]
+      },
+      {
+        "upstreamRuleId": "28",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "预告式开场和导航话术",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "花一段话宣布接下来要说什么。",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "花一段话宣布接下来要说什么。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "让我们一起",
+            "kind": "literal",
+            "match": "让我们一起"
+          },
+          {
+            "text": "接下来带你",
+            "kind": "literal",
+            "match": "接下来带你"
+          },
+          {
+            "text": "下面将从三个方面",
+            "kind": "literal",
+            "match": "下面将从三个方面"
+          },
+          {
+            "text": "话不多说",
+            "kind": "literal",
+            "match": "话不多说"
+          },
+          {
+            "text": "先说结论",
+            "kind": "literal",
+            "match": "先说结论"
+          },
+          {
+            "text": "看完你就懂了",
+            "kind": "literal",
+            "match": "看完你就懂了"
+          }
+        ],
+        "examples": [
+          {
+            "before": "接下来，让我们深入探讨远程办公：它减少了通勤，但增加了跨时区沟通成本。",
+            "after": "远程办公减少了通勤，但增加了跨时区沟通成本。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:303",
+        "quote": "花一段话宣布接下来要说什么。",
+        "notes": [
+          "Upstream heading: 28. 预告式开场和导航话术"
+        ]
+      },
+      {
+        "upstreamRuleId": "29",
+        "signature": "structural.heading_restated",
+        "signatureMapped": true,
+        "title": "标题后重复标题",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "改前：## 交付风险 交付风险是我们必须重视的问题。两家供应商都把到货时间推迟了一周。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "改前：## 交付风险 交付风险是我们必须重视的问题。 两家供应商都把到货时间推迟了一周。 改后：## 交付风险 两家供应商都把到货时间推迟了一周。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "## 交付风险 交付风险是我们必须重视的问题。 两家供应商都把到货时间推迟了一周。",
+            "after": "## 交付风险 两家供应商都把到货时间推迟了一周。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:313",
+        "quote": "改前：## 交付风险 交付风险是我们必须重视的问题。 两家供应商都把到货时间推迟了一周。 改后：## 交付风险 两家供应商都把到货时间推迟了一周。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "No 问题 field and no trailing prose; guidance reconstructed from 改前/改后.",
+          "Upstream heading: 29. 标题后重复标题"
+        ]
+      },
+      {
+        "upstreamRuleId": "30",
+        "signature": "structural.writes_about_previous_version",
+        "signatureMapped": true,
+        "title": "以“修改过程”为中心写正文",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "非更新日志却反复说“新增、优化、调整、原来、现在”，不说明当前功能本身。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "非更新日志却反复说“新增、优化、调整、原来、现在”，不说明当前功能本身。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "我们新增了搜索筛选功能，替代原有只能逐页查找的方式。",
+            "after": "用户可以筛选搜索结果，不必再逐页查找。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:327",
+        "quote": "非更新日志却反复说“新增、优化、调整、原来、现在”，不说明当前功能本身。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 30. 以“修改过程”为中心写正文"
+        ]
+      },
+      {
+        "upstreamRuleId": "31",
+        "signature": "structural.one_line_closer",
+        "signatureMapped": true,
+        "title": "人造金句和短句连击",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "连续用极短句制造戏剧性，每句都像海报文案。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "连续用极短句制造戏剧性，每句都像海报文案。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "时代变了。规则变了。用户也变了。旧方法，彻底失效。",
+            "after": "规则和用户需求都变了，旧方法已经失效。原文没有说明发生了哪些变化。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:335",
+        "quote": "连续用极短句制造戏剧性，每句都像海报文案。",
+        "notes": [
+          "No 留意 watched list upstream; detection is model-judged.",
+          "Upstream heading: 31. 人造金句和短句连击"
+        ]
+      },
+      {
+        "upstreamRuleId": "32",
+        "signature": "lexical.aphorism_dressing",
+        "signatureMapped": true,
+        "title": "空洞比喻和格言公式",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "改前：数据是商业决策的灯塔，信任是团队协作的底色。改后：数据能帮助企业做决策；团队协作需要信任。",
+        "detection": "Lexical. 2 literal watched phrase(s), 3 construction template(s).",
+        "rewriteGuidance": "改前：数据是商业决策的灯塔，信任是团队协作的底色。 改后：数据能帮助企业做决策；团队协作需要信任。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "X 是 Y 的底色",
+            "kind": "template",
+            "match": "X 是 Y 的底色"
+          },
+          {
+            "text": "X 是通往 Y 的钥匙",
+            "kind": "template",
+            "match": "X 是通往 Y 的钥匙"
+          },
+          {
+            "text": "不是工具而是镜子",
+            "kind": "literal",
+            "match": "不是工具而是镜子"
+          },
+          {
+            "text": "让 X 成为可能",
+            "kind": "template",
+            "match": "让 X 成为可能"
+          },
+          {
+            "text": "时间会给出答案",
+            "kind": "literal",
+            "match": "时间会给出答案"
+          }
+        ],
+        "examples": [
+          {
+            "before": "数据是商业决策的灯塔，信任是团队协作的底色。",
+            "after": "数据能帮助企业做决策；团队协作需要信任。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:343",
+        "quote": "改前：数据是商业决策的灯塔，信任是团队协作的底色。 改后：数据能帮助企业做决策；团队协作需要信任。",
+        "notes": [
+          "No 问题 field and no trailing prose; guidance reconstructed from 改前/改后.",
+          "Upstream heading: 32. 空洞比喻和格言公式"
+        ]
+      },
+      {
+        "upstreamRuleId": "33",
+        "signature": "structural.staged_candor",
+        "signatureMapped": true,
+        "title": "假装坦诚的反问开头",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "用戏剧停顿制造亲密感或悬念，后面却只是普通判断。",
+        "detection": "Lexical. 4 literal watched phrase(s), 1 construction template(s).",
+        "rewriteGuidance": "用戏剧停顿制造亲密感或悬念，后面却只是普通判断。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "说实话？",
+            "kind": "literal",
+            "match": "说实话？"
+          },
+          {
+            "text": "答案可能出乎意料",
+            "kind": "literal",
+            "match": "答案可能出乎意料"
+          },
+          {
+            "text": "你真的了解……吗",
+            "kind": "template",
+            "match": "你真的了解……吗"
+          },
+          {
+            "text": "问题来了",
+            "kind": "literal",
+            "match": "问题来了"
+          },
+          {
+            "text": "那么代价是什么",
+            "kind": "literal",
+            "match": "那么代价是什么"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这款软件值得买吗？说实话？取决于你多久用一次。",
+            "after": "这款软件值不值得买，取决于你的使用频率。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:351",
+        "quote": "用戏剧停顿制造亲密感或悬念，后面却只是普通判断。",
+        "notes": [
+          "Upstream heading: 33. 假装坦诚的反问开头"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,1281 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "hardikpandya/stop-slop",
+    "sourceCommit": "8da1f030185bdfe8471220585162991eaeb970e9",
+    "extractedAt": "2026-09-15T21:18:11.943Z",
+    "sources": [
+      "references/phrases.md",
+      "references/structures.md",
+      "references/examples.md",
+      "SKILL.md",
+      "CHANGELOG.md"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "phrase-throat-clearing-openers",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "Throat-Clearing Openers",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Remove these announcement phrases. State the content directly.",
+        "detection": "Lexical and structural. 10 literal watched phrase(s), matched case-insensitively; 5 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "Here's the thing:",
+            "kind": "literal",
+            "match": "here's the thing:"
+          },
+          {
+            "text": "Here's what [X]",
+            "kind": "template",
+            "match": "Here's what [X]"
+          },
+          {
+            "text": "Here's this [X]",
+            "kind": "template",
+            "match": "Here's this [X]"
+          },
+          {
+            "text": "Here's that [X]",
+            "kind": "template",
+            "match": "Here's that [X]"
+          },
+          {
+            "text": "Here's why [X]",
+            "kind": "template",
+            "match": "Here's why [X]"
+          },
+          {
+            "text": "The uncomfortable truth is",
+            "kind": "literal",
+            "match": "the uncomfortable truth is"
+          },
+          {
+            "text": "It turns out",
+            "kind": "literal",
+            "match": "it turns out"
+          },
+          {
+            "text": "The real [X] is",
+            "kind": "template",
+            "match": "The real [X] is"
+          },
+          {
+            "text": "Let me be clear",
+            "kind": "literal",
+            "match": "let me be clear"
+          },
+          {
+            "text": "The truth is",
+            "kind": "literal",
+            "match": "the truth is"
+          },
+          {
+            "text": "I'll say it again:",
+            "kind": "literal",
+            "match": "i'll say it again:"
+          },
+          {
+            "text": "I'm going to be honest",
+            "kind": "literal",
+            "match": "i'm going to be honest"
+          },
+          {
+            "text": "Can we talk about",
+            "kind": "literal",
+            "match": "can we talk about"
+          },
+          {
+            "text": "Here's what I find interesting",
+            "kind": "literal",
+            "match": "here's what i find interesting"
+          },
+          {
+            "text": "Here's the problem though",
+            "kind": "literal",
+            "match": "here's the problem though"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Here's the thing: building products is hard. Not because the technology is complex. Because people are complex. Let that sink in.",
+            "after": "Building products is hard. Technology is manageable. People aren't.",
+            "note": "Example 1: Throat-Clearing + Binary Contrast"
+          }
+        ],
+        "weakAlone": true,
+        "locator": "references/phrases.md:3-24 (entries 7-21)",
+        "quote": "Remove these announcement phrases. State the content directly.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 10 literal watched phrase(s), 5 construction template(s); entries at references/phrases.md:7-21.",
+          "One rule, not 15: the upstream lists watched items of one tell, and the canonical signature is the tell. One rule per phrase would give this adapter 15 rules for one problem, and at dedupe time one problem would be charged 15 times.",
+          "5 of the 15 entries are templates, not literal phrases: \"Here's what [X]\", \"Here's this [X]\", \"Here's that [X]\", \"Here's why [X]\", \"The real [X] is\" (references/phrases.md:8-11). The bracket is a slot, so nothing can be matched literally and a pattern matcher is required. The file's own prose paragraph (:23) treats them as one family — 'Any \"here's what/this/that\" construction' — which is why they belong to this rule rather than to a rule of their own.",
+          "5 entry is classified template because it carries a slot marker, so it is a shape rather than a string (extract/phrase.ts:16-22). The match field carries the upstream wording for a human reader; literal matching must not use it.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-emphasis-crutches",
+        "signature": "structural.staged_candor",
+        "signatureMapped": true,
+        "title": "Emphasis Crutches",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "These add no meaning. Delete them.",
+        "detection": "Lexical and structural. 6 literal watched phrase(s), matched case-insensitively; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "Full stop",
+            "kind": "literal",
+            "match": "full stop"
+          },
+          {
+            "text": "Period",
+            "kind": "literal",
+            "match": "period"
+          },
+          {
+            "text": "Let that sink in",
+            "kind": "literal",
+            "match": "let that sink in"
+          },
+          {
+            "text": "This matters because",
+            "kind": "literal",
+            "match": "this matters because"
+          },
+          {
+            "text": "Make no mistake",
+            "kind": "literal",
+            "match": "make no mistake"
+          },
+          {
+            "text": "Here's why that matters",
+            "kind": "literal",
+            "match": "here's why that matters"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/phrases.md:25-34 (entries 29-33)",
+        "quote": "These add no meaning. Delete them.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 6 literal watched phrase(s); entries at references/phrases.md:29-33.",
+          "Two entries sit in a different canonical bucket from the rest: \"This matters because\" and \"Here's why that matters\" are the same causal-announcement move as phrase-throat-clearing-openers, and ai-humanizer files all five together in EMPHASIS_CRUTCH (scripts/lexicons.mjs:178-184). The upstream files them here; the adapter follows the file and records the overlap instead of moving entries between rules.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-business-jargon",
+        "signature": "lexical.business_jargon",
+        "signatureMapped": true,
+        "title": "Business Jargon",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Replace with plain language.",
+        "detection": "Lexical and structural. 11 literal watched phrase(s), matched case-insensitively.",
+        "rewriteGuidance": "Cut the phrase and state the content directly. The upstream's own replacements: \"Navigate\": Handle, address. challenges; \"Unpack\": Explain, examine. analysis; \"Lean into\": Accept, embrace; \"Landscape\": Situation, field. context; \"Game-changer\": Significant, important; \"Double down\": Commit, increase; \"Deep dive\": Analysis, examination; \"Take a step back\": Reconsider; \"Moving forward\": Next, from now; \"Circle back\": Return to, revisit; \"On the same page\": Aligned, agreed.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "Navigate",
+            "kind": "literal",
+            "match": "navigate",
+            "note": "Use instead: Handle, address. challenges"
+          },
+          {
+            "text": "Unpack",
+            "kind": "literal",
+            "match": "unpack",
+            "note": "Use instead: Explain, examine. analysis"
+          },
+          {
+            "text": "Lean into",
+            "kind": "literal",
+            "match": "lean into",
+            "note": "Use instead: Accept, embrace"
+          },
+          {
+            "text": "Landscape",
+            "kind": "literal",
+            "match": "landscape",
+            "note": "Use instead: Situation, field. context"
+          },
+          {
+            "text": "Game-changer",
+            "kind": "literal",
+            "match": "game-changer",
+            "note": "Use instead: Significant, important"
+          },
+          {
+            "text": "Double down",
+            "kind": "literal",
+            "match": "double down",
+            "note": "Use instead: Commit, increase"
+          },
+          {
+            "text": "Deep dive",
+            "kind": "literal",
+            "match": "deep dive",
+            "note": "Use instead: Analysis, examination"
+          },
+          {
+            "text": "Take a step back",
+            "kind": "literal",
+            "match": "take a step back",
+            "note": "Use instead: Reconsider"
+          },
+          {
+            "text": "Moving forward",
+            "kind": "literal",
+            "match": "moving forward",
+            "note": "Use instead: Next, from now"
+          },
+          {
+            "text": "Circle back",
+            "kind": "literal",
+            "match": "circle back",
+            "note": "Use instead: Return to, revisit"
+          },
+          {
+            "text": "On the same page",
+            "kind": "literal",
+            "match": "on the same page",
+            "note": "Use instead: Aligned, agreed"
+          }
+        ],
+        "examples": [
+          {
+            "before": "In today's fast-paced landscape, we need to lean into discomfort and navigate uncertainty with clarity. This matters because your competition isn't waiting.",
+            "after": "Move faster. Your competition is.",
+            "note": "Example 3: Business Jargon Stack"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/phrases.md:35-52 (entries 41-51)",
+        "quote": "Replace with plain language.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 11 literal watched phrase(s), 11 carrying the upstream's replacement in the note; entries at references/phrases.md:41-51.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-adverbs",
+        "signature": "lexical.adverb_filler",
+        "signatureMapped": true,
+        "title": "Adverbs",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Kill all adverbs. No -ly words. No softeners, no intensifiers, no hedges.",
+        "detection": "Lexical and structural. 15 literal watched phrase(s), matched case-insensitively; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "really",
+            "kind": "literal",
+            "match": "really"
+          },
+          {
+            "text": "just",
+            "kind": "literal",
+            "match": "just"
+          },
+          {
+            "text": "literally",
+            "kind": "literal",
+            "match": "literally"
+          },
+          {
+            "text": "genuinely",
+            "kind": "literal",
+            "match": "genuinely"
+          },
+          {
+            "text": "honestly",
+            "kind": "literal",
+            "match": "honestly"
+          },
+          {
+            "text": "simply",
+            "kind": "literal",
+            "match": "simply"
+          },
+          {
+            "text": "actually",
+            "kind": "literal",
+            "match": "actually"
+          },
+          {
+            "text": "deeply",
+            "kind": "literal",
+            "match": "deeply"
+          },
+          {
+            "text": "truly",
+            "kind": "literal",
+            "match": "truly"
+          },
+          {
+            "text": "fundamentally",
+            "kind": "literal",
+            "match": "fundamentally"
+          },
+          {
+            "text": "inherently",
+            "kind": "literal",
+            "match": "inherently"
+          },
+          {
+            "text": "inevitably",
+            "kind": "literal",
+            "match": "inevitably"
+          },
+          {
+            "text": "interestingly",
+            "kind": "literal",
+            "match": "interestingly"
+          },
+          {
+            "text": "importantly",
+            "kind": "literal",
+            "match": "importantly"
+          },
+          {
+            "text": "crucially",
+            "kind": "literal",
+            "match": "crucially"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/phrases.md:53-74 (entries 59-73)",
+        "quote": "Kill all adverbs. No -ly words. No softeners, no intensifiers, no hedges.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 15 literal watched phrase(s); entries at references/phrases.md:59-73.",
+          "One rule, not 15: the upstream lists watched items of one tell, and the canonical signature is the tell. One rule per phrase would give this adapter 15 rules for one problem, and at dedupe time one problem would be charged 15 times.",
+          "ABSOLUTISM: references/phrases.md:55 \"Kill all adverbs. No -ly words. No softeners, no intensifiers, no hedges.\" Imported with weakAlone: true for every entry (criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts)). ai-humanizer deliberately does not import the absolute form: its adverb-filler detector is density-gated (engines/lexical.mjs:243, 4 hits at 0.8 per 100 words) and its registry weight is the file's lowest (registry/rules.mjs:185-188). Inheriting \"kill all adverbs\" would reintroduce exactly the false positives that gate exists to prevent.",
+          "The 15 adverbs run references/phrases.md:59-73, and the same \"## Adverbs\" heading also carries the 7 filler phrases at :77-83. Two lists, one heading, two tells — which is why phrase-filler-phrases is split out of it; the shared heading line is reported here so the split is auditable rather than surprising.",
+          "\"crucially\" (references/phrases.md:73) is the one entry in this category with no counterpart anywhere else in the corpus. Verified by searching every other clone for the string: zero hits outside stop-slop. ai-humanizer's ADVERB_FILLER (scripts/lexicons.mjs:147-152) holds 15 words and \"crucially\" is not among them; nor is it in AI_OPENERS (scripts/lexicons.mjs:41-61) or BANNED_VOCAB (scripts/lexicons.mjs:14-38).",
+          "\"importantly\" (references/phrases.md:72) and \"interestingly\" (:71) are NOT unique even though both are absent from ADVERB_FILLER: ai-humanizer absorbed them as openers, \"importantly,\" at scripts/lexicons.mjs:45 and \"interestingly,\" at :50. Missing from the corresponding list is not evidence of uniqueness; absence from the whole clone is.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute.",
+          "Shares signature lexical.adverb_filler with structure-word-patterns. One tell under two headings: recorded so the collision is visible at dedupe time rather than reading as a second discovery."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-filler-phrases",
+        "signature": "lexical.wordy_connectives",
+        "signatureMapped": true,
+        "title": "Filler phrases",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Also cut these filler phrases:",
+        "detection": "Lexical and structural. 6 literal watched phrase(s), matched case-insensitively; 1 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "At its core",
+            "kind": "literal",
+            "match": "at its core"
+          },
+          {
+            "text": "In today's [X]",
+            "kind": "template",
+            "match": "In today's [X]"
+          },
+          {
+            "text": "It's worth noting",
+            "kind": "literal",
+            "match": "it's worth noting"
+          },
+          {
+            "text": "At the end of the day",
+            "kind": "literal",
+            "match": "at the end of the day"
+          },
+          {
+            "text": "When it comes to",
+            "kind": "literal",
+            "match": "when it comes to"
+          },
+          {
+            "text": "In a world where",
+            "kind": "literal",
+            "match": "in a world where"
+          },
+          {
+            "text": "The reality is",
+            "kind": "literal",
+            "match": "the reality is"
+          }
+        ],
+        "examples": [
+          {
+            "before": "It turns out that most teams struggle with alignment. The uncomfortable truth is that nobody wants to admit they're confused. And that's okay.",
+            "after": "Teams struggle with alignment. Nobody admits confusion.",
+            "note": "Example 2: Filler + Unnecessary Reassurance"
+          }
+        ],
+        "weakAlone": true,
+        "locator": "references/phrases.md:53-84 (entries 77-83)",
+        "quote": "Also cut these filler phrases:",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 6 literal watched phrase(s), 1 construction template(s); entries at references/phrases.md:77-83.",
+          "This category has no heading of its own: it is the second list inside \"## Adverbs\" (references/phrases.md:53), introduced by the lead-in \"Also cut these filler phrases:\" (references/phrases.md:75). The lead-in is the only label its 7 entries have, so the id is slugs from that line rather than from a `##`, and the locator points at the real entry range.",
+          "\"In today's [X]\" (references/phrases.md:78) is classified template, not literal: the bracket is a slot, so no detector can match the string. See the note on phrase-adverbs for the other five templates in this file.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-meta-commentary",
+        "signature": "lexical.meta_commentary",
+        "signatureMapped": true,
+        "title": "Meta-Commentary",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Remove self-referential asides. The essay should move, not announce its own structure.",
+        "detection": "Lexical and structural. 11 literal watched phrase(s), matched case-insensitively; 1 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "Hint:",
+            "kind": "literal",
+            "match": "hint:"
+          },
+          {
+            "text": "Plot twist:",
+            "kind": "literal",
+            "match": "plot twist:"
+          },
+          {
+            "text": "Spoiler:",
+            "kind": "literal",
+            "match": "spoiler:"
+          },
+          {
+            "text": "You already know this, but",
+            "kind": "literal",
+            "match": "you already know this, but"
+          },
+          {
+            "text": "But that's another post",
+            "kind": "literal",
+            "match": "but that's another post"
+          },
+          {
+            "text": "X is a feature, not a bug",
+            "kind": "template",
+            "match": "X is a feature, not a bug"
+          },
+          {
+            "text": "Dressed up as",
+            "kind": "literal",
+            "match": "dressed up as"
+          },
+          {
+            "text": "The rest of this essay explains...",
+            "kind": "literal",
+            "match": "the rest of this essay explains..."
+          },
+          {
+            "text": "Let me walk you through...",
+            "kind": "literal",
+            "match": "let me walk you through..."
+          },
+          {
+            "text": "In this section, we'll...",
+            "kind": "literal",
+            "match": "in this section, we'll..."
+          },
+          {
+            "text": "As we'll see...",
+            "kind": "literal",
+            "match": "as we'll see..."
+          },
+          {
+            "text": "I want to explore...",
+            "kind": "literal",
+            "match": "i want to explore..."
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/phrases.md:85-100 (entries 89-99)",
+        "quote": "Remove self-referential asides. The essay should move, not announce its own structure.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 11 literal watched phrase(s), 1 construction template(s); entries at references/phrases.md:89-99.",
+          "5 of the entries end in an ellipsis — \"The rest of this essay explains...\", \"Let me walk you through...\", \"In this section, we'll...\", \"As we'll see...\", \"I want to explore...\" — and the shared classifier calls each of those a template because `...` is one of its markers (extract/phrase.ts:19). Here the dots mean \"and so on\" rather than \"a slot goes here\", so the entry is kept literal per the brief and the ellipsis is recorded: a detector should match the prefix rather than expect a literal \"...\". This is the only place this adapter knowingly disagrees with the shared classifier.",
+          "Three entries here are stop-slop-only: \"Hint:\" (references/phrases.md:89), \"X is a feature, not a bug\" (:93) and \"Dressed up as\" (:94). Verified by searching every other clone in the cache for each string: zero hits. ai-humanizer's META_COMMENTARY (scripts/lexicons.mjs:161-168) holds 15 entries and none of the three is among them.",
+          "The category itself is inherited, so the rule is attributed to both upstreams even though three of its items are stop-slop-only: `originatedIn` records where the RULE came from, and per-item residuals are named here rather than split into extra rules.",
+          "1 entry is classified template because it carries a slot marker, so it is a shape rather than a string (extract/phrase.ts:16-22). The match field carries the upstream wording for a human reader; literal matching must not use it.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-performative-emphasis",
+        "signature": "lexical.emphasis_crutch",
+        "signatureMapped": true,
+        "title": "Performative Emphasis",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "False intimacy or manufactured sincerity:",
+        "detection": "Lexical and structural. 3 literal watched phrase(s), matched case-insensitively; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "creeps in",
+            "kind": "literal",
+            "match": "creeps in"
+          },
+          {
+            "text": "I promise",
+            "kind": "literal",
+            "match": "i promise"
+          },
+          {
+            "text": "They exist, I promise",
+            "kind": "literal",
+            "match": "they exist, i promise"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/phrases.md:101-108 (entries 105-107)",
+        "quote": "False intimacy or manufactured sincerity:",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 3 literal watched phrase(s); entries at references/phrases.md:105-107.",
+          "The 3 entries changed lists on import: ai-humanizer put \"creeps in\", \"I promise\" and \"They exist, I promise\" in EMPHASIS_CRUTCH (scripts/lexicons.mjs:182-183) rather than in a performative-emphasis list of their own. The content is inherited even though this heading is not a heading there — presence of the strings decides `inherited`, not the shape of the list.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-telling-instead-of-showing",
+        "signature": "lexical.telling_not_showing",
+        "signatureMapped": true,
+        "title": "Telling Instead of Showing",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Announcing difficulty or significance rather than demonstrating it:",
+        "detection": "Lexical and structural. 3 literal watched phrase(s), matched case-insensitively; 1 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "This is genuinely hard",
+            "kind": "literal",
+            "match": "this is genuinely hard"
+          },
+          {
+            "text": "This is what leadership actually looks like",
+            "kind": "literal",
+            "match": "this is what leadership actually looks like"
+          },
+          {
+            "text": "This is what X actually looks like",
+            "kind": "template",
+            "match": "This is what X actually looks like"
+          },
+          {
+            "text": "actually matters",
+            "kind": "literal",
+            "match": "actually matters"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/phrases.md:109-117 (entries 113-116)",
+        "quote": "Announcing difficulty or significance rather than demonstrating it:",
+        "notes": [
+          "Shape: 3 literal watched phrase(s), 1 construction template(s); entries at references/phrases.md:113-116.",
+          "UNIQUE. ai-humanizer's README.md:293-294 claims it absorbed \"telling-not-showing\", but it has no rule id and no lexicon entry for it: searching the whole clone for each of the four phrases (\"This is genuinely hard\", \"This is what leadership actually looks like\", \"This is what X actually looks like\", \"actually matters\") returns zero hits, and searching every other clone in the cache returns zero too. A prose credit is not an absorption, and this rule therefore carries no `originatedIn`.",
+          "1 entry is classified template because it carries a slot marker, so it is a shape rather than a string (extract/phrase.ts:16-22). The match field carries the upstream wording for a human reader; literal matching must not use it.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute.",
+          "No originatedIn is set on this rule: unique means the content is in no other clone in the corpus, so attributing it to a second upstream would double-count it in the other direction. Re-verify with the searches named above before merging it with anything."
+        ]
+      },
+      {
+        "upstreamRuleId": "phrase-vague-declaratives",
+        "signature": "lexical.vague_declarative",
+        "signatureMapped": true,
+        "title": "Vague Declaratives",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Sentences that announce importance without naming the specific thing. Kill these.",
+        "detection": "Lexical and structural. 5 literal watched phrase(s), matched case-insensitively.",
+        "rewriteGuidance": "Cut the phrase and state the content directly.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "The reasons are structural",
+            "kind": "literal",
+            "match": "the reasons are structural"
+          },
+          {
+            "text": "The implications are significant",
+            "kind": "literal",
+            "match": "the implications are significant"
+          },
+          {
+            "text": "This is the deepest problem",
+            "kind": "literal",
+            "match": "this is the deepest problem"
+          },
+          {
+            "text": "The stakes are high",
+            "kind": "literal",
+            "match": "the stakes are high"
+          },
+          {
+            "text": "The consequences are real",
+            "kind": "literal",
+            "match": "the consequences are real"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/phrases.md:118-129 (entries 122-126)",
+        "quote": "Sentences that announce importance without naming the specific thing. Kill these.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "Shape: 5 literal watched phrase(s); entries at references/phrases.md:122-126.",
+          "All 5 entries are inherited verbatim: \"the reasons are structural\", \"the implications are significant\", \"the stakes are high\" and \"the consequences are real\" at scripts/lexicons.mjs:187-189, \"this is the deepest problem\" at :189, in ai-humanizer's VAGUE_DECLARATIVE. Its detector also builds a regex over the same nouns (scripts/engines/lexical.mjs:274-285), so the tell is implemented, not just listed.",
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-binary-contrasts",
+        "signature": "structural.negation_contrast",
+        "signatureMapped": true,
+        "title": "Binary Contrasts",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "These create false drama. State the point directly.",
+        "detection": "Lexical and structural. 11 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "State Y directly. \"The problem is Y.\" \"Y matters here.\" Drop the negation entirely.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "Not because X. Because Y.\" / \"Not because X, but because Y.",
+            "kind": "template",
+            "match": "Not because X. Because Y.\" / \"Not because X, but because Y.",
+            "note": "Telegraphed reversal"
+          },
+          {
+            "text": "[X] isn't the problem. [Y] is.",
+            "kind": "template",
+            "match": "[X] isn't the problem. [Y] is.",
+            "note": "Formulaic reframe"
+          },
+          {
+            "text": "The answer isn't X. It's Y.",
+            "kind": "template",
+            "match": "The answer isn't X. It's Y.",
+            "note": "Predictable pivot"
+          },
+          {
+            "text": "It feels like X. It's actually Y.",
+            "kind": "template",
+            "match": "It feels like X. It's actually Y.",
+            "note": "Setup/reveal cliche"
+          },
+          {
+            "text": "The question isn't X. It's Y.",
+            "kind": "template",
+            "match": "The question isn't X. It's Y.",
+            "note": "Rhetorical misdirection"
+          },
+          {
+            "text": "Not X. But Y.\" / \"not X, it's Y\" / \"isn't X, it's Y",
+            "kind": "template",
+            "match": "Not X. But Y.\" / \"not X, it's Y\" / \"isn't X, it's Y",
+            "note": "Mechanical contrast"
+          },
+          {
+            "text": "It's not this. It's that.",
+            "kind": "template",
+            "match": "It's not this. It's that.",
+            "note": "Same formula, different words"
+          },
+          {
+            "text": "stops being X and starts being Y",
+            "kind": "template",
+            "match": "stops being X and starts being Y",
+            "note": "False transformation arc"
+          },
+          {
+            "text": "doesn't mean X, but actually Y",
+            "kind": "template",
+            "match": "doesn't mean X, but actually Y",
+            "note": "Negation-then-assertion crutch"
+          },
+          {
+            "text": "is about X but not Y",
+            "kind": "template",
+            "match": "is about X but not Y",
+            "note": "False distinction"
+          },
+          {
+            "text": "not just X but also Y",
+            "kind": "template",
+            "match": "not just X but also Y",
+            "note": "Additive hedge"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Here's the thing: building products is hard. Not because the technology is complex. Because people are complex. Let that sink in.",
+            "after": "Building products is hard. Technology is manageable. People aren't.",
+            "note": "Example 1: Throat-Clearing + Binary Contrast"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/structures.md:3-22 (entries 9-19)",
+        "quote": "These create false drama. State the point directly.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-negative-listing",
+        "signature": "rhythm.negative_listing",
+        "signatureMapped": true,
+        "title": "Negative Listing",
+        "category": "rhythm",
+        "languages": [
+          "en"
+        ],
+        "description": "Listing what something is not before revealing what it is. A rhetorical striptease.",
+        "detection": "Lexical and structural. 2 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "State Z. The reader doesn't need the runway.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "Not a X... Not a Y... A Z.",
+            "kind": "template",
+            "match": "Not a X... Not a Y... A Z.",
+            "note": "Dramatic buildup through negation"
+          },
+          {
+            "text": "It wasn't X. It wasn't Y. It was Z.",
+            "kind": "template",
+            "match": "It wasn't X. It wasn't Y. It was Z.",
+            "note": "Same structure, past tense"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/structures.md:23-33 (entries 29-30)",
+        "quote": "Listing what something is not before revealing what it is. A rhetorical striptease.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-dramatic-fragmentation",
+        "signature": "structural.one_line_closer",
+        "signatureMapped": true,
+        "title": "Dramatic Fragmentation",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Sentence fragments for emphasis read as manufactured profundity.",
+        "detection": "Lexical and structural. 3 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "Complete sentences. Trust content over presentation.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "[Noun]. That's it. That's the [thing].",
+            "kind": "template",
+            "match": "[Noun]. That's it. That's the [thing].",
+            "note": "Performative simplicity"
+          },
+          {
+            "text": "X. And Y. And Z.",
+            "kind": "template",
+            "match": "X. And Y. And Z.",
+            "note": "Staccato drama"
+          },
+          {
+            "text": "This unlocks something. [Word].",
+            "kind": "template",
+            "match": "This unlocks something. [Word].",
+            "note": "Artificial revelation"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Speed. Quality. Cost. You can only pick two. That's it. That's the tradeoff.",
+            "after": "Speed, quality, cost—pick two.",
+            "note": "Example 4: Dramatic Fragmentation"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/structures.md:34-45 (entries 40-42)",
+        "quote": "Sentence fragments for emphasis read as manufactured profundity.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-rhetorical-setups",
+        "signature": "lexical.rhetorical_setup",
+        "signatureMapped": true,
+        "title": "Rhetorical Setups",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "These announce insight rather than deliver it.",
+        "detection": "Lexical and structural. 4 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Make the point. Let readers draw conclusions.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "What if [reframe]?",
+            "kind": "template",
+            "match": "What if [reframe]?",
+            "note": "Socratic posturing"
+          },
+          {
+            "text": "Here's what I mean:",
+            "kind": "template",
+            "match": "Here's what I mean:",
+            "note": "Redundant preview"
+          },
+          {
+            "text": "Think about it:",
+            "kind": "template",
+            "match": "Think about it:",
+            "note": "Condescending prompt"
+          },
+          {
+            "text": "And that's okay.",
+            "kind": "template",
+            "match": "And that's okay.",
+            "note": "Unnecessary permission"
+          }
+        ],
+        "examples": [
+          {
+            "before": "It turns out that most teams struggle with alignment. The uncomfortable truth is that nobody wants to admit they're confused. And that's okay.",
+            "after": "Teams struggle with alignment. Nobody admits confusion.",
+            "note": "Example 2: Filler + Unnecessary Reassurance"
+          },
+          {
+            "before": "What if I told you that the best teams don't optimize for productivity? Here's what I mean: they optimize for learning. Think about it.",
+            "after": "The best teams optimize for learning, not productivity.",
+            "note": "Example 5: Rhetorical Setup"
+          }
+        ],
+        "weakAlone": true,
+        "locator": "references/structures.md:46-58 (entries 52-55)",
+        "quote": "These announce insight rather than deliver it.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-formulaic-constructions",
+        "signature": "structural.formulaic_construction",
+        "signatureMapped": true,
+        "title": "Formulaic Constructions",
+        "category": "structural",
+        "languages": [
+          "en"
+        ],
+        "description": "The upstream states \"Formulaic Constructions\" as a heading with 2 construction template(s) and no prose explanation.",
+        "detection": "Lexical and structural. 2 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "Narrative template Indirect. Say \"X is broken\"",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "By the time X, I was Y.",
+            "kind": "template",
+            "match": "By the time X, I was Y.",
+            "note": "Narrative template"
+          },
+          {
+            "text": "X that isn't Y",
+            "kind": "template",
+            "match": "X that isn't Y",
+            "note": "Indirect. Say \"X is broken\""
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/structures.md:59-65 (entries 63-64)",
+        "quote": "By the time X, I was Y.",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "No \"**Instead:**\" line under this heading. The rewrite guidance is taken from the second column of the table (references/structures.md:59-65), not invented here.",
+          "No originatedIn is set on this rule: unique means the content is in no other clone in the corpus, so attributing it to a second upstream would double-count it in the other direction. Re-verify with the searches named above before merging it with anything."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-false-agency",
+        "signature": "lexical.false_agency",
+        "signatureMapped": true,
+        "title": "False Agency",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Giving inanimate things human verbs. Complaints don't \"become\" fixes. Bets don't \"live or die.\" Decisions don't \"emerge.\" A person does something to make those things happen. AI loves this because it avoids naming the actor.",
+        "detection": "Lexical and structural. 7 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "Name the human. \"The team fixed it that week\" beats \"the complaint becomes a fix.\" If no specific person fits, use \"you\" to put the reader in the seat.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "a complaint becomes a fix",
+            "kind": "template",
+            "match": "a complaint becomes a fix",
+            "note": "The complaint did nothing. Someone fixed it"
+          },
+          {
+            "text": "a bet lives or dies in days",
+            "kind": "template",
+            "match": "a bet lives or dies in days",
+            "note": "Bets don't have lifespans. Someone kills the project or ships it"
+          },
+          {
+            "text": "the decision emerges",
+            "kind": "template",
+            "match": "the decision emerges",
+            "note": "Decisions don't emerge. Someone decides"
+          },
+          {
+            "text": "the culture shifts",
+            "kind": "template",
+            "match": "the culture shifts",
+            "note": "Cultures don't shift on their own. People change behavior"
+          },
+          {
+            "text": "the conversation moves toward",
+            "kind": "template",
+            "match": "the conversation moves toward",
+            "note": "Conversations don't move. Someone steers"
+          },
+          {
+            "text": "the data tells us",
+            "kind": "template",
+            "match": "the data tells us",
+            "note": "Data sits there. Someone reads it and draws a conclusion"
+          },
+          {
+            "text": "the market rewards",
+            "kind": "template",
+            "match": "the market rewards",
+            "note": "Markets don't reward. Buyers pay for things"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/structures.md:66-81 (entries 72-78)",
+        "quote": "Giving inanimate things human verbs. Complaints don't \"become\" fixes. Bets don't \"live or die.\" Decisions don't \"emerge.\" A person does something to make those things happen. AI loves this because it avoids naming the actor.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-narrator-from-a-distance",
+        "signature": "structural.narrator_from_a_distance",
+        "signatureMapped": true,
+        "title": "Narrator-from-a-Distance",
+        "category": "structural",
+        "languages": [
+          "en"
+        ],
+        "description": "Floating above the scene instead of putting the reader in it.",
+        "detection": "Lexical and structural. 4 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used.",
+        "rewriteGuidance": "Put the reader in the room. \"You don't sit down one day and decide to...\" beats \"Nobody designed this.\"",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "Nobody designed this.",
+            "kind": "template",
+            "match": "Nobody designed this.",
+            "note": "Disembodied observation"
+          },
+          {
+            "text": "This happens because...",
+            "kind": "template",
+            "match": "This happens because...",
+            "note": "Lecturer voice"
+          },
+          {
+            "text": "This is why...",
+            "kind": "template",
+            "match": "This is why...",
+            "note": "Same"
+          },
+          {
+            "text": "People tend to...",
+            "kind": "template",
+            "match": "People tend to...",
+            "note": "Armchair sociologist"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/structures.md:82-94 (entries 88-91)",
+        "quote": "Floating above the scene instead of putting the reader in it.",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "No originatedIn is set on this rule: unique means the content is in no other clone in the corpus, so attributing it to a second upstream would double-count it in the other direction. Re-verify with the searches named above before merging it with anything."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-passive-voice",
+        "signature": "lexical.passive_and_subjectless",
+        "signatureMapped": true,
+        "title": "Passive Voice",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Every sentence needs a subject doing something. Passive voice hides the actor and drains energy.",
+        "detection": "Lexical and structural. 4 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Find the actor. Put them at the front of the sentence.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "X was created",
+            "kind": "template",
+            "match": "X was created",
+            "note": "Name who created it"
+          },
+          {
+            "text": "It is believed that",
+            "kind": "template",
+            "match": "It is believed that",
+            "note": "Name who believes it"
+          },
+          {
+            "text": "Mistakes were made",
+            "kind": "template",
+            "match": "Mistakes were made",
+            "note": "Name who made them"
+          },
+          {
+            "text": "The decision was reached",
+            "kind": "template",
+            "match": "The decision was reached",
+            "note": "Name who decided"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/structures.md:95-107 (entries 101-104)",
+        "quote": "Every sentence needs a subject doing something. Passive voice hides the actor and drains energy.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-sentence-starters-to-avoid",
+        "signature": "structural.staged_candor",
+        "signatureMapped": true,
+        "title": "Sentence Starters to Avoid",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Wh- openers become a crutch. \"What makes this hard is...\" becomes \"The constraint is...\" or better, name the specific constraint.",
+        "detection": "Lexical and structural. 3 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Wh- openers become a crutch. \"What makes this hard is...\" becomes \"The constraint is...\" or better, name the specific constraint.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "Sentences starting with What, When, Where, Which, Who, Why, How",
+            "kind": "template",
+            "match": "Sentences starting with What, When, Where, Which, Who, Why, How",
+            "note": "Restructure. Lead with the subject or the verb"
+          },
+          {
+            "text": "Paragraphs starting with \"So\"",
+            "kind": "template",
+            "match": "Paragraphs starting with \"So\"",
+            "note": "Start with content"
+          },
+          {
+            "text": "Sentences starting with \"Look,\"",
+            "kind": "template",
+            "match": "Sentences starting with \"Look,\"",
+            "note": "Remove"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/structures.md:108-117 (entries 112-114)",
+        "quote": "Wh- openers become a crutch. \"What makes this hard is...\" becomes \"The constraint is...\" or better, name the specific constraint.",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "No \"**Instead:**\" line under this heading. The rewrite guidance is taken from the paragraph that follows the table (references/structures.md:108-117), not invented here.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-rhythm-patterns",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "Rhythm Patterns",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The upstream states \"Rhythm Patterns\" as a heading with 6 construction template(s) and no prose explanation.",
+        "detection": "Lexical and structural. 6 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "Use two items or one Let questions breathe or cut them Vary endings Remove. Use commas or periods. No em dashes at all Don't stack short punchy sentences Hedging disguised as reassurance",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "Three-item lists",
+            "kind": "template",
+            "match": "Three-item lists",
+            "note": "Use two items or one"
+          },
+          {
+            "text": "Questions answered immediately",
+            "kind": "template",
+            "match": "Questions answered immediately",
+            "note": "Let questions breathe or cut them"
+          },
+          {
+            "text": "Every paragraph ends punchily",
+            "kind": "template",
+            "match": "Every paragraph ends punchily",
+            "note": "Vary endings"
+          },
+          {
+            "text": "Em-dashes",
+            "kind": "template",
+            "match": "Em-dashes",
+            "note": "Remove. Use commas or periods. No em dashes at all"
+          },
+          {
+            "text": "Staccato fragmentation",
+            "kind": "template",
+            "match": "Staccato fragmentation",
+            "note": "Don't stack short punchy sentences"
+          },
+          {
+            "text": "Not always. Not perfectly.",
+            "kind": "template",
+            "match": "Not always. Not perfectly.",
+            "note": "Hedging disguised as reassurance"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/structures.md:118-128 (entries 122-127)",
+        "quote": "Three-item lists",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "No \"**Instead:**\" line under this heading. The rewrite guidance is taken from the second column of the table (references/structures.md:118-128), not invented here.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute.",
+          "Shares signature rhythm.uniform_rhythm with SKILL.md:25 (\"No em dashes\") and :43 (\"Em-dash anywhere? Remove it.\"). One tell under two headings: recorded so the collision is visible at dedupe time rather than reading as a second discovery."
+        ]
+      },
+      {
+        "upstreamRuleId": "structure-word-patterns",
+        "signature": "lexical.adverb_filler",
+        "signatureMapped": true,
+        "title": "Word Patterns",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "The upstream states \"Word Patterns\" as a heading with 2 construction template(s) and no prose explanation.",
+        "detection": "Lexical and structural. 2 construction template(s), a shape rather than a string — a pattern matcher must be written for these and literal matching must not be used; weak alone: stated absolutely upstream, so corroboration is required before acting.",
+        "rewriteGuidance": "False authority. Use specifics instead of sweeping claims. every, always, never, everyone, everybody, nobody Empty emphasis. See phrases.md for full list. -ly words, \"really,\" \"just,\" \"literally,\" \"genuinely,\" \"honestly,\" \"simply,\" \"actually\"",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "Lazy extremes",
+            "kind": "template",
+            "match": "Lazy extremes",
+            "note": "False authority. Use specifics instead of sweeping claims. every, always, never, everyone, everybody, nobody"
+          },
+          {
+            "text": "All adverbs",
+            "kind": "template",
+            "match": "All adverbs",
+            "note": "Empty emphasis. See phrases.md for full list. -ly words, \"really,\" \"just,\" \"literally,\" \"genuinely,\" \"honestly,\" \"simply,\" \"actually\""
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "references/structures.md:129-135 (entries 133-134)",
+        "quote": "Lazy extremes",
+        "originatedIn": "judetelan/ai-humanizer",
+        "notes": [
+          "stop-slop is research-only (src/upstream/adapters/stop-slop/index.ts:20-26): its prose must not be imported wholesale, because roughly nine tenths of it is already in the corpus via judetelan/ai-humanizer and its absolute rules conflict with the suite suppression policy.",
+          "No \"**Instead:**\" line under this heading. The rewrite guidance is taken from the second column of the table (references/structures.md:129-135), not invented here.",
+          "weakAlone: true — criterion: stated as an absolute upstream, or a single common word whose presence in edited English is uninformative (see WEAK_ALONE_CRITERION in parse.ts). It may fire only with corroboration, which is how the suite acts on this upstream's absolute wording without importing the absolute.",
+          "Shares signature lexical.adverb_filler with phrase-adverbs. One tell under two headings: recorded so the collision is visible at dedupe time rather than reading as a second discovery."
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

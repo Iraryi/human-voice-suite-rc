@@ -1,0 +1,809 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "ai-zixun/humanizer-zh",
+    "sourceCommit": "f75f1ac9735c4f10da1bba0148e0ea7228c5c3b3",
+    "extractedAt": "2026-09-15T21:18:11.997Z",
+    "sources": [
+      "references/patterns.md",
+      "SKILL.md"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "1",
+        "signature": "structural.negation_contrast",
+        "signatureMapped": true,
+        "title": "机械对照句",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "这些句式不是不能用，而是 AI 很容易反复套用，导致节奏发硬。",
+        "detection": "Lexical. 0 literal watched phrase(s), 4 construction template(s).",
+        "rewriteGuidance": "这些句式不是不能用，而是 AI 很容易反复套用，导致节奏发硬。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "不是……而是……",
+            "kind": "template",
+            "match": "不是……而是……"
+          },
+          {
+            "text": "不仅……还……",
+            "kind": "template",
+            "match": "不仅……还……"
+          },
+          {
+            "text": "不再只是……而是开始……",
+            "kind": "template",
+            "match": "不再只是……而是开始……"
+          },
+          {
+            "text": "X 并不意味着 Y，而是意味着 Z",
+            "kind": "template",
+            "match": "X 并不意味着 Y，而是意味着 Z"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这不是一次普通的产品更新，而是一次重新定义行业边界的重大转折。",
+            "after": "这次更新的重要性不在新功能本身，而在它把行业竞争拉到了新的层级。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:19",
+        "quote": "这些句式不是不能用，而是 AI 很容易反复套用，导致节奏发硬。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "2",
+        "signature": "lexical.translationese_connective",
+        "signatureMapped": true,
+        "title": "翻译腔连接词",
+        "category": "lexical",
+        "languages": [
+          "zh"
+        ],
+        "description": "翻译腔连接词",
+        "detection": "Lexical. 5 literal watched phrase(s), 3 construction template(s).",
+        "rewriteGuidance": "能删就删。\n能换成更短的中文连接就换。\n能直接调整句序就不要硬加连接词。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "对于……来说",
+            "kind": "template",
+            "match": "对于……来说"
+          },
+          {
+            "text": "基于此",
+            "kind": "literal",
+            "match": "基于此"
+          },
+          {
+            "text": "围绕……展开",
+            "kind": "template",
+            "match": "围绕……展开"
+          },
+          {
+            "text": "从某种意义上说",
+            "kind": "literal",
+            "match": "从某种意义上说"
+          },
+          {
+            "text": "值得注意的是",
+            "kind": "literal",
+            "match": "值得注意的是"
+          },
+          {
+            "text": "与此同时",
+            "kind": "literal",
+            "match": "与此同时"
+          },
+          {
+            "text": "在这一背景下",
+            "kind": "literal",
+            "match": "在这一背景下"
+          },
+          {
+            "text": "使得……得以……",
+            "kind": "template",
+            "match": "使得……得以……"
+          }
+        ],
+        "examples": [
+          {
+            "before": "在这一背景下，AI Agent 对于软件团队来说，正在成为提升效率的重要抓手。",
+            "after": "在这样的环境里，AI Agent 正在进入软件团队的日常流程，先改变的是效率。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:38",
+        "quote": "翻译腔连接词",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "3",
+        "signature": "structural.inflated_significance",
+        "signatureMapped": true,
+        "title": "空泛大词",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "空泛大词",
+        "detection": "Lexical. 8 literal watched phrase(s).",
+        "rewriteGuidance": "删掉没有证据支撑的宏大判断。\n改写成具体机制、对象和后果。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "颠覆",
+            "kind": "literal",
+            "match": "颠覆"
+          },
+          {
+            "text": "革命",
+            "kind": "literal",
+            "match": "革命"
+          },
+          {
+            "text": "赋能",
+            "kind": "literal",
+            "match": "赋能"
+          },
+          {
+            "text": "重塑",
+            "kind": "literal",
+            "match": "重塑"
+          },
+          {
+            "text": "引领",
+            "kind": "literal",
+            "match": "引领"
+          },
+          {
+            "text": "开启新篇章",
+            "kind": "literal",
+            "match": "开启新篇章"
+          },
+          {
+            "text": "里程碑",
+            "kind": "literal",
+            "match": "里程碑"
+          },
+          {
+            "text": "深远影响",
+            "kind": "literal",
+            "match": "深远影响"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这一能力将彻底颠覆内容产业，并为创作者生态带来革命性变化。",
+            "after": "这一能力先改变的，是内容团队的分工。过去需要外包或多人协作的初稿生产，现在可以在内部更快完成。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:65",
+        "quote": "空泛大词",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "4",
+        "signature": "structural.one_line_closer",
+        "signatureMapped": true,
+        "title": "段落结尾的口号化收束",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "段落结尾的口号化收束",
+        "detection": "Lexical. 4 literal watched phrase(s).",
+        "rewriteGuidance": "用一个具体判断收束。\n回到长期变量、约束条件或下一步变化。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "未来已经到来",
+            "kind": "literal",
+            "match": "未来已经到来"
+          },
+          {
+            "text": "这只是开始",
+            "kind": "literal",
+            "match": "这只是开始"
+          },
+          {
+            "text": "行业将迎来新的篇章",
+            "kind": "literal",
+            "match": "行业将迎来新的篇章"
+          },
+          {
+            "text": "真正的变革才刚刚开始",
+            "kind": "literal",
+            "match": "真正的变革才刚刚开始"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这不仅是技术升级，更预示着一个全新时代的到来。",
+            "after": "更实际的变化是，团队要开始重新分配权限、预算和验收流程。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:91",
+        "quote": "段落结尾的口号化收束",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "5",
+        "signature": "formatting.bold_label_list",
+        "signatureMapped": true,
+        "title": "列表和排比成瘾",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "一段里硬塞三项排比，显得像演讲稿。每个 bullet 都是 粗体小标题 + 冒号 + 解释。",
+        "detection": "Lexical. 1 literal watched phrase(s).",
+        "rewriteGuidance": "一段里硬塞三项排比，显得像演讲稿。每个 bullet 都是 粗体小标题 + 冒号 + 解释。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "粗体小标题 + 冒号 + 解释",
+            "kind": "literal",
+            "match": "粗体小标题 + 冒号 + 解释"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这个平台带来了三点变化：第一，效率提升；第二，协作增强；第三，体验优化。",
+            "after": "这个平台最先改掉的是工作方式。任务推进更快了，协作也更集中，很多原本零散的操作被收进了同一条流程里。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:113",
+        "quote": "一段里硬塞三项排比，显得像演讲稿。 每个 bullet 都是 粗体小标题 + 冒号 + 解释。 能写成一段的内容被拆成很多点。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "6",
+        "signature": "chinese.punctuation_width",
+        "signatureMapped": true,
+        "title": "冒号、破折号和引号",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "冒号、破折号和引号",
+        "detection": "Lexical. 4 literal watched phrase(s).",
+        "rewriteGuidance": "冒号只在确实需要引出定义、列表或说明时使用。\n长破折号 —— 优先改成逗号、句号或拆句。\n中文正文引号默认用全角 \"\"，如项目声明使用 「」 则全篇统一改用，不要混用两种样式。详见 [SKILL.md](../SKILL.md) Rule 6。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "——",
+            "kind": "literal",
+            "match": "——"
+          },
+          {
+            "text": "：",
+            "kind": "literal",
+            "match": "："
+          },
+          {
+            "text": "\"\"",
+            "kind": "literal",
+            "match": "\"\""
+          },
+          {
+            "text": "「」",
+            "kind": "literal",
+            "match": "「」"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这个判断有三个原因：成本下降、速度提升、组织接受度变高。更重要的是——它改变了团队的默认工作流。",
+            "after": "这个判断有三个原因，成本下降了，速度提升了，组织接受度也变高了。更重要的是，它改变了团队的默认工作流。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:129",
+        "quote": "冒号、破折号和引号",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "7",
+        "signature": "chinese.officialese",
+        "signatureMapped": true,
+        "title": "营销稿与官样文章腔",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "营销稿与官样文章腔",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "如果没有真实指标或动作，直接删。\n如果有事实，把套话换成具体动作。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "持续深化",
+            "kind": "literal",
+            "match": "持续深化"
+          },
+          {
+            "text": "全面推进",
+            "kind": "literal",
+            "match": "全面推进"
+          },
+          {
+            "text": "积极探索",
+            "kind": "literal",
+            "match": "积极探索"
+          },
+          {
+            "text": "取得显著成效",
+            "kind": "literal",
+            "match": "取得显著成效"
+          },
+          {
+            "text": "实现高质量发展",
+            "kind": "literal",
+            "match": "实现高质量发展"
+          },
+          {
+            "text": "打造闭环",
+            "kind": "literal",
+            "match": "打造闭环"
+          }
+        ],
+        "examples": [
+          {
+            "before": "公司正持续深化 AI 战略布局，全面推进多业务场景落地。",
+            "after": "公司已经把 AI 用到客服、投放和内部知识库里，接下来还会继续扩到更多团队。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:145",
+        "quote": "营销稿与官样文章腔",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "8",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "过度谨慎或过度确定",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "两种都常见： 过度谨慎：在某种程度上可能会对……产生一定影响 过度确定：必然彻底改写整个行业",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "如果证据有限，就明确范围和条件。\n如果趋势明显，就说清「先影响谁、怎么影响」。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "这一趋势可能在某种程度上对开发者工作流产生一定影响。",
+            "after": "这一趋势已经开始影响开发者工作流，最先变化的是代码生成、调试和复核的分工。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:169",
+        "quote": "两种都常见： 过度谨慎：在某种程度上可能会对……产生一定影响 过度确定：必然彻底改写整个行业",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "9",
+        "signature": "structural.opening_body_ending_disconnect",
+        "signatureMapped": true,
+        "title": "开头、主体、结尾脱节",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "第一段抛一个题目，正文却一直在补背景，最后也没有回到原题。中间某几段单看通顺，但和主线没关系，像是临时塞进来的资料卡。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "先用一句话说清全文到底在回答什么问题。\n再看每一段是不是在服务这个问题；不能服务的，删掉、并掉，或者移到更合适的位置。\n结尾优先回到前文已经展开的变量、约束或判断，不要临时换题。",
+        "severity": 4,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "过去一年，很多公司都在谈 AI 转型。  \n \n第一段讲的是行业热度。  \n第二段开始讲团队协作。  \n第三段又讲海外市场。  \n最后一段说，这预示着新时代已经到来。",
+            "after": "过去一年，很多公司都在谈 AI 转型，但真正先变的不是战略口号，而是团队内部的分工。  \n \n后面的讨论都围绕这个变化展开：哪些岗位先变，流程怎么变，管理上要补哪些环节。  \n最后一段也回到这里，说明这件事为什么会先从组织协作开始，而不是停在口号上。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:189",
+        "quote": "第一段抛一个题目，正文却一直在补背景，最后也没有回到原题。 中间某几段单看通顺，但和主线没关系，像是临时塞进来的资料卡。 结尾突然拔高成「时代已经改变」「未来已经到来」，和前文论证不在一个层级。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "10",
+        "signature": "structural.article_level_rewrite_template",
+        "signatureMapped": true,
+        "title": "文章级重写模板",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "这些模板更像中文作者常见的行文走法，不是写作课上的统一格式。选的时候先看原文的题眼，再看材料够不够。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "这些模板更像中文作者常见的行文走法，不是写作课上的统一格式。选的时候先看原文的题眼，再看材料够不够。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "references/patterns.md:219",
+        "quote": "这些模板更像中文作者常见的行文走法，不是写作课上的统一格式。 选的时候先看原文的题眼，再看材料够不够。材料不够，就不要硬撑出一个完整架子。 还有一点要单独提醒：不要把结构总结写成一串 先……再……最后……。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "11",
+        "signature": "structural.enumeration_padding",
+        "signatureMapped": true,
+        "title": "编号枚举撑全文",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "第一步 / 第二步 / 第三步 反复出现，不是某一段在拆步骤，而是整篇文章每一节都用这个骨架。第一个 / 第二个 / 第三个、第一层 / 第二层 同理。",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "能改成时间推进的，写成「先……后来……再到……」。\n能改成因果推进的，写成「之所以……，是因为……」。\n能改成场景推进的，写成「在 X 场景里……，到了 Y 场景……」。\n真正需要教学型拆解时再保留编号；非教学型一律取消。\n编号是结构信号，不是默认起手式。整篇里出现的次数压到原来的一半到三分之二。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "这个产品做对了三件事。第一，把延迟压到了 200 毫秒以内。第二，把上下文窗口扩到了 200K。第三，把价格降到了同类产品的一半。",
+            "after": "这个产品先把延迟做到了 200 毫秒以内，上下文窗口扩到 200K，价格也压到了同类产品的一半。三件事一起做对，竞争位置就稳了。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:373",
+        "quote": "第一步 / 第二步 / 第三步 反复出现，不是某一段在拆步骤，而是整篇文章每一节都用这个骨架。 第一个 / 第二个 / 第三个、第一层 / 第二层 同理。读者看几节之后，会提前预测下一节也是编号开头。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "12",
+        "signature": "structural.stock_challenges_outlook",
+        "signatureMapped": true,
+        "title": "章末段末的预告式收束",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "这类句子在单段里有牵引作用，但用多了，每一节都像在为下一节做预告，读者会觉得作者一直在赶进度，而不是在写一篇完整的文章。这和第 4 条「段落结尾的口号化收束」不一样：第 4 条说的是把段尾拔高成时代宣言，这里说的是把段尾写成下集预告，两种都让结尾没有真正收束。",
+        "detection": "Lexical. 0 literal watched phrase(s), 4 construction template(s).",
+        "rewriteGuidance": "改成开放问题，把读者留在不确定里。\n改成冷结论，直接把这一节的判断说死。\n改成具体场景收束，让画面替代预告。\n改成反向限制，点出还没解决什么。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "接下来要……",
+            "kind": "template",
+            "match": "接下来要……"
+          },
+          {
+            "text": "下一步是……",
+            "kind": "template",
+            "match": "下一步是……"
+          },
+          {
+            "text": "接下来的问题是……",
+            "kind": "template",
+            "match": "接下来的问题是……"
+          },
+          {
+            "text": "下一篇会讲到……",
+            "kind": "template",
+            "match": "下一篇会讲到……"
+          }
+        ],
+        "examples": [
+          {
+            "before": "这套机制目前已经在大模型推理里跑通了，接下来要解决的是它在端侧的部署问题。",
+            "after": "这套机制目前已经在大模型推理里跑通了。但要把它压进手机和笔记本，参数量和功耗还差一个数量级。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:399",
+        "quote": "这类句子在单段里有牵引作用，但用多了，每一节都像在为下一节做预告，读者会觉得作者一直在赶进度，而不是在写一篇完整的文章。",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "13",
+        "signature": "lexical.aphorism_dressing",
+        "signatureMapped": true,
+        "title": "抽象转义与重锤句",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "这些词本身没错，但用密了以后，全文读起来像作者在同一处反复按下判断按钮。它们既不是翻译腔，也不是空泛大词，而是一种抽象抬升的小机关，用一个抽象短语把句子推到比事实更高的位置，给读者一种「这里有判断」的错觉，但落到实处往往是空的。",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "本质上 改成更具体的机制句，把抽象说清楚。\n这件事 改成具体所指，让指代落地。\n真正重要的是 改成事实后置显义，让重要性自己长出来。\n归根结底 / 说到底 改成具体后果或长期变量。\n回到最初的那个问题 只在确实需要环形结构时使用，全文留一两处即可。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "本质上",
+            "kind": "literal",
+            "match": "本质上"
+          },
+          {
+            "text": "这件事",
+            "kind": "literal",
+            "match": "这件事"
+          },
+          {
+            "text": "真正重要的是",
+            "kind": "literal",
+            "match": "真正重要的是"
+          },
+          {
+            "text": "归根结底",
+            "kind": "literal",
+            "match": "归根结底"
+          },
+          {
+            "text": "说到底",
+            "kind": "literal",
+            "match": "说到底"
+          },
+          {
+            "text": "回到最初的那个问题",
+            "kind": "literal",
+            "match": "回到最初的那个问题"
+          }
+        ],
+        "examples": [
+          {
+            "before": "本质上，AI Agent 改变的是软件团队的协作方式。真正重要的是，它把过去需要多人协调的事情交给了一个系统去做。这件事会反过来影响组织的招聘结构。",
+            "after": "AI Agent 把过去要多人协调的事情交给了一个系统去做，软件团队的协作方式也跟着变。最先动的是招聘结构。"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "references/patterns.md:427",
+        "quote": "这些词本身没错，但用密了以后，全文读起来像作者在同一处反复按下判断按钮。它们既不是翻译腔，也不是空泛大词，而是一种抽象抬升的小机关，用一个抽象短语把句子推到比事实更高的位置，给读者一种「这里有判断」的错觉，但落到实处往往...",
+        "notes": [
+          "Imported from references/patterns.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-3",
+        "signature": "structural.enumeration_padding",
+        "signatureMapped": true,
+        "title": "打散机械结构",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "不强行把每段都写成三分句、排比句或工整对照句。不连续使用「首先」「其次」「最后」「与此同时」「值得注意的是」「从某种意义上说」。",
+        "detection": "Upstream Core Rule. 3 normative bullet(s); model-judged.",
+        "rewriteGuidance": "不强行把每段都写成三分句、排比句或工整对照句。 不连续使用「首先」「其次」「最后」「与此同时」「值得注意的是」「从某种意义上说」。 发现列表可以改成自然叙述时，优先改写成段落。",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "首先",
+            "kind": "literal",
+            "match": "首先"
+          },
+          {
+            "text": "其次",
+            "kind": "literal",
+            "match": "其次"
+          },
+          {
+            "text": "最后",
+            "kind": "literal",
+            "match": "最后"
+          },
+          {
+            "text": "与此同时",
+            "kind": "literal",
+            "match": "与此同时"
+          },
+          {
+            "text": "值得注意的是",
+            "kind": "literal",
+            "match": "值得注意的是"
+          },
+          {
+            "text": "从某种意义上说",
+            "kind": "literal",
+            "match": "从某种意义上说"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:71",
+        "quote": "不强行把每段都写成三分句、排比句或工整对照句。 不连续使用「首先」「其次」「最后」「与此同时」「值得注意的是」「从某种意义上说」。 发现列表可以改成自然叙述时，优先改写成段落。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-4",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "保持中文节奏",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "允许长短句混用，不把每句都写成同样长度。让句子有明确主语和动作，少写无主句串联。",
+        "detection": "Upstream Core Rule. 3 normative bullet(s); model-judged.",
+        "rewriteGuidance": "允许长短句混用，不把每句都写成同样长度。 让句子有明确主语和动作，少写无主句串联。 避免段落结尾总是落在大而空的价值判断上。",
+        "severity": 4,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:77",
+        "quote": "允许长短句混用，不把每句都写成同样长度。 让句子有明确主语和动作，少写无主句串联。 避免段落结尾总是落在大而空的价值判断上。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-5",
+        "signature": "structural.opening_body_ending_disconnect",
+        "signatureMapped": true,
+        "title": "管住文章级结构",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "开头要尽快立题，不要第一段说 A，后面一路滑到 B。主体段落各自要有功能，常见功能是：交代背景、提出判断、展开论据、举例、转折、收束。",
+        "detection": "Upstream Core Rule. 6 normative bullet(s); model-judged.",
+        "rewriteGuidance": "开头要尽快立题，不要第一段说 A，后面一路滑到 B。 主体段落各自要有功能，常见功能是：交代背景、提出判断、展开论据、举例、转折、收束。 如果某一段既不推进主线，也不提供必要信息，优先删、并、挪，不要硬留。 结尾要回应前文真正提出的问题，不要临时拔高到更大的时代命题。 深度改写时，可以重排段落顺序，但不要为了工整硬凑成三段论。 总结结构时，少把段落关系写成一串 `先……再……最后……`，更要看它们是不是顺着同一个问题自然往下走。",
+        "severity": 4,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:83",
+        "quote": "开头要尽快立题，不要第一段说 A，后面一路滑到 B。 主体段落各自要有功能，常见功能是：交代背景、提出判断、展开论据、举例、转折、收束。 如果某一段既不推进主线，也不提供必要信息，优先删、并、挪，不要硬留。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-6",
+        "signature": "chinese.punctuation_convention",
+        "signatureMapped": true,
+        "title": "处理标点和排版",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "正文引号默认用全角双引号 \"\"，嵌套用全角单引号 ''。如项目在 CLAUDE.md/AGENTS.md 里声明使用 「」，或用户在本轮请求里明确要求，则全篇统一改用 「」（嵌套用 『』）。",
+        "detection": "Upstream Core Rule. 7 normative bullet(s); model-judged.",
+        "rewriteGuidance": "正文引号默认用全角双引号 `\"\"`，嵌套用全角单引号 `''`。如项目在 `CLAUDE.md`/`AGENTS.md` 里声明使用 `「」`，或用户在本轮请求里明确要求，则全篇统一改用 `「」`（嵌套用 `『』`）。两种样式不要混用。 不使用长破折号 `——`，优先改成逗号、句号或拆句。 不密集使用冒号 `：`，尤其避免连续多句都靠冒号展开解释。 中文正文中的英文多词术语使用半角空格分词，如 `AI Design Agent`。 英文术语与中文括号连写时，不在 `（` 前加空格，如 `LLM（大语言模型）`。 并列英文术语用斜杠连接时，不在斜杠两侧加空格，如 `coworkers/agents`。 英文品牌名使用官方大小写，如 `YouTube`、`OpenAI`、`GitHub`。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "LLM（大语言模型）",
+            "kind": "literal",
+            "match": "llm（大语言模型）"
+          },
+          {
+            "text": "coworkers",
+            "kind": "literal",
+            "match": "coworkers"
+          },
+          {
+            "text": "agents",
+            "kind": "literal",
+            "match": "agents"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:92",
+        "quote": "正文引号默认用全角双引号 \"\"，嵌套用全角单引号 ''。如项目在 CLAUDE.md/AGENTS.md 里声明使用 「」，或用户在本轮请求里明确要求，则全篇统一改用 「」（嵌套用 『』）。两种样式不要混用。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-7",
+        "signature": "chinese.terminology_consistency",
+        "signatureMapped": true,
+        "title": "统一常见术语和日期",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "token 保持英文。API 保持英文。",
+        "detection": "Upstream Core Rule. 5 normative bullet(s); model-judged.",
+        "rewriteGuidance": "`token` 保持英文。 `API` 保持英文。 `PR` 在长篇中文叙述里优先写作 `代码审查`，除非项目已有别的明确约定。 数字日期写作 `2026 年 2 月 26 日`、`2 月 5 日`。 中文月份叙事写作 `一月`、`二月`。",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:102",
+        "quote": "token 保持英文。 API 保持英文。 PR 在长篇中文叙述里优先写作 代码审查，除非项目已有别的明确约定。 数字日期写作 2026 年 2 月 26 日、2 月 5 日。 中文月份叙事写作 一月、二月。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      },
+      {
+        "upstreamRuleId": "core-8",
+        "signature": "structural.extreme_conclusion",
+        "signatureMapped": true,
+        "title": "控制判断强度",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "不轻易下「完全取代」「彻底结束」「只剩一种可能」这类极端结论。不做无依据的阴谋论推断、资本市场臆测或人物动机脑补。",
+        "detection": "Upstream Core Rule. 3 normative bullet(s); model-judged.",
+        "rewriteGuidance": "不轻易下「完全取代」「彻底结束」「只剩一种可能」这类极端结论。 不做无依据的阴谋论推断、资本市场臆测或人物动机脑补。 需要强调重要性时，先给机制，再给判断。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "完全取代",
+            "kind": "literal",
+            "match": "完全取代"
+          },
+          {
+            "text": "彻底结束",
+            "kind": "literal",
+            "match": "彻底结束"
+          },
+          {
+            "text": "只剩一种可能",
+            "kind": "literal",
+            "match": "只剩一种可能"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "SKILL.md:110",
+        "quote": "不轻易下「完全取代」「彻底结束」「只剩一种可能」这类极端结论。 不做无依据的阴谋论推断、资本市场臆测或人物动机脑补。 需要强调重要性时，先给机制，再给判断。",
+        "notes": [
+          "Namespaced `core-N`: the upstream numbers these 1..8 inside SKILL.md, which would collide with patterns 1..8 of references/patterns.md.",
+          "Imported from SKILL.md. Repo Overrides in SKILL.md outrank these rules, and the voice-adoption anti-patterns apply only in sessions where a voice profile is active."
+        ]
+      }
+    ],
+    "warnings": [],
+    "disclosures": [
+      "Core Rule 1 (优先改掉翻译腔) restates patterns already extracted from references/patterns.md, so it is deliberately not a rule: importing it would charge one tell twice, because the duplicate would carry a different signature and deduplication could not collapse it. The genuinely new content it carries — sentence splitting, and grounding an abstraction in mechanism — needs its own signatures, which is Phase 3 vocabulary work.",
+      "Core Rule 2 (去掉空泛的大词和套话) restates patterns already extracted from references/patterns.md, so it is deliberately not a rule: importing it would charge one tell twice, because the duplicate would carry a different signature and deduplication could not collapse it. The genuinely new content it carries — sentence splitting, and grounding an abstraction in mechanism — needs its own signatures, which is Phase 3 vocabulary work."
+    ]
+  }
+}

@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "lynote-ai/dsh-humanizer",
+    "sourceCommit": "9314b95d0b1ba663331f47f0a8ea006b6dc5f509",
+    "extractedAt": "2026-09-15T21:18:11.884Z",
+    "sources": [
+      "src/core/rules.ts"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "empty-opener-en",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "Leads with a scene-setting formula instead of the actual point",
+        "category": "structural",
+        "languages": [
+          "en"
+        ],
+        "description": "Leads with a scene-setting formula instead of the actual point.",
+        "detection": "Lexical. 23 literal watched phrase(s).",
+        "rewriteGuidance": "Leads with a scene-setting formula instead of the actual point. Delete the opener and start at the claim it was clearing its throat for. A date or a setting belongs in the sentence only when it carries information.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "in today's",
+            "kind": "literal",
+            "match": "in today's"
+          },
+          {
+            "text": "in the modern world",
+            "kind": "literal",
+            "match": "in the modern world"
+          },
+          {
+            "text": "in the ever-evolving world",
+            "kind": "literal",
+            "match": "in the ever-evolving world"
+          },
+          {
+            "text": "in the fast-paced world",
+            "kind": "literal",
+            "match": "in the fast-paced world"
+          },
+          {
+            "text": "in the rapidly evolving landscape",
+            "kind": "literal",
+            "match": "in the rapidly evolving landscape"
+          },
+          {
+            "text": "in recent years",
+            "kind": "literal",
+            "match": "in recent years"
+          },
+          {
+            "text": "in this day and age",
+            "kind": "literal",
+            "match": "in this day and age"
+          },
+          {
+            "text": "in the digital age",
+            "kind": "literal",
+            "match": "in the digital age"
+          },
+          {
+            "text": "it is important to note that",
+            "kind": "literal",
+            "match": "it is important to note that"
+          },
+          {
+            "text": "it is worth noting that",
+            "kind": "literal",
+            "match": "it is worth noting that"
+          },
+          {
+            "text": "it is worth mentioning that",
+            "kind": "literal",
+            "match": "it is worth mentioning that"
+          },
+          {
+            "text": "it's no secret that",
+            "kind": "literal",
+            "match": "it's no secret that"
+          },
+          {
+            "text": "let's dive",
+            "kind": "literal",
+            "match": "let's dive"
+          },
+          {
+            "text": "without further ado",
+            "kind": "literal",
+            "match": "without further ado"
+          },
+          {
+            "text": "as we all know",
+            "kind": "literal",
+            "match": "as we all know"
+          },
+          {
+            "text": "it goes without saying that",
+            "kind": "literal",
+            "match": "it goes without saying that"
+          },
+          {
+            "text": "in the world of",
+            "kind": "literal",
+            "match": "in the world of"
+          },
+          {
+            "text": "in an era of",
+            "kind": "literal",
+            "match": "in an era of"
+          },
+          {
+            "text": "in an age of",
+            "kind": "literal",
+            "match": "in an age of"
+          },
+          {
+            "text": "as technology continues to evolve",
+            "kind": "literal",
+            "match": "as technology continues to evolve"
+          },
+          {
+            "text": "with the advent of",
+            "kind": "literal",
+            "match": "with the advent of"
+          },
+          {
+            "text": "in the age of ai",
+            "kind": "literal",
+            "match": "in the age of ai"
+          },
+          {
+            "text": "in the modern era",
+            "kind": "literal",
+            "match": "in the modern era"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:40",
+        "quote": "Leads with a scene-setting formula instead of the actual point.",
+        "notes": [
+          "Upstream severity 3 of 3, upstream category \"empty-opener\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:40 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field."
+        ]
+      },
+      {
+        "upstreamRuleId": "empty-opener-zh",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "Time-and-place scene-setting opener before the point / 中文式「时代背景开场」，先铺垫背景再进入正题",
+        "category": "structural",
+        "languages": [
+          "zh"
+        ],
+        "description": "Time-and-place scene-setting opener before the point. 中文式「时代背景开场」，先铺垫背景再进入正题。",
+        "detection": "Lexical. 8 literal watched phrase(s), 4 construction/(regex) source(s).",
+        "rewriteGuidance": "Time-and-place scene-setting opener before the point. 中文式「时代背景开场」，先铺垫背景再进入正题。 删掉时代背景开场，直接从结论或事实写起。时间与地点只在本身携带信息时保留。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "在这个…的时代",
+            "kind": "template",
+            "match": "在这个…的时代",
+            "note": "upstream regex source: 在这个.{0,12}的时代"
+          },
+          {
+            "text": "随着…的不断发展",
+            "kind": "template",
+            "match": "随着…的不断发展",
+            "note": "upstream regex source: 随着.{0,16}的不断发展"
+          },
+          {
+            "text": "随着…的进步",
+            "kind": "template",
+            "match": "随着…的进步",
+            "note": "upstream regex source: 随着.{0,12}的进步"
+          },
+          {
+            "text": "在当今社会",
+            "kind": "literal",
+            "match": "在当今社会"
+          },
+          {
+            "text": "在当今这个",
+            "kind": "literal",
+            "match": "在当今这个"
+          },
+          {
+            "text": "近年来…",
+            "kind": "template",
+            "match": "近年来…",
+            "note": "upstream regex source: 近年来.{0,8}"
+          },
+          {
+            "text": "众所周知",
+            "kind": "literal",
+            "match": "众所周知"
+          },
+          {
+            "text": "众所周知，",
+            "kind": "literal",
+            "match": "众所周知，"
+          },
+          {
+            "text": "不难发现",
+            "kind": "literal",
+            "match": "不难发现"
+          },
+          {
+            "text": "显而易见",
+            "kind": "literal",
+            "match": "显而易见"
+          },
+          {
+            "text": "众所周知地",
+            "kind": "literal",
+            "match": "众所周知地"
+          },
+          {
+            "text": "当今社会",
+            "kind": "literal",
+            "match": "当今社会"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:71",
+        "quote": "Time-and-place scene-setting opener before the point. 中文式「时代背景开场」，先铺垫背景再进入正题。",
+        "notes": [
+          "Upstream severity 3 of 3, upstream category \"empty-opener\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:71 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "Two of this list are not scene-setting at all: 众所周知 and 显而易见 carry no time or place, and 众所周知， repeats 众所周知 in the same list as a near-duplicate. The filler half is recorded here rather than treated as a separate rule, because the upstream files both halves under one id and an adapter does not get to re-cut upstream rules."
+        ]
+      },
+      {
+        "upstreamRuleId": "cliche-en",
+        "signature": "lexical.ai_vocabulary",
+        "signatureMapped": true,
+        "title": "Overused AI vocabulary that marks text as generated",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Overused AI vocabulary that marks text as generated.",
+        "detection": "Lexical. 35 literal watched phrase(s), 1 construction/(regex) source(s).",
+        "rewriteGuidance": "Overused AI vocabulary that marks text as generated. Replace the word with the plainer, more specific one. This is substitution rather than deletion: the sentence still has to say something.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "delve into",
+            "kind": "literal",
+            "match": "delve into"
+          },
+          {
+            "text": "unlock the potential",
+            "kind": "literal",
+            "match": "unlock the potential"
+          },
+          {
+            "text": "unleash",
+            "kind": "literal",
+            "match": "unleash"
+          },
+          {
+            "text": "game-changer",
+            "kind": "literal",
+            "match": "game-changer"
+          },
+          {
+            "text": "game changer",
+            "kind": "literal",
+            "match": "game changer"
+          },
+          {
+            "text": "cutting-edge",
+            "kind": "literal",
+            "match": "cutting-edge"
+          },
+          {
+            "text": "revolutionize",
+            "kind": "literal",
+            "match": "revolutionize"
+          },
+          {
+            "text": "revolutionary",
+            "kind": "literal",
+            "match": "revolutionary"
+          },
+          {
+            "text": "navigate the complex landscape",
+            "kind": "template",
+            "match": "navigate the complex landscape",
+            "note": "upstream regex source: navigat(?:e|ing) the (?:complex|ever-changing|dynamic) landscape"
+          },
+          {
+            "text": "a testament to",
+            "kind": "literal",
+            "match": "a testament to"
+          },
+          {
+            "text": "elevate your",
+            "kind": "literal",
+            "match": "elevate your"
+          },
+          {
+            "text": "seamless",
+            "kind": "literal",
+            "match": "seamless"
+          },
+          {
+            "text": "seamlessly",
+            "kind": "literal",
+            "match": "seamlessly"
+          },
+          {
+            "text": "robust",
+            "kind": "literal",
+            "match": "robust"
+          },
+          {
+            "text": "leverage",
+            "kind": "literal",
+            "match": "leverage"
+          },
+          {
+            "text": "synergy",
+            "kind": "literal",
+            "match": "synergy"
+          },
+          {
+            "text": "paradigm shift",
+            "kind": "literal",
+            "match": "paradigm shift"
+          },
+          {
+            "text": "embark on",
+            "kind": "literal",
+            "match": "embark on"
+          },
+          {
+            "text": "realm of",
+            "kind": "literal",
+            "match": "realm of"
+          },
+          {
+            "text": "in the realm",
+            "kind": "literal",
+            "match": "in the realm"
+          },
+          {
+            "text": "tapestry of",
+            "kind": "literal",
+            "match": "tapestry of"
+          },
+          {
+            "text": "unveil",
+            "kind": "literal",
+            "match": "unveil"
+          },
+          {
+            "text": "foster",
+            "kind": "literal",
+            "match": "foster"
+          },
+          {
+            "text": "holistic",
+            "kind": "literal",
+            "match": "holistic"
+          },
+          {
+            "text": "actionable insights",
+            "kind": "literal",
+            "match": "actionable insights"
+          },
+          {
+            "text": "unlock",
+            "kind": "literal",
+            "match": "unlock"
+          },
+          {
+            "text": "groundbreaking",
+            "kind": "literal",
+            "match": "groundbreaking"
+          },
+          {
+            "text": "state-of-the-art",
+            "kind": "literal",
+            "match": "state-of-the-art"
+          },
+          {
+            "text": "best-in-class",
+            "kind": "literal",
+            "match": "best-in-class"
+          },
+          {
+            "text": "world-class",
+            "kind": "literal",
+            "match": "world-class"
+          },
+          {
+            "text": "bleeding-edge",
+            "kind": "literal",
+            "match": "bleeding-edge"
+          },
+          {
+            "text": "next-generation",
+            "kind": "literal",
+            "match": "next-generation"
+          },
+          {
+            "text": "scalable",
+            "kind": "literal",
+            "match": "scalable"
+          },
+          {
+            "text": "streamline",
+            "kind": "literal",
+            "match": "streamline"
+          },
+          {
+            "text": "supercharge",
+            "kind": "literal",
+            "match": "supercharge"
+          },
+          {
+            "text": "pioneering",
+            "kind": "literal",
+            "match": "pioneering"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:93",
+        "quote": "Overused AI vocabulary that marks text as generated.",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"cliche\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:93 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field."
+        ]
+      },
+      {
+        "upstreamRuleId": "cliche-zh",
+        "signature": "chinese.boilerplate_phrase",
+        "signatureMapped": true,
+        "title": "Internet slang and inflated buzzwords that most loudly mark AI text",
+        "category": "chinese",
+        "languages": [
+          "zh"
+        ],
+        "description": "Internet slang and inflated buzzwords that most loudly mark AI text. 互联网黑话与空洞拔高词，最容易暴露 AI 腔。",
+        "detection": "Lexical. 28 literal watched phrase(s).",
+        "rewriteGuidance": "Internet slang and inflated buzzwords that most loudly mark AI text. 互联网黑话与空洞拔高词，最容易暴露 AI 腔。 把黑话换成具体的动作与对象。这类词是替换而非删除：句子仍须表达实际内容。",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "赋能",
+            "kind": "literal",
+            "match": "赋能"
+          },
+          {
+            "text": "抓手",
+            "kind": "literal",
+            "match": "抓手"
+          },
+          {
+            "text": "闭环",
+            "kind": "literal",
+            "match": "闭环"
+          },
+          {
+            "text": "底层逻辑",
+            "kind": "literal",
+            "match": "底层逻辑"
+          },
+          {
+            "text": "顶层设计",
+            "kind": "literal",
+            "match": "顶层设计"
+          },
+          {
+            "text": "颗粒度",
+            "kind": "literal",
+            "match": "颗粒度"
+          },
+          {
+            "text": "对齐认知",
+            "kind": "literal",
+            "match": "对齐认知"
+          },
+          {
+            "text": "心智",
+            "kind": "literal",
+            "match": "心智"
+          },
+          {
+            "text": "护城河",
+            "kind": "literal",
+            "match": "护城河"
+          },
+          {
+            "text": "天花板",
+            "kind": "literal",
+            "match": "天花板"
+          },
+          {
+            "text": "红利",
+            "kind": "literal",
+            "match": "红利"
+          },
+          {
+            "text": "赛道",
+            "kind": "literal",
+            "match": "赛道"
+          },
+          {
+            "text": "生态位",
+            "kind": "literal",
+            "match": "生态位"
+          },
+          {
+            "text": "降维打击",
+            "kind": "literal",
+            "match": "降维打击"
+          },
+          {
+            "text": "长期主义",
+            "kind": "literal",
+            "match": "长期主义"
+          },
+          {
+            "text": "破圈",
+            "kind": "literal",
+            "match": "破圈"
+          },
+          {
+            "text": "拉满",
+            "kind": "literal",
+            "match": "拉满"
+          },
+          {
+            "text": "出圈",
+            "kind": "literal",
+            "match": "出圈"
+          },
+          {
+            "text": "弯道超车",
+            "kind": "literal",
+            "match": "弯道超车"
+          },
+          {
+            "text": "降本增效",
+            "kind": "literal",
+            "match": "降本增效"
+          },
+          {
+            "text": "全链路",
+            "kind": "literal",
+            "match": "全链路"
+          },
+          {
+            "text": "私域",
+            "kind": "literal",
+            "match": "私域"
+          },
+          {
+            "text": "公域",
+            "kind": "literal",
+            "match": "公域"
+          },
+          {
+            "text": "增长黑客",
+            "kind": "literal",
+            "match": "增长黑客"
+          },
+          {
+            "text": "心智占领",
+            "kind": "literal",
+            "match": "心智占领"
+          },
+          {
+            "text": "生态闭环",
+            "kind": "literal",
+            "match": "生态闭环"
+          },
+          {
+            "text": "垂类",
+            "kind": "literal",
+            "match": "垂类"
+          },
+          {
+            "text": "颗粒度对齐",
+            "kind": "literal",
+            "match": "颗粒度对齐"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:137",
+        "quote": "Internet slang and inflated buzzwords that most loudly mark AI text. 互联网黑话与空洞拔高词，最容易暴露 AI 腔。",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"cliche\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:137 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field."
+        ]
+      },
+      {
+        "upstreamRuleId": "hedge-en",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "Hedge words that dilute the statement",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Hedge words that dilute the statement.",
+        "detection": "Lexical. 16 literal watched phrase(s).",
+        "rewriteGuidance": "Hedge words that dilute the statement. Assert the claim, or state the real uncertainty. A hedge that adds no information is removed; a scope or legal qualifier stays.",
+        "severity": 1,
+        "watchPhrases": [
+          {
+            "text": "it is important to",
+            "kind": "literal",
+            "match": "it is important to"
+          },
+          {
+            "text": "it is worth",
+            "kind": "literal",
+            "match": "it is worth"
+          },
+          {
+            "text": "it should be noted",
+            "kind": "literal",
+            "match": "it should be noted"
+          },
+          {
+            "text": "one could argue",
+            "kind": "literal",
+            "match": "one could argue"
+          },
+          {
+            "text": "arguably",
+            "kind": "literal",
+            "match": "arguably"
+          },
+          {
+            "text": "generally speaking",
+            "kind": "literal",
+            "match": "generally speaking"
+          },
+          {
+            "text": "to some extent",
+            "kind": "literal",
+            "match": "to some extent"
+          },
+          {
+            "text": "somewhat",
+            "kind": "literal",
+            "match": "somewhat"
+          },
+          {
+            "text": "in a sense",
+            "kind": "literal",
+            "match": "in a sense"
+          },
+          {
+            "text": "potentially",
+            "kind": "literal",
+            "match": "potentially"
+          },
+          {
+            "text": "it can be said",
+            "kind": "literal",
+            "match": "it can be said"
+          },
+          {
+            "text": "to be clear",
+            "kind": "literal",
+            "match": "to be clear"
+          },
+          {
+            "text": "needless to say",
+            "kind": "literal",
+            "match": "needless to say"
+          },
+          {
+            "text": "it's safe to say",
+            "kind": "literal",
+            "match": "it's safe to say"
+          },
+          {
+            "text": "essentially",
+            "kind": "literal",
+            "match": "essentially"
+          },
+          {
+            "text": "basically",
+            "kind": "literal",
+            "match": "basically"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "src/core/rules.ts:175",
+        "quote": "Hedge words that dilute the statement.",
+        "notes": [
+          "Upstream severity 1 of 3, upstream category \"hedge\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:175 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "Marked weak alone here: a single hedge dilutes the statement but does not prove it was generated. The upstream checks for one occurrence, not for stacked qualifiers, so the canonical signature is broader than what this rule actually measures."
+        ]
+      },
+      {
+        "upstreamRuleId": "hedge-zh",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "Meaningless conservative qualifiers / 无意义的保守表述",
+        "category": "lexical",
+        "languages": [
+          "zh"
+        ],
+        "description": "Meaningless conservative qualifiers. 无意义的保守表述。",
+        "detection": "Lexical. 9 literal watched phrase(s).",
+        "rewriteGuidance": "Meaningless conservative qualifiers. 无意义的保守表述。 直接陈述，或写出真实的保留条件。不携带信息的修饰语应删除，范围与法律限定语保留。",
+        "severity": 1,
+        "watchPhrases": [
+          {
+            "text": "值得注意的是",
+            "kind": "literal",
+            "match": "值得注意的是"
+          },
+          {
+            "text": "可以说",
+            "kind": "literal",
+            "match": "可以说"
+          },
+          {
+            "text": "某种程度上",
+            "kind": "literal",
+            "match": "某种程度上"
+          },
+          {
+            "text": "在一定程度上",
+            "kind": "literal",
+            "match": "在一定程度上"
+          },
+          {
+            "text": "或许可以说",
+            "kind": "literal",
+            "match": "或许可以说"
+          },
+          {
+            "text": "大致而言",
+            "kind": "literal",
+            "match": "大致而言"
+          },
+          {
+            "text": "总的来说",
+            "kind": "literal",
+            "match": "总的来说"
+          },
+          {
+            "text": "一般来说",
+            "kind": "literal",
+            "match": "一般来说"
+          },
+          {
+            "text": "基本上",
+            "kind": "literal",
+            "match": "基本上"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "src/core/rules.ts:199",
+        "quote": "Meaningless conservative qualifiers. 无意义的保守表述。",
+        "notes": [
+          "Upstream severity 1 of 3, upstream category \"hedge\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:199 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "Marked weak alone here: a single hedge dilutes the statement but does not prove it was generated. The upstream checks for one occurrence, not for stacked qualifiers, so the canonical signature is broader than what this rule actually measures.",
+          "The phrase \"值得注意的是\" is also claimed by another rule of this upstream (see upstreams/reports/dsh-humanizer.md:164-171). The copies here are unanchored, so they fire anywhere and double-count text that opens with the phrase."
+        ]
+      },
+      {
+        "upstreamRuleId": "transition-en",
+        "signature": "lexical.wordy_connectives",
+        "signatureMapped": true,
+        "title": "Template connectives strung between paragraphs",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Template connectives strung between paragraphs.",
+        "detection": "Lexical. 0 literal watched phrase(s), 16 construction/(regex) source(s). 16 pattern(s) anchored ^ (upstream compiles without the m flag, so the anchor matches only at absolute position 0 of the input). Every pattern in this rule is anchored, so the rule fires only on a single-paragraph input.",
+        "rewriteGuidance": "Template connectives strung between paragraphs. Drop the connective and let the paragraph break carry the turn. Keep it only when the logical relation would otherwise be unclear.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "furthermore,",
+            "kind": "template",
+            "match": "furthermore,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^furthermore,"
+          },
+          {
+            "text": "moreover,",
+            "kind": "template",
+            "match": "moreover,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^moreover,"
+          },
+          {
+            "text": "additionally,",
+            "kind": "template",
+            "match": "additionally,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^additionally,"
+          },
+          {
+            "text": "in addition,",
+            "kind": "template",
+            "match": "in addition,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in addition,"
+          },
+          {
+            "text": "in conclusion,",
+            "kind": "template",
+            "match": "in conclusion,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in conclusion,"
+          },
+          {
+            "text": "in summary,",
+            "kind": "template",
+            "match": "in summary,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in summary,"
+          },
+          {
+            "text": "overall,",
+            "kind": "template",
+            "match": "overall,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^overall,"
+          },
+          {
+            "text": "in essence,",
+            "kind": "template",
+            "match": "in essence,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in essence,"
+          },
+          {
+            "text": "ultimately,",
+            "kind": "template",
+            "match": "ultimately,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^ultimately,"
+          },
+          {
+            "text": "in this regard,",
+            "kind": "template",
+            "match": "in this regard,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in this regard,"
+          },
+          {
+            "text": "on the other hand,",
+            "kind": "template",
+            "match": "on the other hand,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^on the other hand,"
+          },
+          {
+            "text": "however,",
+            "kind": "template",
+            "match": "however,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^however,"
+          },
+          {
+            "text": "therefore,",
+            "kind": "template",
+            "match": "therefore,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^therefore,"
+          },
+          {
+            "text": "consequently,",
+            "kind": "template",
+            "match": "consequently,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^consequently,"
+          },
+          {
+            "text": "thus,",
+            "kind": "template",
+            "match": "thus,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^thus,"
+          },
+          {
+            "text": "as a result,",
+            "kind": "template",
+            "match": "as a result,",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^as a result,"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:208",
+        "quote": "Template connectives strung between paragraphs.",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"transition\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:208 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "16 of 16 patterns are ^-anchored. The upstream compiles every pattern with flags \"gi\" and no \"m\" (src/core/rules.ts:319), so those patterns match only at absolute position 0: on any multi-paragraph text they are unreachable. docs/provenance-policy.md:114 records the defect; the anchors are reproduced here as data, not as a working detection."
+        ]
+      },
+      {
+        "upstreamRuleId": "transition-zh",
+        "signature": "lexical.translationese_connective",
+        "signatureMapped": true,
+        "title": "Formulaic connectives / 形式化连接词",
+        "category": "lexical",
+        "languages": [
+          "zh"
+        ],
+        "description": "Formulaic connectives. 形式化连接词。",
+        "detection": "Lexical. 0 literal watched phrase(s), 11 construction/(regex) source(s). 11 pattern(s) anchored ^ (upstream compiles without the m flag, so the anchor matches only at absolute position 0 of the input). Every pattern in this rule is anchored, so the rule fires only on a single-paragraph input.",
+        "rewriteGuidance": "Formulaic connectives. 形式化连接词。 删掉形式化的段首连接词，让段落本身完成转折。仅当逻辑关系确实不清时才保留。",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "此外，",
+            "kind": "template",
+            "match": "此外，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^此外，"
+          },
+          {
+            "text": "与此同时，",
+            "kind": "template",
+            "match": "与此同时，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^与此同时，"
+          },
+          {
+            "text": "值得注意的是，",
+            "kind": "template",
+            "match": "值得注意的是，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^值得注意的是，"
+          },
+          {
+            "text": "由此可见",
+            "kind": "template",
+            "match": "由此可见",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^由此可见"
+          },
+          {
+            "text": "毋庸置疑",
+            "kind": "template",
+            "match": "毋庸置疑",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^毋庸置疑"
+          },
+          {
+            "text": "换言之",
+            "kind": "template",
+            "match": "换言之",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^换言之"
+          },
+          {
+            "text": "换句话说",
+            "kind": "template",
+            "match": "换句话说",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^换句话说"
+          },
+          {
+            "text": "其次，",
+            "kind": "template",
+            "match": "其次，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^其次，"
+          },
+          {
+            "text": "再次，",
+            "kind": "template",
+            "match": "再次，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^再次，"
+          },
+          {
+            "text": "然后，",
+            "kind": "template",
+            "match": "然后，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^然后，"
+          },
+          {
+            "text": "接着，",
+            "kind": "template",
+            "match": "接着，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^接着，"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:232",
+        "quote": "Formulaic connectives. 形式化连接词。",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"transition\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:232 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "11 of 11 patterns are ^-anchored. The upstream compiles every pattern with flags \"gi\" and no \"m\" (src/core/rules.ts:319), so those patterns match only at absolute position 0: on any multi-paragraph text they are unreachable. docs/provenance-policy.md:114 records the defect; the anchors are reproduced here as data, not as a working detection.",
+          "Mapped to lexical.translationese_connective rather than lexical.wordy_connectives: the tell is the translated-connective register (^此外，, ^与此同时，), and the English half of the same upstream category is the one that reads as wordy English."
+        ]
+      },
+      {
+        "upstreamRuleId": "summary-ending-en",
+        "signature": "assistant.conclusion_fluff",
+        "signatureMapped": true,
+        "title": "Restates everything in a closing paragraph",
+        "category": "assistant",
+        "languages": [
+          "en"
+        ],
+        "description": "Restates everything in a closing paragraph.",
+        "detection": "Lexical. 0 literal watched phrase(s), 7 construction/(regex) source(s). 7 pattern(s) anchored ^ (upstream compiles without the m flag, so the anchor matches only at absolute position 0 of the input). Every pattern in this rule is anchored, so the rule fires only on a single-paragraph input.",
+        "rewriteGuidance": "Restates everything in a closing paragraph. Cut the closing paragraph, or replace it with the one specific thing it was circling. The piece should end on information, not on a restatement.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "in conclusion",
+            "kind": "template",
+            "match": "in conclusion",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in conclusion"
+          },
+          {
+            "text": "in summary",
+            "kind": "template",
+            "match": "in summary",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in summary"
+          },
+          {
+            "text": "to sum up",
+            "kind": "template",
+            "match": "to sum up",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^to sum up"
+          },
+          {
+            "text": "in closing",
+            "kind": "template",
+            "match": "in closing",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^in closing"
+          },
+          {
+            "text": "all in all",
+            "kind": "template",
+            "match": "all in all",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^all in all"
+          },
+          {
+            "text": "as we can see",
+            "kind": "template",
+            "match": "as we can see",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^as we can see"
+          },
+          {
+            "text": "to conclude",
+            "kind": "template",
+            "match": "to conclude",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^to conclude"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:241",
+        "quote": "Restates everything in a closing paragraph.",
+        "notes": [
+          "Upstream severity 3 of 3, upstream category \"summary-ending\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:241 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "7 of 7 patterns are ^-anchored. The upstream compiles every pattern with flags \"gi\" and no \"m\" (src/core/rules.ts:319), so those patterns match only at absolute position 0: on any multi-paragraph text they are unreachable. docs/provenance-policy.md:114 records the defect; the anchors are reproduced here as data, not as a working detection."
+        ]
+      },
+      {
+        "upstreamRuleId": "summary-ending-zh",
+        "signature": "assistant.conclusion_fluff",
+        "signatureMapped": true,
+        "title": "Summary-style ending and slogan close / 总结式结尾与口号式收束",
+        "category": "assistant",
+        "languages": [
+          "zh"
+        ],
+        "description": "Summary-style ending and slogan close. 总结式结尾与口号式收束。",
+        "detection": "Lexical. 7 literal watched phrase(s), 4 construction/(regex) source(s). 3 pattern(s) anchored ^ (upstream compiles without the m flag, so the anchor matches only at absolute position 0 of the input).",
+        "rewriteGuidance": "Summary-style ending and slogan close. 总结式结尾与口号式收束。 删掉总结式结尾，或改写成它试图掩盖的那个具体结论。文章应以信息收束，而不是以复述收束。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "综上所述",
+            "kind": "literal",
+            "match": "综上所述"
+          },
+          {
+            "text": "总而言之",
+            "kind": "literal",
+            "match": "总而言之"
+          },
+          {
+            "text": "总的说来",
+            "kind": "literal",
+            "match": "总的说来"
+          },
+          {
+            "text": "总之",
+            "kind": "template",
+            "match": "总之",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^总之"
+          },
+          {
+            "text": "最后，",
+            "kind": "template",
+            "match": "最后，",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^最后，"
+          },
+          {
+            "text": "让我们",
+            "kind": "template",
+            "match": "让我们",
+            "note": "anchored ^ (upstream compiles without the m flag, so this matches only at absolute position 0); upstream regex source: ^让我们"
+          },
+          {
+            "text": "希望通过",
+            "kind": "literal",
+            "match": "希望通过"
+          },
+          {
+            "text": "让我们携手",
+            "kind": "literal",
+            "match": "让我们携手"
+          },
+          {
+            "text": "相信…会更好",
+            "kind": "template",
+            "match": "相信…会更好",
+            "note": "upstream regex source: 相信.{0,6}会更好"
+          },
+          {
+            "text": "说到底",
+            "kind": "literal",
+            "match": "说到底"
+          },
+          {
+            "text": "归根结底",
+            "kind": "literal",
+            "match": "归根结底"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:256",
+        "quote": "Summary-style ending and slogan close. 总结式结尾与口号式收束。",
+        "notes": [
+          "Upstream severity 3 of 3, upstream category \"summary-ending\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:256 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "3 of 11 patterns are ^-anchored. The upstream compiles every pattern with flags \"gi\" and no \"m\" (src/core/rules.ts:319), so those patterns match only at absolute position 0: on any multi-paragraph text they are unreachable. docs/provenance-policy.md:114 records the defect; the anchors are reproduced here as data, not as a working detection.",
+          "The slogan half of this rule (希望通过, 让我们携手, ^让我们) leans towards structural.universal_positive_ending. The restatement half dominates the pattern list, so the rule keeps the single conclusion signature and the second tell is recorded here."
+        ]
+      },
+      {
+        "upstreamRuleId": "mechanical-parallel-zh",
+        "signature": "rhythm.forced_triad",
+        "signatureMapped": true,
+        "title": "Mechanical parallel structure, lacking rhythm variation / 整齐排比句，缺乏节奏变化",
+        "category": "rhythm",
+        "languages": [
+          "zh"
+        ],
+        "description": "Mechanical parallel structure, lacking rhythm variation. 整齐排比句，缺乏节奏变化。",
+        "detection": "Lexical. 0 literal watched phrase(s), 4 construction/(regex) source(s).",
+        "rewriteGuidance": "Mechanical parallel structure, lacking rhythm variation. 整齐排比句，缺乏节奏变化。 打破整齐的排比：合并并列项、发展其中最强的一项，或改变句式长短。意思确实有三部分时才保留三项。",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "一方面…另一方面",
+            "kind": "template",
+            "match": "一方面…另一方面",
+            "note": "upstream regex source: 一方面.{0,20}另一方面"
+          },
+          {
+            "text": "首先…其次…再次",
+            "kind": "template",
+            "match": "首先…其次…再次",
+            "note": "upstream regex source: 首先.{0,30}其次.{0,30}再次"
+          },
+          {
+            "text": "不仅…而且…还",
+            "kind": "template",
+            "match": "不仅…而且…还",
+            "note": "upstream regex source: 不仅.{0,30}而且.{0,30}还"
+          },
+          {
+            "text": "一是…二是…三是",
+            "kind": "template",
+            "match": "一是…二是…三是",
+            "note": "upstream regex source: 一是.{0,20}二是.{0,20}三是"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:277",
+        "quote": "Mechanical parallel structure, lacking rhythm variation. 整齐排比句，缺乏节奏变化。",
+        "notes": [
+          "Upstream severity 3 of 3, upstream category \"mechanical-parallel\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:277 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field."
+        ]
+      },
+      {
+        "upstreamRuleId": "over-explain-en",
+        "signature": "lexical.restatement",
+        "signatureMapped": true,
+        "title": "Explains what was just said a second time",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "Explains what was just said a second time.",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "Explains what was just said a second time. Delete the second telling. If the idea was unclear the first time, fix the first sentence instead of explaining it again.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "which means that",
+            "kind": "literal",
+            "match": "which means that"
+          },
+          {
+            "text": "in other words,",
+            "kind": "literal",
+            "match": "in other words,"
+          },
+          {
+            "text": "that is to say",
+            "kind": "literal",
+            "match": "that is to say"
+          },
+          {
+            "text": "what this means is",
+            "kind": "literal",
+            "match": "what this means is"
+          },
+          {
+            "text": "the point here is",
+            "kind": "literal",
+            "match": "the point here is"
+          },
+          {
+            "text": "this is because",
+            "kind": "literal",
+            "match": "this is because"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:291",
+        "quote": "Explains what was just said a second time.",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"over-explain\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:291 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "This adapter flagged that no canonical signature meant \"restates what was just said\" and mapped here to lexical.filler_phrase as the closest fit. That gap was filled: the rule now points at lexical.restatement, which is narrower than filler and distinguishes a restatement from text that carries no content at all."
+        ]
+      },
+      {
+        "upstreamRuleId": "over-explain-zh",
+        "signature": "lexical.restatement",
+        "signatureMapped": true,
+        "title": "Re-explains the same point a second time / 重复解释同一意思",
+        "category": "lexical",
+        "languages": [
+          "zh"
+        ],
+        "description": "Re-explains the same point a second time. 重复解释同一意思。",
+        "detection": "Lexical. 5 literal watched phrase(s).",
+        "rewriteGuidance": "Re-explains the same point a second time. 重复解释同一意思。 删掉第二次解释。若第一次没说清，应修改第一句，而不是重复说明。",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "也就是说，",
+            "kind": "literal",
+            "match": "也就是说，"
+          },
+          {
+            "text": "换句话说，",
+            "kind": "literal",
+            "match": "换句话说，"
+          },
+          {
+            "text": "说白了就是",
+            "kind": "literal",
+            "match": "说白了就是"
+          },
+          {
+            "text": "这就意味着",
+            "kind": "literal",
+            "match": "这就意味着"
+          },
+          {
+            "text": "其核心在于",
+            "kind": "literal",
+            "match": "其核心在于"
+          }
+        ],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/core/rules.ts:305",
+        "quote": "Re-explains the same point a second time. 重复解释同一意思。",
+        "notes": [
+          "Upstream severity 2 of 3, upstream category \"over-explain\" (src/core/rules.ts:7 for the scale; src/core/rules.ts:305 for the rule).",
+          "rewriteGuidance was derived from the upstream note plus the rule meaning; the upstream gives no separate guidance field.",
+          "The phrase \"换句话说，\" is also claimed by another rule of this upstream (see upstreams/reports/dsh-humanizer.md:164-171). The copies here are unanchored, so they fire anywhere and double-count text that opens with the phrase.",
+          "This adapter flagged that no canonical signature meant \"restates what was just said\" and mapped here to lexical.filler_phrase as the closest fit. That gap was filled: the rule now points at lexical.restatement, which is narrower than filler and distinguishes a restatement from text that carries no content at all."
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "lynote-ai/humanize-text",
+    "sourceCommit": "48f3c0ac0f51cb7c2af23cbf45ea865e1d71e04e",
+    "extractedAt": "2026-09-15T21:18:11.782Z",
+    "sources": [
+      "src/methodologies/postprocess.py",
+      "src/methodologies/llm_rewriter.py",
+      "docs/techniques.md"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "vocab-replacement",
+        "signature": "lexical.ai_vocabulary",
+        "signatureMapped": true,
+        "title": "AI-ish vocabulary swapped for a plainer word",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Thirty words the upstream treats as AI register, each replaced by one of three plainer alternatives picked at random. Substitution, not deletion: the sentence survives, only the register changes.",
+        "detection": "Lexical. 30 literal watched word(s), matched case-insensitively via re.escape(word) with IGNORECASE, at most one replacement per word per pass (src/methodologies/postprocess.py:49-52).",
+        "rewriteGuidance": "Replace the word with a plainer one from its list. The upstream chooses at random among the alternatives; a caller should pick by context instead, because \"utilize\" is not always \"use\". Only the first occurrence of each word is replaced, so a repeated tell survives one pass.",
+        "severity": 2,
+        "watchPhrases": [
+          {
+            "text": "utilize",
+            "kind": "literal",
+            "match": "utilize",
+            "note": "use | apply | work with"
+          },
+          {
+            "text": "facilitate",
+            "kind": "literal",
+            "match": "facilitate",
+            "note": "help | support | enable"
+          },
+          {
+            "text": "comprehensive",
+            "kind": "literal",
+            "match": "comprehensive",
+            "note": "full | complete | thorough"
+          },
+          {
+            "text": "subsequently",
+            "kind": "literal",
+            "match": "subsequently",
+            "note": "then | after that | next"
+          },
+          {
+            "text": "furthermore",
+            "kind": "literal",
+            "match": "furthermore",
+            "note": "also | plus | on top of that"
+          },
+          {
+            "text": "demonstrate",
+            "kind": "literal",
+            "match": "demonstrate",
+            "note": "show | prove | illustrate"
+          },
+          {
+            "text": "implement",
+            "kind": "literal",
+            "match": "implement",
+            "note": "build | set up | put in place"
+          },
+          {
+            "text": "leverage",
+            "kind": "literal",
+            "match": "leverage",
+            "note": "use | take advantage of | tap into"
+          },
+          {
+            "text": "optimize",
+            "kind": "literal",
+            "match": "optimize",
+            "note": "improve | fine-tune | make better"
+          },
+          {
+            "text": "paradigm",
+            "kind": "literal",
+            "match": "paradigm",
+            "note": "model | approach | framework"
+          },
+          {
+            "text": "synergy",
+            "kind": "literal",
+            "match": "synergy",
+            "note": "teamwork | combined effect | collaboration"
+          },
+          {
+            "text": "methodology",
+            "kind": "literal",
+            "match": "methodology",
+            "note": "method | approach | process"
+          },
+          {
+            "text": "innovative",
+            "kind": "literal",
+            "match": "innovative",
+            "note": "new | creative | fresh"
+          },
+          {
+            "text": "streamline",
+            "kind": "literal",
+            "match": "streamline",
+            "note": "simplify | speed up | smooth out"
+          },
+          {
+            "text": "unprecedented",
+            "kind": "literal",
+            "match": "unprecedented",
+            "note": "never seen before | unheard of | groundbreaking"
+          },
+          {
+            "text": "transformative",
+            "kind": "literal",
+            "match": "transformative",
+            "note": "game-changing | revolutionary | major"
+          },
+          {
+            "text": "ecosystem",
+            "kind": "literal",
+            "match": "ecosystem",
+            "note": "environment | landscape | space"
+          },
+          {
+            "text": "scalable",
+            "kind": "literal",
+            "match": "scalable",
+            "note": "flexible | expandable | growable"
+          },
+          {
+            "text": "robust",
+            "kind": "literal",
+            "match": "robust",
+            "note": "strong | solid | reliable"
+          },
+          {
+            "text": "cutting-edge",
+            "kind": "literal",
+            "match": "cutting-edge",
+            "note": "latest | advanced | modern"
+          },
+          {
+            "text": "delve",
+            "kind": "literal",
+            "match": "delve",
+            "note": "dig into | explore | look at"
+          },
+          {
+            "text": "intricate",
+            "kind": "literal",
+            "match": "intricate",
+            "note": "complex | detailed | involved"
+          },
+          {
+            "text": "pivotal",
+            "kind": "literal",
+            "match": "pivotal",
+            "note": "key | crucial | central"
+          },
+          {
+            "text": "encompasses",
+            "kind": "literal",
+            "match": "encompasses",
+            "note": "includes | covers | spans"
+          },
+          {
+            "text": "multifaceted",
+            "kind": "literal",
+            "match": "multifaceted",
+            "note": "complex | varied | diverse"
+          },
+          {
+            "text": "realm",
+            "kind": "literal",
+            "match": "realm",
+            "note": "area | field | world"
+          },
+          {
+            "text": "commendable",
+            "kind": "literal",
+            "match": "commendable",
+            "note": "impressive | notable | praiseworthy"
+          },
+          {
+            "text": "meticulous",
+            "kind": "literal",
+            "match": "meticulous",
+            "note": "careful | thorough | precise"
+          },
+          {
+            "text": "paramount",
+            "kind": "literal",
+            "match": "paramount",
+            "note": "essential | critical | top priority"
+          },
+          {
+            "text": "underscore",
+            "kind": "literal",
+            "match": "underscore",
+            "note": "highlight | stress | emphasize"
+          }
+        ],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "src/methodologies/postprocess.py:7-36",
+        "quote": "utilize: use, apply, work with",
+        "notes": [
+          "Derived id vocab-replacement from the constant AI_VOCAB_REPLACEMENTS (src/methodologies/postprocess.py:6) and the method that applies it, _replace_ai_vocabulary (src/methodologies/postprocess.py:47).",
+          "30 entries extracted; the documentation claims \"30+ English signal words\" (docs/techniques.md:144), which matches the code.",
+          "Replacement lists are notes on the watched phrases, not detection data: the detector matches the source word, and the alternative is what the rewrite should produce.",
+          "0 key(s) are shorter than the 4-character floor the shared phrase classifier uses for Latin text (extract/phrase.ts:115), so those names are labelled literal here rather than reference, because a lexical detector must watch them, and with word boundaries they match safely: .",
+          "1 key(s) are hyphenated and need a word-boundary regex that treats \"-\" as a letter, not a terminator: cutting-edge.",
+          "The upstream does not strip punctuation before matching, so \"utilize,\" is replaced and \"utilization\" is not; the substitution is a word, not a stem.",
+          "RECORDED TELL, NOT A RULE OF ITS OWN: the map itself is built with an em-dash join at src/methodologies/postprocess.py:67 (the merged sentence separator), and the em-dash is a catalogued tell. It belongs to rhythm-merge-short-sentences and is noted there; a separate rule would double-charge one piece of punctuation."
+        ]
+      },
+      {
+        "upstreamRuleId": "vocab-formal-to-everyday",
+        "signature": "lexical.ai_vocabulary",
+        "signatureMapped": true,
+        "title": "Formal or academic vocabulary replaced with everyday words",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The same instruction as the vocabulary map, stated again as an LLM prompt: replace formal or academic vocabulary with everyday equivalents.",
+        "detection": "Model-judged. The upstream states the target register but never lists the words, so no watched phrase is derivable from this source and none is invented here.",
+        "rewriteGuidance": "Replace any formal or academic vocabulary with everyday equivalents, and add colloquial expressions where they fit. The wording is the upstream prompt, kept verbatim so a caller can reuse it; the model decides which words qualify.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": true,
+        "locator": "src/methodologies/llm_rewriter.py:20-22",
+        "quote": "replace any formal or academic vocabulary with everyday equivalents",
+        "notes": [
+          "Derived id vocab-formal-to-everyday from the leading instruction of REWRITE_PROMPTS[1] (llm_rewriter.py:20).",
+          "Separate rule from vocab-replacement because it is a separate upstream artefact with a separate locator, but the same canonical signature, so cross-upstream dedupe still collapses the lineage to one problem.",
+          "Carries no watchPhrases: the upstream names a register, not words. The English word list lives in the other rule, which is why that one has 30 and this one has none."
+        ]
+      },
+      {
+        "upstreamRuleId": "rhythm-merge-short-sentences",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "Consecutive short sentences merged into one",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Two consecutive sentences that are both shorter than 8 words are merged into one, with the separator replacing the full stop and the second sentence lowercased. The effect is fewer, longer sentences and a more even length profile.",
+        "detection": "Deterministic. Split on /(?<=[.!?])\\s+/ and merge when both sentences are strictly under 8 words (config key postprocess.short_sentence_threshold, src/methodologies/postprocess.py:45). No-op below three sentences (src/methodologies/postprocess.py:57).",
+        "rewriteGuidance": "Merging two short sentences is only right when they belong together. The upstream does it positionally: any two consecutive sentences under 8 words get joined, regardless of whether they share a subject.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/methodologies/postprocess.py:55-74",
+        "quote": "merged = sentences[i].rstrip('.!?') + \" — \" + sentences[i + 1][0].lower() + sentences[i + 1][1:]",
+        "notes": [
+          "Derived id rhythm-merge-short-sentences from the method name _disrupt_sentence_rhythm (src/methodologies/postprocess.py:55) plus the one thing the body does: merge two short sentences.",
+          "Threshold read from the default at src/methodologies/postprocess.py:45 (postprocess.short_sentence_threshold = 8); the upstream calls it a \"short sentence\" threshold in a config key, not a constant.",
+          "EM-DASH TELL (src/methodologies/postprocess.py:67): the merge inserts \" — \" as the separator, so the rule's own output uses a dash as the universal connector. That is itself an AI tell and the canonical vocabulary already has a signature for it (rhythm.dash_overuse). Recorded as a note and located precisely rather than extracted as a second rule, because the same line would otherwise deduct twice for one edit. The link is deliberately not asserted as `=> rhythm.dash_overuse` on the rule, so the extraction stays free of any relationship the type system does not model.",
+          "Off-by-one worth knowing: src/methodologies/postprocess.py:67 indexes sentences[i + 1][0] without a length check, so a second sentence that is pure whitespace-stripped to one character would produce an empty tail. Recorded as an upstream defect, not imported as behaviour.",
+          "The technique is rhythm.uniform_rhythm, not a punctuation rule: the tell being treated is uniform sentence length, and the dash is incidental to how this implementation attacks it.",
+          "The word count used is str.split() on whitespace, so a Chinese sentence counts as one \"word\" and the merge fires on almost any two Chinese sentences; see the src/methodologies/postprocess.py:56 segmentation note in the statistical port."
+        ]
+      },
+      {
+        "upstreamRuleId": "rhythm-alternate-lengths",
+        "signature": "rhythm.uniform_rhythm",
+        "signatureMapped": true,
+        "title": "Sentence lengths alternated by instruction",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The upstream asks a model to alternate between very short sentences of 3-8 words and long complex ones of 25-40 words, which is a direct instruction to raise burstiness.",
+        "detection": "Model-judged. The prompt states word-count bands but ships no checker, so nothing can be verified offline; the bands are recorded as the upstream states them.",
+        "rewriteGuidance": "Rewrite the text with dramatically varied sentence lengths, alternating between very short sentences (3-8 words) and longer complex ones (25-40 words); use natural, conversational vocabulary and preserve all factual content.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [],
+        "weakAlone": false,
+        "locator": "src/methodologies/llm_rewriter.py:16",
+        "quote": "Rewrite the following text with dramatically varied sentence lengths. ",
+        "notes": [
+          "Derived id rhythm-alternate-lengths from the leading instruction of REWRITE_PROMPTS[0] (src/methodologies/llm_rewriter.py:16), \"Rewrite the following text with dramatically varied sentence lengths\".",
+          "REWRITE_PROMPTS[2] (src/methodologies/llm_rewriter.py:24) repeats the same correction as \"ensure smooth transitions\" and \"no three consecutive sentences have similar length\"; folded in here so one technique is one rule. That sentence is quoted in the documentation too (docs/techniques.md:149) as a post-processing rule, but the post-processor never checks length beyond the two-neighbour merge, so it exists only as prompt text.",
+          "Both this rule and rhythm-merge-short-sentences map to rhythm.uniform_rhythm on purpose: they are two implementations of one tell, and the dedupe key is the tell.",
+          "No word band is machine-checked anywhere in the repository, so the 3-8 and 25-40 bands are quoted from the prompt rather than encoded as detection."
+        ]
+      }
+    ],
+    "warnings": [],
+    "disclosures": [
+      "Documented but not implemented, so deliberately not a rule: 11+ Chinese boilerplate phrases with natural alternatives. No such list exists in the repository; `AI_VOCAB_REPLACEMENTS` at postprocess.py:7-36 holds English words only and the string \"Chinese\" appears in no Python source file. (docs/techniques.md:145)",
+      "Documented but not implemented, so deliberately not a rule: Detect and break 3+ sentence uniform-length patterns. `_disrupt_sentence_rhythm` only merges (postprocess.py:60-72): it never splits a sentence, and the only length test is `< short_threshold` on two neighbours. (docs/techniques.md:149)",
+      "Documented but not implemented, so deliberately not a rule: Insert transitional variety (short interjection, question, aside). Nothing in the post-processor inserts text other than the em-dash join; the adjacent prompt wording (llm_rewriter.py:21) delegates it to a model and cannot be checked. (docs/techniques.md:150)",
+      "Documented but not implemented, so deliberately not a rule: Segment selection by vocabulary diversity and by structural difference from the original. `_score_naturalness` (mixed_engine.py:28-35) scores a back-translation on unique-token ratio and word-length variance, both computed on the candidate alone, so the original is never consulted and no structural comparison exists. (docs/techniques.md:173-174)",
+      "Documented but not implemented, so deliberately not a rule: n-gram diversity as a statistical feature. `StatisticalDetector.score` (detectors/statistical.py:8-39) computes TTR, sentence-length CV and hapax ratio; there is no n-gram of any order in the file. (docs/techniques.md:138)",
+      "Documented but not implemented, so deliberately not a rule: Yule's K measure. The string 'yule' does not occur anywhere in the repository, and the detector returns a three-term mean, not four. (docs/techniques.md:139)",
+      "Documented but not implemented, so deliberately not a rule: DeepL as a mixed-engine member. `_get_translator` (mixed_engine.py:18-23) accepts only \"google\" and \"mymemory\" and raises ValueError otherwise. (docs/techniques.md:181)",
+      "Documented but not implemented, so deliberately not a rule: Apertium as a mixed-engine member. Same guard; the engine name appears in the repository only inside docs/techniques.md. (docs/techniques.md:182)",
+      "Methodology note, deliberately not a rule: the default execution path is a four-stage remote translation chain (src/standard/pipeline.py:5-8 and :82-98): LLM rewrite EN->ZH, LLM rewrite ZH->JA, Google Translate JA->FI, Niutrans FI->target. It needs an LLM key, a Niutrans key and an undocumented Google endpoint, so it is excluded from the extracted rules and must not become a default strategy. The offline statistical detector in statistical.ts is the only always-available asset."
+    ]
+  }
+}

@@ -1,0 +1,1777 @@
+{
+  "schemaVersion": "1.0.0",
+  "result": {
+    "upstream": "blader/humanizer",
+    "sourceCommit": "9862685f575c65a8247f90369951df1b3416e3d6",
+    "extractedAt": "2026-09-15T21:18:11.673Z",
+    "sources": [
+      "SKILL.md"
+    ],
+    "rules": [
+      {
+        "upstreamRuleId": "1",
+        "signature": "structural.negation_contrast",
+        "signatureMapped": true,
+        "title": "Not X but Y",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The negative half names something no one claimed, so the positive half sounds larger. It adds weight without adding a claim.",
+        "detection": "Lexical. 2 literal watched phrase(s), 5 construction template(s).",
+        "rewriteGuidance": "The negative half names something no one claimed, so the positive half sounds larger. It adds weight without adding a claim. State the point directly. Keep a contrast only when the negative half corrects a belief the reader actually holds, or when both halves carry information.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "not X but Y",
+            "kind": "template",
+            "match": "not X but Y"
+          },
+          {
+            "text": "not just, not only, or not merely X, but Y",
+            "kind": "template",
+            "match": "not just, not only, or not merely X, but Y"
+          },
+          {
+            "text": "it's not X, it's Y",
+            "kind": "template",
+            "match": "it's not X, it's Y"
+          },
+          {
+            "text": "the reversed form X rather than Y",
+            "kind": "template",
+            "match": "the reversed form X rather than Y"
+          },
+          {
+            "text": "the same contrast split across sentences",
+            "kind": "literal",
+            "match": "the same contrast split across sentences",
+            "note": "\"This does not mean X. It means Y.\""
+          },
+          {
+            "text": "a clipped negative tail (\"..., no guessing\"). The formula appears in every language",
+            "kind": "template",
+            "match": "a clipped negative tail (\"..., no guessing\"). The formula appears in every language"
+          },
+          {
+            "text": "treat the equivalent construction the same way",
+            "kind": "literal",
+            "match": "treat the equivalent construction the same way"
+          }
+        ],
+        "examples": [
+          {
+            "before": "It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere. It's not merely a song, it's a statement.",
+            "after": "The heavy beat adds to the aggressive tone."
+          },
+          {
+            "before": "This does not mean every choice is equal. It means there is no external system that confirms which choice is right.",
+            "after": "No external system confirms which choice is right, although the choices still have different consequences.",
+            "note": "split across sentences"
+          },
+          {
+            "before": "The options come from the selected item, no guessing.",
+            "after": "The options come from the selected item without forcing the user to guess.",
+            "note": "clipped tail"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:58",
+        "quote": "The negative half names something no one claimed, so the positive half sounds larger. It adds weight without adding a claim. State the point directly. Keep a contrast only when the negative half corrects a belief the reader actually hold...",
+        "notes": [
+          "Section A: Staging instead of stating"
+        ]
+      },
+      {
+        "upstreamRuleId": "2",
+        "signature": "structural.one_line_closer",
+        "signatureMapped": true,
+        "title": "One-line closers and dramatic fragments",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The line asks the reader to pause on a claim instead of adding to it. One short sentence can carry emphasis when it carries a new fact.",
+        "detection": "Lexical. 7 literal watched phrase(s).",
+        "rewriteGuidance": "The line asks the reader to pause on a claim instead of adding to it. One short sentence can carry emphasis when it carries a new fact. Cut a closer that repeats. Merge a row of fragments into a sentence with a specific claim.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "a one-sentence paragraph that restates the paragraph before it",
+            "kind": "literal",
+            "match": "a one-sentence paragraph that restates the paragraph before it"
+          },
+          {
+            "text": "\"That is the real win.\"",
+            "kind": "literal",
+            "match": "\"that is the real win.\""
+          },
+          {
+            "text": "\"Read that again.\"",
+            "kind": "literal",
+            "match": "\"read that again.\""
+          },
+          {
+            "text": "\"Let that sink in.\"",
+            "kind": "literal",
+            "match": "\"let that sink in.\""
+          },
+          {
+            "text": "the same closer after several sections",
+            "kind": "literal",
+            "match": "the same closer after several sections"
+          },
+          {
+            "text": "a row of fragments",
+            "kind": "literal",
+            "match": "a row of fragments",
+            "note": "\"No aesthetic prior. No nostalgia.\""
+          },
+          {
+            "text": "one word in ALL CAPS or with periods between words",
+            "kind": "literal",
+            "match": "one word in all caps or with periods between words",
+            "note": "every. single. day."
+          }
+        ],
+        "examples": [
+          {
+            "before": "Then AlphaEvolve arrived. It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone.",
+            "after": "AlphaEvolve changed the search because it did not favor symmetry or human-looking designs. That made some of the older assumptions less useful."
+          },
+          {
+            "before": "Caching cuts repeat work.\n\nThat is the real win.\n\nRetries hide brief outages.\n\nThat is the real win.",
+            "after": "Caching cuts repeat work.\n\nRetries hide brief outages.",
+            "note": "repeated closer"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:75",
+        "quote": "The line asks the reader to pause on a claim instead of adding to it. One short sentence can carry emphasis when it carries a new fact. Cut a closer that repeats. Merge a row of fragments into a sentence with a specific claim.",
+        "notes": [
+          "Section A: Staging instead of stating"
+        ]
+      },
+      {
+        "upstreamRuleId": "3",
+        "signature": "lexical.aphorism_dressing",
+        "signatureMapped": true,
+        "title": "Sayings that sound deep",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "An ordinary point is dressed as a hidden truth or an aphorism, and the dressing adds no detail. Replace the saying with the specific claim.",
+        "detection": "Lexical. 10 literal watched phrase(s), 3 construction template(s).",
+        "rewriteGuidance": "An ordinary point is dressed as a hidden truth or an aphorism, and the dressing adds no detail. Replace the saying with the specific claim.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "the real question is",
+            "kind": "literal",
+            "match": "the real question is"
+          },
+          {
+            "text": "at its core",
+            "kind": "literal",
+            "match": "at its core"
+          },
+          {
+            "text": "in reality",
+            "kind": "literal",
+            "match": "in reality"
+          },
+          {
+            "text": "what really matters",
+            "kind": "literal",
+            "match": "what really matters"
+          },
+          {
+            "text": "fundamentally",
+            "kind": "literal",
+            "match": "fundamentally"
+          },
+          {
+            "text": "the deeper issue",
+            "kind": "literal",
+            "match": "the deeper issue"
+          },
+          {
+            "text": "the heart of the matter",
+            "kind": "literal",
+            "match": "the heart of the matter"
+          },
+          {
+            "text": "X is the Y of Z",
+            "kind": "template",
+            "match": "X is the Y of Z"
+          },
+          {
+            "text": "X becomes a trap",
+            "kind": "template",
+            "match": "X becomes a trap"
+          },
+          {
+            "text": "X is not a tool but a mirror",
+            "kind": "template",
+            "match": "X is not a tool but a mirror"
+          },
+          {
+            "text": "the language of",
+            "kind": "literal",
+            "match": "the language of"
+          },
+          {
+            "text": "the currency of",
+            "kind": "literal",
+            "match": "the currency of"
+          },
+          {
+            "text": "the architecture of",
+            "kind": "literal",
+            "match": "the architecture of"
+          }
+        ],
+        "examples": [
+          {
+            "before": "The real question is whether teams can adapt. At its core, what really matters is organizational readiness.",
+            "after": "The question is whether teams can adapt. That mostly depends on whether the organization is ready to change its habits."
+          },
+          {
+            "before": "Symmetry is the language of trust. Efficiency becomes a trap when teams forget the human layer.",
+            "after": "Symmetric layouts often feel more predictable to users. Teams can over-optimize workflows and miss how people actually use them.",
+            "note": "aphorism"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:96",
+        "quote": "An ordinary point is dressed as a hidden truth or an aphorism, and the dressing adds no detail. Replace the saying with the specific claim.",
+        "notes": [
+          "Section A: Staging instead of stating"
+        ]
+      },
+      {
+        "upstreamRuleId": "4",
+        "signature": "structural.staged_runup",
+        "signatureMapped": true,
+        "title": "Staged run-up before the point",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The writer announces the point or stages a moment of candor instead of making the point. Remove the run-up, not just its tone.",
+        "detection": "Lexical. 15 literal watched phrase(s).",
+        "rewriteGuidance": "The writer announces the point or stages a moment of candor instead of making the point. Remove the run-up, not just its tone. \"Honestly\" or \"look\" inside a casual sentence is ordinary; the tell is the standalone opener before a routine claim.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "Let's dive in",
+            "kind": "literal",
+            "match": "let's dive in"
+          },
+          {
+            "text": "let's explore",
+            "kind": "literal",
+            "match": "let's explore"
+          },
+          {
+            "text": "let's break this down",
+            "kind": "literal",
+            "match": "let's break this down"
+          },
+          {
+            "text": "here's what you need to know",
+            "kind": "literal",
+            "match": "here's what you need to know"
+          },
+          {
+            "text": "now let's look at",
+            "kind": "literal",
+            "match": "now let's look at"
+          },
+          {
+            "text": "without further ado",
+            "kind": "literal",
+            "match": "without further ado"
+          },
+          {
+            "text": "heads up",
+            "kind": "literal",
+            "match": "heads up"
+          },
+          {
+            "text": "quick note",
+            "kind": "literal",
+            "match": "quick note"
+          },
+          {
+            "text": "Honestly?",
+            "kind": "literal",
+            "match": "honestly?"
+          },
+          {
+            "text": "Look",
+            "kind": "reference",
+            "match": "Look"
+          },
+          {
+            "text": "Here's the thing",
+            "kind": "literal",
+            "match": "here's the thing"
+          },
+          {
+            "text": "The thing is",
+            "kind": "literal",
+            "match": "the thing is"
+          },
+          {
+            "text": "Let's be honest",
+            "kind": "literal",
+            "match": "let's be honest"
+          },
+          {
+            "text": "Real talk",
+            "kind": "literal",
+            "match": "real talk"
+          },
+          {
+            "text": "and casual versions such as \"one thing that bit me",
+            "kind": "literal",
+            "match": "and casual versions such as \"one thing that bit me"
+          },
+          {
+            "text": "so pay attention\"",
+            "kind": "literal",
+            "match": "so pay attention\""
+          }
+        ],
+        "examples": [
+          {
+            "before": "Let's dive into how caching works in Next.js. Here's what you need to know.",
+            "after": "Next.js caches data at multiple layers, including request memoization, the data cache, and the router cache."
+          },
+          {
+            "before": "Is it worth the price? Honestly? It depends on how often you'll use it.",
+            "after": "Whether it's worth the price depends on how often you'll use it.",
+            "note": "staged candor"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:109",
+        "quote": "The writer announces the point or stages a moment of candor instead of making the point. Remove the run-up, not just its tone. \"Honestly\" or \"look\" inside a casual sentence is ordinary; the tell is the standalone opener before a routine ...",
+        "notes": [
+          "Section A: Staging instead of stating"
+        ]
+      },
+      {
+        "upstreamRuleId": "5",
+        "signature": "structural.arguing_with_no_one",
+        "signatureMapped": true,
+        "title": "Arguing with no one",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The text answers an objection or rejects an option that appears nowhere else, usually a leftover from an earlier draft. Remove the defense; if it holds a real claim, state the claim.",
+        "detection": "Lexical. 9 literal watched phrase(s), 2 construction template(s).",
+        "rewriteGuidance": "The text answers an objection or rejects an option that appears nowhere else, usually a leftover from an earlier draft. Remove the defense; if it holds a real claim, state the claim. Keep an objection the text attributes or answers in full, and keep an option a reader would actually weigh. Several unrelated rejections in a row are a stronger sign than one.",
+        "severity": 4,
+        "watchPhrases": [
+          {
+            "text": "This isn't (mainly) about",
+            "kind": "literal",
+            "match": "this isn't (mainly) about"
+          },
+          {
+            "text": "I'm not saying",
+            "kind": "literal",
+            "match": "i'm not saying"
+          },
+          {
+            "text": "To be clear",
+            "kind": "literal",
+            "match": "to be clear"
+          },
+          {
+            "text": "Don't get me wrong",
+            "kind": "literal",
+            "match": "don't get me wrong"
+          },
+          {
+            "text": "This is not to say",
+            "kind": "literal",
+            "match": "this is not to say"
+          },
+          {
+            "text": "Some might say... but",
+            "kind": "template",
+            "match": "Some might say... but"
+          },
+          {
+            "text": "A tempting approach would be",
+            "kind": "literal",
+            "match": "a tempting approach would be"
+          },
+          {
+            "text": "One might be tempted to",
+            "kind": "literal",
+            "match": "one might be tempted to"
+          },
+          {
+            "text": "An obvious approach would be",
+            "kind": "literal",
+            "match": "an obvious approach would be"
+          },
+          {
+            "text": "You might think... but",
+            "kind": "template",
+            "match": "You might think... but"
+          },
+          {
+            "text": "It would be easy to just",
+            "kind": "literal",
+            "match": "it would be easy to just"
+          }
+        ],
+        "examples": [
+          {
+            "before": "This isn't mainly about prompt length, and I'm not arguing that documentation doesn't matter. You could categorize the problem another way, but the issue is whether the agent can use the instruction when it acts.",
+            "after": "The issue is whether the agent can use the instruction when it acts."
+          },
+          {
+            "before": "Session tokens are rotated every 24 hours. A tempting approach would be to rotate them by restarting the auth service on a cron job, but that would drop every active session. Rotation happens in place, and clients refresh transparently.",
+            "after": "Session tokens are rotated every 24 hours, in place, and clients refresh transparently.",
+            "note": "fake alternative"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:122",
+        "quote": "The text answers an objection or rejects an option that appears nowhere else, usually a leftover from an earlier draft. Remove the defense; if it holds a real claim, state the claim. Keep an objection the text attributes or answers in fu...",
+        "notes": [
+          "Section A: Staging instead of stating"
+        ]
+      },
+      {
+        "upstreamRuleId": "6",
+        "signature": "rhythm.forced_triad",
+        "signatureMapped": true,
+        "title": "Forced triads",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Ideas arrive in threes to sound complete, whether the meaning has three parts or not. The tell can be one sentence (\"innovation, inspiration, and insights\"), three parallel examples, or three short facts followed by a lesson.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "Ideas arrive in threes to sound complete, whether the meaning has three parts or not. The tell can be one sentence (\"innovation, inspiration, and insights\"), three parallel examples, or three short facts followed by a lesson. Check that each item adds a distinct idea. Merge examples, develop the strongest one, or vary the structure when they do not. Keep three real items when the meaning needs three.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.",
+            "after": "The event includes talks and panels. There's also time for informal networking between sessions."
+          },
+          {
+            "before": "A career can look promising and fail. A relationship can feel important and end. A skill can take years and remain useless. These decisions rarely explain themselves.",
+            "after": "A career can look promising and fail. So can a relationship that felt important and ended, or a skill that took years and remained useless. These decisions rarely explain themselves.",
+            "note": "paragraph scale"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:139",
+        "quote": "Ideas arrive in threes to sound complete, whether the meaning has three parts or not. The tell can be one sentence (\"innovation, inspiration, and insights\"), three parallel examples, or three short facts followed by a lesson. Check that ...",
+        "notes": [
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "7",
+        "signature": "rhythm.repeated_openings",
+        "signatureMapped": true,
+        "title": "Repeated sentence openings",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Several sentences in a row start with the same subject, often *she* or *he*, because repetition is handled by rule instead of by ear. Merge the sentences, change the subject, or begin with the action.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "Several sentences in a row start with the same subject, often *she* or *he*, because repetition is handled by rule instead of by ear. Merge the sentences, change the subject, or begin with the action. Do not ban the repeated word; a remaining sentence may still start with \"She.\" Writers also repeat an opening on purpose for rhythm, as in \"She came. She saw. She conquered.\"",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "She noted the door. She noted the lock on it. She filed both away.",
+            "after": "She noted the door and its lock, then filed both away."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:151",
+        "quote": "Several sentences in a row start with the same subject, often *she* or *he*, because repetition is handled by rule instead of by ear. Merge the sentences, change the subject, or begin with the action. Do not ban the repeated word; a rema...",
+        "notes": [
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "8",
+        "signature": "rhythm.dash_overuse",
+        "signatureMapped": true,
+        "title": "Dashes as the universal connector",
+        "category": "rhythm",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "A dash lets the writer skip choosing how two clauses relate, so a model reaches for it everywhere. Many editors and journalists also use dashes, so one dash is *weak alone*; a text full of them is not.",
+        "detection": "No watched list upstream. Model-judged. Weak alone: needs corroboration.",
+        "rewriteGuidance": "A dash lets the writer skip choosing how two clauses relate, so a model reaches for it everywhere. Many editors and journalists also use dashes, so one dash is *weak alone*; a text full of them is not.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "The new policy — announced without warning — affects thousands of workers. The changes -- long overdue according to critics -- will take effect immediately.",
+            "after": "The new policy, announced without warning, affects thousands of workers. The changes, long overdue according to critics, will take effect immediately."
+          }
+        ],
+        "weakAlone": true,
+        "locator": "SKILL.md:159",
+        "quote": "A dash lets the writer skip choosing how two clauses relate, so a model reaches for it everywhere. Many editors and journalists also use dashes, so one dash is *weak alone*; a text full of them is not.",
+        "notes": [
+          "upstream Rule: The final rewrite must not contain em dashes (—) or en dashes (–) unless the writer's sample uses them; then match the sample's rate. Replace each dash with a period, comma, colon, or parentheses, or rewrite the sentence. This includes spaced dashes and double hyphens (` -- `) used as dashes. Leave dashes and hyphens inside code blocks, inline code, commands, paths, and URLs alone.",
+          "Marked weak alone upstream: needs corroboration.",
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "9",
+        "signature": "lexical.stacked_qualifiers",
+        "signatureMapped": true,
+        "title": "Stacked qualifiers",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Repeated editing adds one qualifier after another until every claim sounds uncertain, usually to repair an earlier overstatement rather than to report real doubt. Keep a qualifier only when the source supports it and the meaning needs it.",
+        "detection": "Lexical. 6 literal watched phrase(s), weak alone: requires corroboration before acting.",
+        "rewriteGuidance": "Repeated editing adds one qualifier after another until every claim sounds uncertain, usually to repair an earlier overstatement rather than to report real doubt. Keep a qualifier only when the source supports it and the meaning needs it. Keep scope statements, legal and safety notices, and real corrections. Ordinary hedges such as *perhaps* or *tends to* are human habits and not tells. *Weak alone.*",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "to be fair",
+            "kind": "literal",
+            "match": "to be fair"
+          },
+          {
+            "text": "it's also possible",
+            "kind": "literal",
+            "match": "it's also possible"
+          },
+          {
+            "text": "could potentially",
+            "kind": "literal",
+            "match": "could potentially"
+          },
+          {
+            "text": "might arguably",
+            "kind": "literal",
+            "match": "might arguably"
+          },
+          {
+            "text": "in some cases it may",
+            "kind": "literal",
+            "match": "in some cases it may"
+          },
+          {
+            "text": "this is an inference",
+            "kind": "literal",
+            "match": "this is an inference"
+          }
+        ],
+        "examples": [
+          {
+            "before": "It could potentially possibly be argued that the policy might have some effect on outcomes.",
+            "after": "The policy may affect outcomes."
+          }
+        ],
+        "weakAlone": true,
+        "locator": "SKILL.md:168",
+        "quote": "Repeated editing adds one qualifier after another until every claim sounds uncertain, usually to repair an earlier overstatement rather than to report real doubt. Keep a qualifier only when the source supports it and the meaning needs it...",
+        "notes": [
+          "Marked weak alone upstream: needs corroboration.",
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "10",
+        "signature": "formatting.hyphenated_pairs",
+        "signatureMapped": true,
+        "title": "Hyphenated pairs everywhere",
+        "category": "formatting",
+        "languages": [
+          "en"
+        ],
+        "description": "These pairs are hyphenated in every position. Keep the hyphen before a noun when grammar needs it, as in `a high-quality report`, and drop it after the noun, as in `the report is high quality`.",
+        "detection": "Lexical. 10 literal watched phrase(s), weak alone: requires corroboration before acting.",
+        "rewriteGuidance": "These pairs are hyphenated in every position. Keep the hyphen before a noun when grammar needs it, as in `a high-quality report`, and drop it after the noun, as in `the report is high quality`. *Weak alone.*",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "third-party",
+            "kind": "literal",
+            "match": "third-party"
+          },
+          {
+            "text": "cross-functional",
+            "kind": "literal",
+            "match": "cross-functional"
+          },
+          {
+            "text": "client-facing",
+            "kind": "literal",
+            "match": "client-facing"
+          },
+          {
+            "text": "data-driven",
+            "kind": "literal",
+            "match": "data-driven"
+          },
+          {
+            "text": "decision-making",
+            "kind": "literal",
+            "match": "decision-making"
+          },
+          {
+            "text": "well-known",
+            "kind": "literal",
+            "match": "well-known"
+          },
+          {
+            "text": "high-quality",
+            "kind": "literal",
+            "match": "high-quality"
+          },
+          {
+            "text": "real-time",
+            "kind": "literal",
+            "match": "real-time"
+          },
+          {
+            "text": "long-term",
+            "kind": "literal",
+            "match": "long-term"
+          },
+          {
+            "text": "end-to-end",
+            "kind": "literal",
+            "match": "end-to-end"
+          }
+        ],
+        "examples": [
+          {
+            "before": "The team is cross-functional, the report is high-quality, and the methodology is data-driven.",
+            "after": "The team is cross functional, the report is high quality, and the methodology is data driven."
+          }
+        ],
+        "weakAlone": true,
+        "locator": "SKILL.md:177",
+        "quote": "These pairs are hyphenated in every position. Keep the hyphen before a noun when grammar needs it, as in `a high-quality report`, and drop it after the noun, as in `the report is high quality`. *Weak alone.*",
+        "notes": [
+          "Marked weak alone upstream: needs corroboration.",
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "11",
+        "signature": "lexical.passive_and_subjectless",
+        "signatureMapped": true,
+        "title": "Passive voice and missing subjects",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The text hides who acts or drops the subject. Use active voice when it makes the actor and action clearer.",
+        "detection": "No watched list upstream. Model-judged. Weak alone: needs corroboration.",
+        "rewriteGuidance": "The text hides who acts or drops the subject. Use active voice when it makes the actor and action clearer. *Weak alone.*",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "No configuration file needed. The results are preserved automatically.",
+            "after": "You do not need a configuration file. The system preserves the results automatically."
+          }
+        ],
+        "weakAlone": true,
+        "locator": "SKILL.md:186",
+        "quote": "The text hides who acts or drops the subject. Use active voice when it makes the actor and action clearer. *Weak alone.*",
+        "notes": [
+          "Marked weak alone upstream: needs corroboration.",
+          "Section B: Rhythm by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "12",
+        "signature": "lexical.ai_vocabulary",
+        "signatureMapped": true,
+        "title": "Overused AI words",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Models use these words far more often than people do, especially in groups. This is the only vocabulary list in the skill.",
+        "detection": "Lexical. 27 literal watched phrase(s).",
+        "rewriteGuidance": "Models use these words far more often than people do, especially in groups. This is the only vocabulary list in the skill. A formal word outside it is not a tell by itself.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "Actually",
+            "kind": "literal",
+            "match": "actually"
+          },
+          {
+            "text": "additionally",
+            "kind": "literal",
+            "match": "additionally"
+          },
+          {
+            "text": "align with",
+            "kind": "literal",
+            "match": "align with"
+          },
+          {
+            "text": "bolstered",
+            "kind": "literal",
+            "match": "bolstered"
+          },
+          {
+            "text": "crucial",
+            "kind": "literal",
+            "match": "crucial"
+          },
+          {
+            "text": "deep dive",
+            "kind": "literal",
+            "match": "deep dive"
+          },
+          {
+            "text": "delve",
+            "kind": "literal",
+            "match": "delve"
+          },
+          {
+            "text": "emphasizing",
+            "kind": "literal",
+            "match": "emphasizing"
+          },
+          {
+            "text": "enduring",
+            "kind": "literal",
+            "match": "enduring"
+          },
+          {
+            "text": "enhance",
+            "kind": "literal",
+            "match": "enhance"
+          },
+          {
+            "text": "fostering",
+            "kind": "literal",
+            "match": "fostering"
+          },
+          {
+            "text": "garner",
+            "kind": "literal",
+            "match": "garner"
+          },
+          {
+            "text": "gate/gated/gating",
+            "kind": "literal",
+            "match": "gate/gated/gating",
+            "note": "figurative; keep technical uses"
+          },
+          {
+            "text": "highlight",
+            "kind": "literal",
+            "match": "highlight",
+            "note": "verb"
+          },
+          {
+            "text": "interplay",
+            "kind": "literal",
+            "match": "interplay"
+          },
+          {
+            "text": "intricate/intricacies",
+            "kind": "literal",
+            "match": "intricate/intricacies"
+          },
+          {
+            "text": "key",
+            "kind": "reference",
+            "match": "key",
+            "note": "adjective"
+          },
+          {
+            "text": "landscape",
+            "kind": "literal",
+            "match": "landscape",
+            "note": "abstract noun"
+          },
+          {
+            "text": "meticulous/meticulously",
+            "kind": "literal",
+            "match": "meticulous/meticulously"
+          },
+          {
+            "text": "pivotal",
+            "kind": "literal",
+            "match": "pivotal"
+          },
+          {
+            "text": "quietly",
+            "kind": "literal",
+            "match": "quietly"
+          },
+          {
+            "text": "robust",
+            "kind": "literal",
+            "match": "robust",
+            "note": "figurative; keep technical uses"
+          },
+          {
+            "text": "showcase",
+            "kind": "literal",
+            "match": "showcase"
+          },
+          {
+            "text": "tapestry",
+            "kind": "literal",
+            "match": "tapestry",
+            "note": "abstract noun"
+          },
+          {
+            "text": "testament",
+            "kind": "literal",
+            "match": "testament"
+          },
+          {
+            "text": "underscore",
+            "kind": "literal",
+            "match": "underscore",
+            "note": "verb"
+          },
+          {
+            "text": "valuable",
+            "kind": "literal",
+            "match": "valuable"
+          },
+          {
+            "text": "vibrant",
+            "kind": "literal",
+            "match": "vibrant"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.",
+            "after": "Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonization, remain common, especially in the south."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:198",
+        "quote": "Models use these words far more often than people do, especially in groups. This is the only vocabulary list in the skill. A formal word outside it is not a tell by itself.",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "13",
+        "signature": "structural.inflated_significance",
+        "signatureMapped": true,
+        "title": "Inflated significance",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "An ordinary detail is said to mark a change, prove a legacy, or promise a future. The move appears at three scales: a phrase, a stock \"challenges and outlook\" section, and a send-off paragraph.",
+        "detection": "Lexical. 16 literal watched phrase(s), 1 construction template(s).",
+        "rewriteGuidance": "An ordinary detail is said to mark a change, prove a legacy, or promise a future. The move appears at three scales: a phrase, a stock \"challenges and outlook\" section, and a send-off paragraph. Keep the fact and drop the significance. End on the last concrete fact; if the source states real plans, use those.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "stands as a testament",
+            "kind": "literal",
+            "match": "stands as a testament"
+          },
+          {
+            "text": "a pivotal or crucial moment",
+            "kind": "literal",
+            "match": "a pivotal or crucial moment"
+          },
+          {
+            "text": "plays a key role",
+            "kind": "literal",
+            "match": "plays a key role"
+          },
+          {
+            "text": "marking or shaping the",
+            "kind": "literal",
+            "match": "marking or shaping the"
+          },
+          {
+            "text": "underscores its importance",
+            "kind": "literal",
+            "match": "underscores its importance"
+          },
+          {
+            "text": "reflects a broader",
+            "kind": "literal",
+            "match": "reflects a broader"
+          },
+          {
+            "text": "enduring or lasting legacy",
+            "kind": "literal",
+            "match": "enduring or lasting legacy"
+          },
+          {
+            "text": "setting the stage for",
+            "kind": "literal",
+            "match": "setting the stage for"
+          },
+          {
+            "text": "evolving landscape",
+            "kind": "literal",
+            "match": "evolving landscape"
+          },
+          {
+            "text": "indelible mark",
+            "kind": "literal",
+            "match": "indelible mark"
+          },
+          {
+            "text": "Despite these challenges... continues to thrive",
+            "kind": "template",
+            "match": "Despite these challenges... continues to thrive"
+          },
+          {
+            "text": "Challenges and Legacy",
+            "kind": "literal",
+            "match": "challenges and legacy"
+          },
+          {
+            "text": "Future Outlook",
+            "kind": "literal",
+            "match": "future outlook"
+          },
+          {
+            "text": "Awards and recognition",
+            "kind": "literal",
+            "match": "awards and recognition"
+          },
+          {
+            "text": "the future looks bright",
+            "kind": "literal",
+            "match": "the future looks bright"
+          },
+          {
+            "text": "exciting times ahead",
+            "kind": "literal",
+            "match": "exciting times ahead"
+          },
+          {
+            "text": "a step in the right direction",
+            "kind": "literal",
+            "match": "a step in the right direction"
+          }
+        ],
+        "examples": [
+          {
+            "before": "The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.",
+            "after": "The Statistical Institute of Catalonia was established in 1989, part of a wider decentralization of administrative functions in Spain."
+          },
+          {
+            "before": "Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai's growth.",
+            "after": "Korattur has recurring traffic congestion and water shortages.",
+            "note": "stock section"
+          },
+          {
+            "before": "The future looks bright for the company. Exciting times lie ahead as they continue their journey toward excellence.",
+            "after": "(Cut the paragraph. End on the last concrete fact.)",
+            "note": "send-off"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:207",
+        "quote": "An ordinary detail is said to mark a change, prove a legacy, or promise a future. The move appears at three scales: a phrase, a stock \"challenges and outlook\" section, and a send-off paragraph. Keep the fact and drop the significance. En...",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "14",
+        "signature": "lexical.vague_attribution",
+        "signatureMapped": true,
+        "title": "Vague connection or association",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The text says two things are connected without saying how. \"He was associated with the leadership of ExampleCorp\" hides whether he was the CEO, a board member, or a consultant.",
+        "detection": "Lexical. 6 literal watched phrase(s).",
+        "rewriteGuidance": "The text says two things are connected without saying how. \"He was associated with the leadership of ExampleCorp\" hides whether he was the CEO, a board member, or a consultant. Name the relationship the source gives. If the source does not say, keep the vague wording rather than inventing a role.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "associated with",
+            "kind": "literal",
+            "match": "associated with"
+          },
+          {
+            "text": "in association with",
+            "kind": "literal",
+            "match": "in association with"
+          },
+          {
+            "text": "connected to",
+            "kind": "literal",
+            "match": "connected to"
+          },
+          {
+            "text": "in connection with",
+            "kind": "literal",
+            "match": "in connection with"
+          },
+          {
+            "text": "linked to",
+            "kind": "literal",
+            "match": "linked to"
+          },
+          {
+            "text": "tied to",
+            "kind": "literal",
+            "match": "tied to"
+          }
+        ],
+        "examples": [
+          {
+            "before": "He is associated with the Rajhans Orchestra, which he founded and conducts. The concerts were organised in connection with the celebrations of Pakistan's 50th anniversary.",
+            "after": "He founded and conducts the Rajhans Orchestra. The concerts were part of the celebrations of Pakistan's 50th anniversary."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:224",
+        "quote": "The text says two things are connected without saying how. \"He was associated with the leadership of ExampleCorp\" hides whether he was the CEO, a board member, or a consultant. Name the relationship the source gives. If the source does n...",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "15",
+        "signature": "lexical.ing_trailers",
+        "signatureMapped": true,
+        "title": "Shallow -ing riders",
+        "category": "lexical",
+        "languages": [
+          "en"
+        ],
+        "description": "An -ing phrase is bolted onto a simple fact to make it sound deeper. Attaching it to a named source (\"Roger Ebert highlighted the lasting influence\") does not make it true.",
+        "detection": "Lexical. 11 literal watched phrase(s).",
+        "rewriteGuidance": "An -ing phrase is bolted onto a simple fact to make it sound deeper. Attaching it to a named source (\"Roger Ebert highlighted the lasting influence\") does not make it true. Keep the fact; keep the rider only when the source supports what it claims.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "highlighting",
+            "kind": "literal",
+            "match": "highlighting"
+          },
+          {
+            "text": "underscoring",
+            "kind": "literal",
+            "match": "underscoring"
+          },
+          {
+            "text": "emphasizing",
+            "kind": "literal",
+            "match": "emphasizing"
+          },
+          {
+            "text": "ensuring",
+            "kind": "literal",
+            "match": "ensuring"
+          },
+          {
+            "text": "reflecting",
+            "kind": "literal",
+            "match": "reflecting"
+          },
+          {
+            "text": "symbolizing",
+            "kind": "literal",
+            "match": "symbolizing"
+          },
+          {
+            "text": "contributing to",
+            "kind": "literal",
+            "match": "contributing to"
+          },
+          {
+            "text": "cultivating",
+            "kind": "literal",
+            "match": "cultivating"
+          },
+          {
+            "text": "fostering",
+            "kind": "literal",
+            "match": "fostering"
+          },
+          {
+            "text": "encompassing",
+            "kind": "literal",
+            "match": "encompassing"
+          },
+          {
+            "text": "showcasing",
+            "kind": "literal",
+            "match": "showcasing"
+          }
+        ],
+        "examples": [
+          {
+            "before": "The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community's deep connection to the land.",
+            "after": "The temple is painted blue, green, and gold, colors meant to evoke Texas bluebonnets and the Gulf of Mexico."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:233",
+        "quote": "An -ing phrase is bolted onto a simple fact to make it sound deeper. Attaching it to a named source (\"Roger Ebert highlighted the lasting influence\") does not make it true. Keep the fact; keep the rider only when the source supports what...",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "16",
+        "signature": "lexical.sales_language",
+        "signatureMapped": true,
+        "title": "Sales language",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The text reads like an advertisement, especially for places, culture, products, or organizations. State what the thing is.",
+        "detection": "Lexical. 17 literal watched phrase(s).",
+        "rewriteGuidance": "The text reads like an advertisement, especially for places, culture, products, or organizations. State what the thing is.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "boasts",
+            "kind": "literal",
+            "match": "boasts"
+          },
+          {
+            "text": "vibrant",
+            "kind": "literal",
+            "match": "vibrant"
+          },
+          {
+            "text": "rich",
+            "kind": "literal",
+            "match": "rich",
+            "note": "figurative"
+          },
+          {
+            "text": "profound",
+            "kind": "literal",
+            "match": "profound"
+          },
+          {
+            "text": "enhancing",
+            "kind": "literal",
+            "match": "enhancing"
+          },
+          {
+            "text": "exemplifies",
+            "kind": "literal",
+            "match": "exemplifies"
+          },
+          {
+            "text": "commitment to",
+            "kind": "literal",
+            "match": "commitment to"
+          },
+          {
+            "text": "natural beauty",
+            "kind": "literal",
+            "match": "natural beauty"
+          },
+          {
+            "text": "nestled",
+            "kind": "literal",
+            "match": "nestled"
+          },
+          {
+            "text": "in the heart of",
+            "kind": "literal",
+            "match": "in the heart of"
+          },
+          {
+            "text": "groundbreaking",
+            "kind": "literal",
+            "match": "groundbreaking",
+            "note": "figurative"
+          },
+          {
+            "text": "renowned",
+            "kind": "literal",
+            "match": "renowned"
+          },
+          {
+            "text": "featuring",
+            "kind": "literal",
+            "match": "featuring"
+          },
+          {
+            "text": "diverse array",
+            "kind": "literal",
+            "match": "diverse array"
+          },
+          {
+            "text": "breathtaking",
+            "kind": "literal",
+            "match": "breathtaking"
+          },
+          {
+            "text": "must-visit",
+            "kind": "literal",
+            "match": "must-visit"
+          },
+          {
+            "text": "stunning",
+            "kind": "literal",
+            "match": "stunning"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.",
+            "after": "Alamata Raya Kobo is a town in the Gonder region of Ethiopia."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:242",
+        "quote": "The text reads like an advertisement, especially for places, culture, products, or organizations. State what the thing is.",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "17",
+        "signature": "lexical.borrowed_authority",
+        "signatureMapped": true,
+        "title": "Borrowed authority",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "A name or an unnamed authority stands in for what was said. Unnamed experts prop up a claim; a list of prestige outlets props up a person.",
+        "detection": "Lexical. 10 literal watched phrase(s), 2 construction template(s).",
+        "rewriteGuidance": "A name or an unnamed authority stands in for what was said. Unnamed experts prop up a claim; a list of prestige outlets props up a person. When the source text names the real source and what it said, use that. Otherwise cut the unsupported claim or the list. Never invent a source. A missing citation alone is not a tell; most writing is unsourced.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "experts argue",
+            "kind": "literal",
+            "match": "experts argue"
+          },
+          {
+            "text": "observers have cited",
+            "kind": "literal",
+            "match": "observers have cited"
+          },
+          {
+            "text": "industry reports",
+            "kind": "literal",
+            "match": "industry reports"
+          },
+          {
+            "text": "some critics",
+            "kind": "literal",
+            "match": "some critics"
+          },
+          {
+            "text": "several publications",
+            "kind": "literal",
+            "match": "several publications"
+          },
+          {
+            "text": "cited",
+            "kind": "literal",
+            "match": "cited"
+          },
+          {
+            "text": "featured",
+            "kind": "literal",
+            "match": "featured"
+          },
+          {
+            "text": "or profiled in [a list of outlets]",
+            "kind": "template",
+            "match": "or profiled in [a list of outlets]"
+          },
+          {
+            "text": "trade publications",
+            "kind": "literal",
+            "match": "trade publications"
+          },
+          {
+            "text": "independent coverage",
+            "kind": "literal",
+            "match": "independent coverage"
+          },
+          {
+            "text": "active social media presence",
+            "kind": "literal",
+            "match": "active social media presence"
+          },
+          {
+            "text": "over N followers",
+            "kind": "template",
+            "match": "over N followers"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.",
+            "after": "Researchers and conservationists study the Haolai River for its unusual characteristics.",
+            "note": "unnamed authority"
+          },
+          {
+            "before": "Her views have been cited in The New York Times, BBC, Financial Times, and The Hindu. She maintains an active social media presence with over 500,000 followers.",
+            "after": "Her views have been cited in The New York Times and the BBC.",
+            "note": "prestige list"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:251",
+        "quote": "A name or an unnamed authority stands in for what was said. Unnamed experts prop up a claim; a list of prestige outlets props up a person. When the source text names the real source and what it said, use that. Otherwise cut the unsupport...",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "18",
+        "signature": "lexical.copula_avoidance",
+        "signatureMapped": true,
+        "title": "Avoiding is, are, and has",
+        "category": "lexical",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Simple verbs are replaced with longer phrases. Use *is*, *are*, and *has*.",
+        "detection": "Lexical. 9 literal watched phrase(s), 2 construction template(s).",
+        "rewriteGuidance": "Simple verbs are replaced with longer phrases. Use *is*, *are*, and *has*.",
+        "severity": 3,
+        "watchPhrases": [
+          {
+            "text": "serves as",
+            "kind": "literal",
+            "match": "serves as"
+          },
+          {
+            "text": "stands as",
+            "kind": "literal",
+            "match": "stands as"
+          },
+          {
+            "text": "functions as",
+            "kind": "literal",
+            "match": "functions as"
+          },
+          {
+            "text": "operates as",
+            "kind": "literal",
+            "match": "operates as"
+          },
+          {
+            "text": "marks",
+            "kind": "literal",
+            "match": "marks"
+          },
+          {
+            "text": "represents [a]",
+            "kind": "template",
+            "match": "represents [a]"
+          },
+          {
+            "text": "boasts",
+            "kind": "literal",
+            "match": "boasts"
+          },
+          {
+            "text": "features",
+            "kind": "literal",
+            "match": "features"
+          },
+          {
+            "text": "offers",
+            "kind": "literal",
+            "match": "offers"
+          },
+          {
+            "text": "maintains [a]",
+            "kind": "template",
+            "match": "maintains [a]"
+          },
+          {
+            "text": "refers to",
+            "kind": "literal",
+            "match": "refers to"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Gallery 825 serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet.",
+            "after": "Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:264",
+        "quote": "Simple verbs are replaced with longer phrases. Use *is*, *are*, and *has*.",
+        "notes": [
+          "Section C: Inflation and borrowed authority"
+        ]
+      },
+      {
+        "upstreamRuleId": "19",
+        "signature": "formatting.bold_decoration",
+        "signatureMapped": true,
+        "title": "Bold as decoration",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Words are bolded without a reason, and vertical lists give every item a bold label and a colon. Remove the bold.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "Words are bolded without a reason, and vertical lists give every item a bold label and a colon. Remove the bold. Turn a labeled list into prose when the labels carry no information of their own.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "It blends **OKRs (Objectives and Key Results)**, **KPIs (Key Performance Indicators)**, and visual strategy tools such as the **Business Model Canvas (BMC)** and **Balanced Scorecard (BSC)**.",
+            "after": "It blends OKRs, KPIs, and visual strategy tools like the Business Model Canvas and Balanced Scorecard."
+          },
+          {
+            "before": "- **User Experience:** The user experience has been significantly improved with a new interface.\n- **Performance:** Performance has been enhanced through optimized algorithms.\n- **Security:** Security has been strengthened with end-to-end encryption.",
+            "after": "The update improves the interface, speeds up load times through optimized algorithms, and adds end-to-end encryption.",
+            "note": "labeled list"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:277",
+        "quote": "Words are bolded without a reason, and vertical lists give every item a bold label and a colon. Remove the bold. Turn a labeled list into prose when the labels carry no information of their own.",
+        "notes": [
+          "Section D: Formatting by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "20",
+        "signature": "formatting.decorative_headings",
+        "signatureMapped": true,
+        "title": "Decorative headings",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Headings capitalize every main word, and headings or list items carry emojis or arrows (→) as decoration. A horizontal rule sits between every section, or the document opens with a top-level heading that repeats its own title.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "Headings capitalize every main word, and headings or list items carry emojis or arrows (→) as decoration. A horizontal rule sits between every section, or the document opens with a top-level heading that repeats its own title. Use sentence case, remove the decoration and the rules, and let the title stand once.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "## Strategic Negotiations And Global Partnerships",
+            "after": "## Strategic negotiations and global partnerships"
+          },
+          {
+            "before": "🚀 **Launch Phase:** The product launches in Q3\n💡 **Key Insight:** Users prefer simplicity",
+            "after": "The product launches in Q3. User research showed a preference for simplicity.",
+            "note": "emojis"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:291",
+        "quote": "Headings capitalize every main word, and headings or list items carry emojis or arrows (→) as decoration. A horizontal rule sits between every section, or the document opens with a top-level heading that repeats its own title. Use senten...",
+        "notes": [
+          "Section D: Formatting by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "21",
+        "signature": "formatting.curly_quotes",
+        "signatureMapped": true,
+        "title": "Curly quotation marks",
+        "category": "formatting",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "Curly quotes (“...”) appear where the writer or target format uses straight quotes (\"...\"). Most editors auto-curl, so this is *weak alone*.",
+        "detection": "No watched list upstream. Model-judged. Weak alone: needs corroboration.",
+        "rewriteGuidance": "Curly quotes (“...”) appear where the writer or target format uses straight quotes (\"...\"). Most editors auto-curl, so this is *weak alone*.",
+        "severity": 2,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "He said “the project is on track” but others disagreed.",
+            "after": "He said \"the project is on track\" but others disagreed."
+          }
+        ],
+        "weakAlone": true,
+        "locator": "SKILL.md:304",
+        "quote": "Curly quotes (“...”) appear where the writer or target format uses straight quotes (\"...\"). Most editors auto-curl, so this is *weak alone*.",
+        "notes": [
+          "Marked weak alone upstream: needs corroboration.",
+          "Section D: Formatting by rule"
+        ]
+      },
+      {
+        "upstreamRuleId": "22",
+        "signature": "assistant.chatbot_residue",
+        "signatureMapped": true,
+        "title": "Chatbot residue",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "A chatbot's greeting, praise, offer, or closing remains in text that should stand on its own. It is the most certain tell in this list and the easiest to miss when it wraps real content.",
+        "detection": "Lexical. 9 literal watched phrase(s), 1 construction template(s).",
+        "rewriteGuidance": "A chatbot's greeting, praise, offer, or closing remains in text that should stand on its own. It is the most certain tell in this list and the easiest to miss when it wraps real content. Remove the wrapper and keep the content.",
+        "severity": 5,
+        "watchPhrases": [
+          {
+            "text": "I hope this helps",
+            "kind": "literal",
+            "match": "i hope this helps"
+          },
+          {
+            "text": "Of course!",
+            "kind": "literal",
+            "match": "of course!"
+          },
+          {
+            "text": "Certainly!",
+            "kind": "literal",
+            "match": "certainly!"
+          },
+          {
+            "text": "Great question!",
+            "kind": "literal",
+            "match": "great question!"
+          },
+          {
+            "text": "You're absolutely right",
+            "kind": "literal",
+            "match": "you're absolutely right"
+          },
+          {
+            "text": "Would you like",
+            "kind": "literal",
+            "match": "would you like"
+          },
+          {
+            "text": "Want me to...?",
+            "kind": "template",
+            "match": "Want me to...?"
+          },
+          {
+            "text": "Should I continue?",
+            "kind": "literal",
+            "match": "should i continue?"
+          },
+          {
+            "text": "let me know",
+            "kind": "literal",
+            "match": "let me know"
+          },
+          {
+            "text": "here is a",
+            "kind": "literal",
+            "match": "here is a"
+          }
+        ],
+        "examples": [
+          {
+            "before": "Great question! Here is an overview of the French Revolution. It began in 1789 when a financial crisis and food shortages led to widespread unrest. I hope this helps! Let me know if you'd like me to expand on any section.",
+            "after": "The French Revolution began in 1789 when a financial crisis and food shortages led to widespread unrest."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:316",
+        "quote": "A chatbot's greeting, praise, offer, or closing remains in text that should stand on its own. It is the most certain tell in this list and the easiest to miss when it wraps real content. Remove the wrapper and keep the content.",
+        "notes": [
+          "Section E: Leftovers from the chat and the draft"
+        ]
+      },
+      {
+        "upstreamRuleId": "23",
+        "signature": "assistant.knowledge_limit_disclaimer",
+        "signatureMapped": true,
+        "title": "Knowledge-limit disclaimers and guesses",
+        "category": "assistant",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "The text mentions where the model's knowledge ends, or admits it found no source and then fills the gap with a plausible guess. State what the source does not show, or remove the sentence.",
+        "detection": "Lexical. 9 literal watched phrase(s), 2 construction template(s).",
+        "rewriteGuidance": "The text mentions where the model's knowledge ends, or admits it found no source and then fills the gap with a plausible guess. State what the source does not show, or remove the sentence. Never present a guess as a fact.",
+        "severity": 5,
+        "watchPhrases": [
+          {
+            "text": "as of [date]",
+            "kind": "template",
+            "match": "as of [date]"
+          },
+          {
+            "text": "up to my last training update",
+            "kind": "literal",
+            "match": "up to my last training update"
+          },
+          {
+            "text": "while specific details are limited",
+            "kind": "literal",
+            "match": "while specific details are limited"
+          },
+          {
+            "text": "based on available information",
+            "kind": "literal",
+            "match": "based on available information"
+          },
+          {
+            "text": "not publicly available",
+            "kind": "literal",
+            "match": "not publicly available"
+          },
+          {
+            "text": "not widely documented or disclosed",
+            "kind": "literal",
+            "match": "not widely documented or disclosed"
+          },
+          {
+            "text": "in the provided or available sources",
+            "kind": "literal",
+            "match": "in the provided or available sources"
+          },
+          {
+            "text": "maintains a low profile",
+            "kind": "literal",
+            "match": "maintains a low profile"
+          },
+          {
+            "text": "keeps personal details private",
+            "kind": "literal",
+            "match": "keeps personal details private"
+          },
+          {
+            "text": "likely [grew up, studied, began]",
+            "kind": "template",
+            "match": "likely [grew up, studied, began]"
+          },
+          {
+            "text": "it is believed that",
+            "kind": "literal",
+            "match": "it is believed that"
+          }
+        ],
+        "examples": [
+          {
+            "before": "While specific details about the company's founding are not extensively documented in readily available sources, it appears to have been established sometime in the 1990s.",
+            "after": "The company's founding date is not documented in the available sources. (Or cut the sentence.)",
+            "note": "cutoff disclaimer"
+          },
+          {
+            "before": "Information about her early life is not publicly available, suggesting she maintains a low profile. She likely grew up in a middle-class household, which shaped her later interest in education reform.",
+            "after": "Her early life is not documented in the available sources. (Or omit the section.)",
+            "note": "guess"
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:325",
+        "quote": "The text mentions where the model's knowledge ends, or admits it found no source and then fills the gap with a plausible guess. State what the source does not show, or remove the sentence. Never present a guess as a fact.",
+        "notes": [
+          "Section E: Leftovers from the chat and the draft"
+        ]
+      },
+      {
+        "upstreamRuleId": "24",
+        "signature": "structural.heading_restated",
+        "signatureMapped": true,
+        "title": "A heading repeated in the first sentence",
+        "category": "structural",
+        "languages": [
+          "en",
+          "zh"
+        ],
+        "description": "A heading is followed by a one-line paragraph that restates it before the real content begins. Remove the repeated sentence.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "A heading is followed by a one-line paragraph that restates it before the real content begins. Remove the repeated sentence.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "## Performance\n\nSpeed matters.\n\nWhen users hit a slow page, they leave.",
+            "after": "## Performance\n\nWhen users hit a slow page, they leave."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:338",
+        "quote": "A heading is followed by a one-line paragraph that restates it before the real content begins. Remove the repeated sentence.",
+        "notes": [
+          "Section E: Leftovers from the chat and the draft"
+        ]
+      },
+      {
+        "upstreamRuleId": "25",
+        "signature": "structural.writes_about_previous_version",
+        "signatureMapped": true,
+        "title": "Writing about the previous version",
+        "category": "structural",
+        "languages": [
+          "en"
+        ],
+        "description": "Documentation and comments describe what the text replaced instead of the current behavior. Mention the previous version only in change logs, release notes, migration guides, and other documents about change.",
+        "detection": "No watched list upstream. Model-judged.",
+        "rewriteGuidance": "Documentation and comments describe what the text replaced instead of the current behavior. Mention the previous version only in change logs, release notes, migration guides, and other documents about change.",
+        "severity": 3,
+        "watchPhrases": [],
+        "examples": [
+          {
+            "before": "This function was added to replace the previous approach of iterating through all items, which caused O(n²) performance.",
+            "after": "This function uses a hash map for O(1) lookups, avoiding the O(n²) cost of naive iteration."
+          }
+        ],
+        "weakAlone": false,
+        "locator": "SKILL.md:352",
+        "quote": "Documentation and comments describe what the text replaced instead of the current behavior. Mention the previous version only in change logs, release notes, migration guides, and other documents about change.",
+        "notes": [
+          "Section E: Leftovers from the chat and the draft"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

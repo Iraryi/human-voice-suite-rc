@@ -1,0 +1,113 @@
+{
+  "name": "human-voice-suite",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A multi-source suite for natural-language human voice, de-AI writing patterns, personal voice learning, chat behaviour fitting and result validation, built for DeepSeek Harness.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "humanizer",
+    "anti-ai-detection",
+    "stylometry",
+    "voice-profile",
+    "chat-behavior",
+    "writing"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./plugin": {
+      "types": "./dist/dsh/plugin/server.d.ts",
+      "import": "./dist/dsh/plugin/server.js"
+    },
+    "./upstream": {
+      "types": "./dist/upstream/index.d.ts",
+      "import": "./dist/upstream/index.js"
+    },
+    "./rules": {
+      "types": "./dist/rules/index.d.ts",
+      "import": "./dist/rules/index.js"
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "upstreams/manifest.json",
+    "licenses",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/copy-runtime-data.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "upstream:check": "tsx src/upstream/cli/check.ts",
+    "upstream:check:offline": "tsx src/upstream/cli/check.ts --offline",
+    "upstream:extract": "tsx src/upstream/cli/extract.ts",
+    "phrases:report": "tsx src/upstream/cli/phrases.ts",
+    "phrases:check": "tsx src/upstream/cli/phrases.ts --check",
+    "voice:import": "tsx src/voice/cli/import-voices.ts",
+    "voice:check": "tsx src/voice/cli/import-voices.ts --check",
+    "bench:run": "tsx benchmarks/run.ts",
+    "bench:ablation": "tsx benchmarks/ablation.ts",
+    "bench:report": "tsx benchmarks/report.ts",
+    "bench:check": "tsx benchmarks/corpus-check.ts",
+    "bench:probe": "tsx benchmarks/probe.ts",
+    "bench:compare": "tsx benchmarks/compare-runs.ts",
+    "external:fetch": "tsx benchmarks/external/fetch.ts",
+    "external:measure": "tsx benchmarks/external/measure.ts",
+    "external:lccc": "tsx benchmarks/external/lccc.ts",
+    "paired:sample": "tsx benchmarks/external/paired-sample.ts",
+    "paired:generate": "tsx benchmarks/external/paired-generate.ts",
+    "paired:report": "tsx benchmarks/external/paired-report.ts",
+    "licenses:verify": "tsx src/upstream/cli/verify-licenses.ts",
+    "paired:overlap": "tsx benchmarks/external/paired-overlap.ts",
+    "miss:sample": "tsx benchmarks/external/miss-sample.ts sample",
+    "miss:report": "tsx benchmarks/external/miss-sample.ts report",
+    "length:prepare": "tsx benchmarks/external/length-matched.ts prepare",
+    "length:merge": "tsx benchmarks/external/length-matched.ts merge",
+    "length:report": "tsx benchmarks/external/length-report.ts",
+    "bank:prepare": "tsx benchmarks/external/prompt-bank-tool.ts prepare",
+    "bank:merge": "tsx benchmarks/external/prompt-bank-tool.ts merge",
+    "bank:report": "tsx benchmarks/external/prompt-bank-tool.ts report",
+    "helpsteer:report": "tsx benchmarks/external/helpsteer3.ts",
+    "provenance:probe": "node scripts/provenance-probes.mjs",
+    "release:audit": "node scripts/release-audit.mjs",
+    "solution:prepare": "tsx benchmarks/external/solution-report.ts prepare",
+    "solution:merge": "tsx benchmarks/external/solution-report.ts merge",
+    "solution:report": "tsx benchmarks/external/solution-report.ts report",
+    "solution:calibrate": "tsx benchmarks/external/solution-calibrate.ts",
+    "permission:calibrate": "tsx benchmarks/external/permission-calibrate.ts",
+    "advice:annotate": "tsx benchmarks/external/advice-annotate.ts",
+    "advice:permission": "tsx benchmarks/external/advice-permission.ts",
+    "shadow:report": "tsx benchmarks/external/shadow-report.ts",
+    "coverage:matrix": "tsx benchmarks/external/coverage-matrix.ts",
+    "review:condition": "tsx benchmarks/external/review.ts condition",
+    "review:sheet": "tsx benchmarks/external/review.ts sheet",
+    "review:tally": "tsx benchmarks/external/review-tally.ts",
+    "lexical:sheet": "tsx benchmarks/external/lexical-only.ts sheet",
+    "lexical:tally": "tsx benchmarks/external/lexical-only.ts tally"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
